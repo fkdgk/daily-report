@@ -7,6 +7,11 @@
 @stop
 
 @section('content')
+<!--
+    フリーモデル画像
+    https://www.pakutaso.com/model.html    
+-->
+
     <div class="row">
         <div class="col-12">
             <div class="card">

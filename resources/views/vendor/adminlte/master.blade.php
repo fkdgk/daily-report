@@ -73,6 +73,7 @@
             height:20px;
             width:20px;
             border-radius: 100%;
+            margin-right: 5px;
         }
         img.user-image-m{
             height:45px;

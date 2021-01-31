@@ -9,6 +9,9 @@ class UserController extends Controller
 {
     public function index()
     {
+        /* 
+         * https://www.pakutaso.com/model.html
+         */
         $users = User::orderBy('id','desc')->get();
         return view('user.index',[
             'users' => $users,
@@ -25,9 +28,11 @@ class UserController extends Controller
         //
     }
 
-    public function show($id)
+    public function show(User $user)
     {
-        //
+        return view('user.show',[
+            'user' => $user,
+        ]);
     }
 
     public function edit($id)
