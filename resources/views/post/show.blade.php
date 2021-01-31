@@ -26,24 +26,37 @@
         <div class="col-xl-9">
             <div class="card">
                 <div class="card-body">
-                    <div class="d-flex justify-content-lg-start">
-                        <dl class="mr-4 mb-1">
-                            <dt>出社日</dt>
-                            <dd>{{ $post -> work_date }}</dd>
-                        </dl>
-                        <dl class="mr-4 mb-1">
-                            <dt>出勤</dt>
-                            <dd>{{ formatTime($post -> start_time) }}</dd>
-                        </dl>
-                        <dl class="mr-4 mb-1">
-                            <dt>退勤</dt>
-                            <dd>{{ formatTime($post -> finish_time) }}</dd>
-                        </dl>
-                        <dl class="mr-4 mb-1">
-                            <dt>勤務時間</dt>
-                            <dd>{{ sumTime($post -> start_time,$post -> finish_time) }}</dd>
-                        </dl>
+                    <div class="d-flex justify-content-lg-between">
+                        <div class="d-flex">
+                            <dl class="mr-4 mb-1">
+                                <dt class=" text-center">出社日</dt>
+                                <dd class=" text-center">{{ $post -> work_date }}</dd>
+                            </dl>
+                            <dl class="mr-4 mb-1">
+                                <dt class=" text-center">出勤</dt>
+                                <dd class=" text-center">{{ formatTime($post -> start_time) }}</dd>
+                            </dl>
+                            <dl class="mr-4 mb-1">
+                                <dt class=" text-center">退勤</dt>
+                                <dd class=" text-center">{{ formatTime($post -> finish_time) }}</dd>
+                            </dl>
+                            <dl class="mr-4 mb-1">
+                                <dt class=" text-center">勤務時間</dt>
+                                <dd class=" text-center">{{ sumTime($post -> start_time,$post -> finish_time) }}</dd>
+                            </dl>
+                        </div>
+                        <div class="">
+                            <dl class="mb-0 text-muted small">
+                                <dt class="d-inline mr-2 ">作成</dt>
+                                <dd class="d-inline">{{ $post -> created_at }}</dd>
+                            </dl>
+                            <dl class="mb-0 text-muted small">
+                                <dt class="d-inline mr-2 ">更新</dt>
+                                <dd class="d-inline">{{ $post -> updated_at }}</dd>
+                            </dl>
+                        </div>
                     </div>
+                    <hr class="mt-0">
                     <div>
                         {{ $post -> body }}
                     </div>
