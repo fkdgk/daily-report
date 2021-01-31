@@ -36,7 +36,7 @@ class DatabaseSeeder extends Seeder
         }
 
         User::create([
-            'img' => 'profile.png',
+            'img' => $faker -> numberBetween(1,10) . '.jpg',
             'name' => $faker -> name,
             'role' => 'admin',
             'email' => 'demo@example.com',
@@ -65,7 +65,8 @@ class DatabaseSeeder extends Seeder
                 'email' => $faker -> safeEmail,
                 'role' => $role,
                 'active' => $active,
-                'img' => $i . '.png',
+                'img' => $faker->unique() -> numberBetween(10,21) . '.jpg',
+                // 'img' => $i . '.png',
                 'division_id' => $faker -> numberBetween(1,7),
                 'password' => bcrypt('pw1234'),
             ]);
