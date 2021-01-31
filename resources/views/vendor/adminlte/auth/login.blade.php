@@ -18,10 +18,11 @@
     @php( $password_reset_url = $password_reset_url ? url($password_reset_url) : '' )
 @endif
 
-@section('auth_header', __('adminlte::adminlte.login_message'))
+{{-- @section('auth_header', __('adminlte::adminlte.login_message')) --}}
 
 @section('auth_body')
-    <form action="{{ $login_url }}" method="post">
+<p class="mb-3 text-center text-bold">Please Login</p>
+    <form action="{{ $login_url }}" method="post" class="small">
         {{ csrf_field() }}
 
         {{-- Email field --}}
@@ -56,7 +57,7 @@
         </div>
 
         {{-- Login field --}}
-        <div class="row">
+        <div class="row mt-4">
             <div class="col-7">
                 <div class="icheck-primary">
                     <input type="checkbox" name="remember" id="remember">

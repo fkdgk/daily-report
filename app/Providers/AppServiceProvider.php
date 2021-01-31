@@ -29,6 +29,12 @@ class AppServiceProvider extends ServiceProvider
                 'route' => 'post.index',
                 'icon' => 'fa fa-fw fa-pen mr-2',
             ]);
+
+            $event->menu->add([
+                'text' => config('app.title_project_index'),
+                'route' => 'project.index',
+                'icon' => 'fa fa-fw fa-cog mr-2',
+            ]);
             
             $event->menu->add([
                 'text' => config('app.title_user_index'),

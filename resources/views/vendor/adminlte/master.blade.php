@@ -74,6 +74,10 @@
             width:20px;
             border-radius: 100%;
         }
+        img.user-image-m{
+            height:45px;
+            width:45px;
+        }
     </style>
 </head>
 

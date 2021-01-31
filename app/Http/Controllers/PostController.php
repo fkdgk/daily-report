@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Post;
+use App\Models\Work;
+use App\Models\Comment;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -30,10 +32,14 @@ class PostController extends Controller
     {
         $prev = Post::where('id', '<', $post->id)->max('id');
         $next = Post::where('id', '>', $post->id)->min('id');
+        $works = Work::where('post_id', $post->id)->get();
+        $comments = Comment::where('post_id',$post -> id)->get();
         return view('post.show',[
             'post' => $post,
             'prev' => $prev,
             'next' => $next,
+            'works' => $works,
+            'comments' => $comments,
         ]);
     }
 

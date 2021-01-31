@@ -7,6 +7,7 @@ use App\Models\Division;
 use App\Models\User;
 use App\Models\Project;
 use App\Models\Work;
+use App\Models\Comment;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -69,13 +70,8 @@ class DatabaseSeeder extends Seeder
                 'password' => bcrypt('pw1234'),
             ]);
         }
-<<<<<<< HEAD
-        
-        for ($i=0; $i < 200; $i++) { 
-=======
 
         for ($i=0; $i < 100; $i++) { 
->>>>>>> 1.1
             Post::create([
                 'work_date' => $faker -> date(),
                 'start_time' => $faker -> numberBetween(9,10) . ':' . $faker ->  numberBetween(1,59) . ':' . '00',
@@ -123,10 +119,25 @@ class DatabaseSeeder extends Seeder
                         'limit' => $faker -> date,
                     ]);
                 }
-            }
-            
+            }   
         }
 
+        /*
+        * ----------------------------------------------------------
+        * works
+        */
+        $users = User::all()->pluck('id')->toArray();
+        foreach ($posts as $post) {
+            foreach ($users as $user) {
+                if($faker -> boolean){
+                    Comment::create([
+                        'post_id' => $post,
+                        'user_id' => $user,
+                        'body' => $faker -> realText(),
+                    ]);
+                }
+            }
+        }
 
     }
 }

@@ -5,6 +5,8 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\DivisionController;
+use App\Http\Controllers\ProjectController;
+use App\Http\Controllers\WorkController;
 
 /* 
  * /home をTOPへリダイレクト
@@ -36,6 +38,11 @@ Route::group(['middleware' => ['auth','can:active']], function () {
      * divisions ---------------------------------------
      */
     Route::get('/divisions', [DivisionController::class, 'index'])->name('division.index');
+    
+    /* 
+     * projects ---------------------------------------
+     */
+    Route::get('/projects', [ProjectController::class, 'index'])->name('project.index');
 
     /*
     * posts ---------------------------------------

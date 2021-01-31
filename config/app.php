@@ -5,6 +5,7 @@ return [
     'title_division_index' => '部署 一覧',
     'title_user_index' => 'ユーザ 一覧',
     'title_post_index' => 'My日報',
+    'title_project_index' => 'プロジェクト 一覧',
     /*
     |--------------------------------------------------------------------------
     | Application Name
