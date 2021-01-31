@@ -11,6 +11,25 @@ class User extends Authenticatable
 {
     use HasFactory, Notifiable;
 
+    public function adminlte_image()
+    {
+        return asset('img') . '/' . $this -> img;
+    }
+
+    public function adminlte_desc()
+    {
+        return ($this -> division)? $this -> division -> name :null;
+    }
+
+    public function adminlte_profile_url()
+    {
+        return 'profile/username';
+    }
+
+    public function division(){
+        return $this -> belongsTo('App\Models\Division');
+    }
+
     /**
      * The attributes that are mass assignable.
      *
