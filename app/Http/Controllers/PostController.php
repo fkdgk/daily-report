@@ -28,9 +28,23 @@ class PostController extends Controller
 
     public function show(Post $post)
     {
+<<<<<<< HEAD
         return view('post.show',[
             'post' => $post,
         ]);
+=======
+<<<<<<< Updated upstream
+        //
+=======
+        $prev = Post::where('id', '<', $post->id)->max('id');
+        $next = Post::where('id', '>', $post->id)->min('id');
+        return view('post.show',[
+            'post' => $post,
+            'prev' => $prev,
+            'next' => $next,
+        ]);
+>>>>>>> Stashed changes
+>>>>>>> 0.9
     }
 
     public function edit(Post $post)
