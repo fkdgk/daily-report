@@ -29,6 +29,7 @@
                             @foreach ($users as $user)
                                 <tr>
                                     <td>
+                                        <img class="user-image" src="{{ asset('img') . '/' . $user -> img }}">
                                         {{ $user -> name }}
                                     </td>
                                     <td>

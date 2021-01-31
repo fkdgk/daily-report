@@ -67,6 +67,13 @@
         <meta name="msapplication-TileImage" content="{{ asset('favicon/ms-icon-144x144.png') }}">
     @endif
 
+    <style>
+        img.user-image{
+            height:20px;
+            width:20px;
+            border-radius: 100%;
+        }
+    </style>
 </head>
 
 <body class="@yield('classes_body')" @yield('body_data')>
