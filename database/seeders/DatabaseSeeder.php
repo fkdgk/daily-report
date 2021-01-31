@@ -67,17 +67,12 @@ class DatabaseSeeder extends Seeder
                 'password' => bcrypt('pw1234'),
             ]);
         }
-
-        // $table->date('work_date')->nullable();
-        // $table->time('start_time')->nullable();
-        // $table->time('finish_time')->nullable();
-        // $table->text('body')->nullable();
         
         for ($i=0; $i < 200; $i++) { 
             Post::create([
                 'work_date' => $faker -> date(),
-                'start_time' => $faker -> time(),
-                'finish_time' => $faker -> time(),
+                'start_time' => $faker -> numberBetween(9,10) . ':' . $faker ->  numberBetween(1,59) . ':' . '00',
+                'finish_time' => $faker -> numberBetween(16,19) . ':' . $faker -> numberBetween(1,59) . ':' . '00',
                 'body' => $faker -> realText,
                 'user_id' => $faker -> numberBetween(1,10),
             ]);

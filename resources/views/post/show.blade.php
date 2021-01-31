@@ -9,9 +9,16 @@
 @section('content')
 <div class="row">
     <div class="col-12">
-        <div class="btn-group mb-3">
-            {!! ($prev)? '<a href="'. route('post.show', $prev) .'" class="btn btn-default btn-sm"><i class="fa fa-chevron-left"></i> Prev</a>' :null !!}
-            {!! ($next)? '<a href="'. route('post.show', $next) .'" class="btn btn-default btn-sm">Next <i class="fa fa-chevron-right"></i></a>' :null !!}
+        <div class="d-flex justify-content-between">
+            <div class="btn-group mb-3">
+                {!! ($prev)? '<a href="'. route('post.show', $prev) .'" class="btn btn-default btn-sm"><i class="fa fa-chevron-left"></i> Prev</a>' :null !!}
+                {!! ($next)? '<a href="'. route('post.show', $next) .'" class="btn btn-default btn-sm">Next <i class="fa fa-chevron-right"></i></a>' :null !!}
+            </div>
+            <div>
+                @if (Auth::id()==$post->user_id)
+                    <a href="{{ route('post.edit', $post -> id) }}" class="btn btn-sm btn-success">編集</a>
+                @endif
+            </div>
         </div>
     </div>
 </div>
@@ -19,34 +26,27 @@
         <div class="col-xl-9">
             <div class="card">
                 <div class="card-body">
-                    <table class="table table-sm">
-                        <tbody>
-                            <tr>
-                                <th>出社日</th>
-                                <td>
-                                    {{ $post -> work_date }}
-                                </td>
-                            </tr>
-                            <tr>
-                                <th>出勤時刻</th>
-                                <td>
-                                    {{ ($post -> start_time)? Carbon\Carbon::parse($post -> start_time)->format('H:i') :null }}
-                                </td>
-                            </tr>
-                            <tr>
-                                <th>退勤時刻</th>
-                                <td>
-                                    {{ ($post -> finish_time)? Carbon\Carbon::parse($post -> finish_time)->format('H:i') :null }}
-                                </td>
-                            </tr>
-                            <tr>
-                                <th>内容</th>
-                                <td>
-                                    {{ $post -> body }}
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
+                    <div class="d-flex justify-content-lg-start">
+                        <dl class="mr-4 mb-1">
+                            <dt>出社日</dt>
+                            <dd>{{ $post -> work_date }}</dd>
+                        </dl>
+                        <dl class="mr-4 mb-1">
+                            <dt>出勤</dt>
+                            <dd>{{ formatTime($post -> start_time) }}</dd>
+                        </dl>
+                        <dl class="mr-4 mb-1">
+                            <dt>退勤</dt>
+                            <dd>{{ formatTime($post -> finish_time) }}</dd>
+                        </dl>
+                        <dl class="mr-4 mb-1">
+                            <dt>勤務時間</dt>
+                            <dd>{{ sumTime($post -> start_time,$post -> finish_time) }}</dd>
+                        </dl>
+                    </div>
+                    <div>
+                        {{ $post -> body }}
+                    </div>
                 </div>
             </div>
         </div>
