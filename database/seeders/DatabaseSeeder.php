@@ -41,15 +41,26 @@ class DatabaseSeeder extends Seeder
         ]);
 
         for ($i=0; $i < 9; $i++) { 
+
+            /* ユーザ権限 */
             if(($i % 5)==0 ){
                 $role = 'admin';
             }else{
                 $role = 'user';
             }
+
+            /* ユーザ権限 */
+            if(($i % 3)==0 ){
+                $active = 0;
+            }else{
+                $active = 1;
+            }
+
             User::create([
                 'name' => $faker -> name,
                 'email' => $faker -> safeEmail,
                 'role' => $role,
+                'active' => $active,
                 'img' => $i . '.png',
                 'division_id' => $faker -> numberBetween(1,7),
                 'password' => bcrypt('pw1234'),

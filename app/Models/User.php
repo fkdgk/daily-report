@@ -6,12 +6,12 @@ use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Support\Facades\Auth;
 
 class User extends Authenticatable
 {
     use HasFactory, Notifiable;
 
-<<<<<<< HEAD
     public function adminlte_image()
     {
         return asset('img') . '/' . $this -> img;
@@ -19,16 +19,14 @@ class User extends Authenticatable
 
     public function adminlte_desc()
     {
-        return ($this -> division)? $this -> division -> name :null;
+        return ($this -> division) ? $this -> division -> name :null;
     }
 
     public function adminlte_profile_url()
     {
-        return 'profile/username';
+        return route('user.show', Auth::id());
     }
 
-=======
->>>>>>> main
     public function division(){
         return $this -> belongsTo('App\Models\Division');
     }
