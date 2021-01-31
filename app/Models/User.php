@@ -11,9 +11,6 @@ class User extends Authenticatable
 {
     use HasFactory, Notifiable;
 
-<<<<<<< Updated upstream
-=======
-
     public function adminlte_image()
     {
         return asset('img') . '/' . $this -> img;
@@ -33,7 +30,6 @@ class User extends Authenticatable
         return $this -> belongsTo('App\Models\Division');
     }
 
->>>>>>> Stashed changes
     /**
      * The attributes that are mass assignable.
      *
