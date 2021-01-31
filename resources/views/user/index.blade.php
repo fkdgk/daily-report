@@ -27,7 +27,7 @@
                                 <tr>
                                     <td>{{ $user -> id }}</td>
                                     <td><img width="25" height="25" src="{{ asset('img/' . $user -> img) }}"></td>
-                                  <td>{{ $user -> name }}</td>
+                                    <td>{{ $user -> name }}</td>
                                     <td>{{ ($user -> division)?$user -> division->name:null }}</td>
                                     <td>{{ $user -> email }}</td>
                                     <td><span class="badge badge-{{ ($user -> role == 'admin')?'danger':'info' }}">{{ $user -> role }}</span></td>
