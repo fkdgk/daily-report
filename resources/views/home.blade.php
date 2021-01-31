@@ -10,9 +10,6 @@
     <div class="row">
         <div class="col-xl-9">
             <div class="card">
-                <div class="card-header">
-                    日報
-                </div>
                 <div class="card-body">
                     @include('post.posts')
                 </div>
