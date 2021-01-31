@@ -31,9 +31,13 @@
                                     <td>
                                         <img class="user-image" src="{{ asset('img') . '/' . $user -> img }}">
                                         {{ $user -> name }}
+                                        <span class="small ml-2">
+                                            {{ ($user -> division) ? $user -> division -> name : null }}
+                                        </span>
                                     </td>
+                                    
                                     <td>
-                                        {{ ($user -> division) ? $user -> division -> name : null }}
+                                       <span class="small">{{ count(App\Models\Post::where('user_id',$user->id)->get()) }} 投稿</span>
                                     </td>
                                 </tr>
                             @endforeach

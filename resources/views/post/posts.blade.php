@@ -15,8 +15,8 @@
                 <td><img class="user-image" src="{{ asset('img') . '/' . $post -> user -> img }}">{{ $post -> user -> name }}</td>
                 <td>{{ ($post -> user -> division)? $post -> user -> division -> name :null }}</td>
                 <td>{{ $post -> work_date }}</td>
-                <td>{{ $post -> start_time }}</td>
-                <td>{{ $post -> finish_time }}</td>
+                <td>{{ ($post -> start_time) ? Carbon\Carbon::parse($post -> start_time)->format('H:i') :null }}</td>
+                <td>{{ ($post -> finish_time) ? Carbon\Carbon::parse($post -> finish_time)->format('H:i') :null }}</td>
                 <td>
                     <a class="btn btn-xs btn-default" href="{{ route('post.show', $post -> id) }}"> 詳細</a>
                 </td>

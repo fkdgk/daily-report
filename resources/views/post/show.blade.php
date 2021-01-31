@@ -22,13 +22,13 @@
                             <tr>
                                 <th>出勤時刻</th>
                                 <td>
-                                    {{ $post -> start_time }}
+                                    {{ ($post -> start_time)? Carbon\Carbon::parse($post -> start_time)->format('H:i') :null }}
                                 </td>
                             </tr>
                             <tr>
                                 <th>退勤時刻</th>
                                 <td>
-                                    {{ $post -> finish_time }}
+                                    {{ ($post -> finish_time)? Carbon\Carbon::parse($post -> finish_time)->format('H:i') :null }}
                                 </td>
                             </tr>
                             <tr>
@@ -48,6 +48,8 @@
                 <div class="card-body">
                     <div class="text-center">
                         <img src="{{ asset('img') . '/' . $post -> user -> img }}" class="text-center rounded-circle w-25 h-25" >
+                        <h5 class="pt-3 mb-1">{{ $post -> user -> name }}</h5>
+                        <span>{{ ($post -> user -> division)? $post -> user -> division -> name :null }}</span>
                     </div>
                 </div>
             </div>
