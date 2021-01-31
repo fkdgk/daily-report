@@ -32,16 +32,25 @@ class DatabaseSeeder extends Seeder
         }
 
         User::create([
+            'img' => 'profile.png',
             'name' => $faker -> name,
+            'role' => 'admin',
             'email' => 'demo@example.com',
             'division_id' => 1,
             'password' => bcrypt('pw1234'),
         ]);
 
-        for ($i=0; $i < 10; $i++) { 
+        for ($i=0; $i < 9; $i++) { 
+            if(($i % 5)==0 ){
+                $role = 'admin';
+            }else{
+                $role = 'user';
+            }
             User::create([
                 'name' => $faker -> name,
-                'email' => $faker -> email,
+                'email' => $faker -> safeEmail,
+                'role' => $role,
+                'img' => $i . '.png',
                 'division_id' => $faker -> numberBetween(1,7),
                 'password' => bcrypt('pw1234'),
             ]);

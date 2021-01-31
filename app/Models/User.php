@@ -11,6 +11,10 @@ class User extends Authenticatable
 {
     use HasFactory, Notifiable;
 
+    public function division(){
+        return $this -> belongsTo('App\Models\Division');
+    }
+
     /**
      * The attributes that are mass assignable.
      *
