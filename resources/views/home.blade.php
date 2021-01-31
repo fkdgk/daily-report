@@ -8,21 +8,36 @@
 
 @section('content')
     <div class="row">
-        <div class="col-12">
+        <div class="col-lg-9">
             <div class="card">
+                <div class="card-header">
+                    日報
+                </div>
+                <div class="card-body">
+                    @include('post.posts')
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3">
+            <div class="card">
+                <div class="card-header">
+                    ユーザ
+                </div>
                 <div class="card-body">
                     <table class="table table-sm">
                         <tbody>
-                            @foreach ($posts as $post)
+                            @foreach ($users as $user)
                                 <tr>
-                                    <td>{{ $post -> user -> name }}</td>
-                                    <td>{{ $post -> work_date }}</td>
+                                    <td>
+                                        {{ $user -> name }}
+                                    </td>
+                                    <td>
+                                        {{ ($user -> division) ? $user -> division -> name : null }}
+                                    </td>
                                 </tr>
                             @endforeach
                         </tbody>
                     </table>
-                    {{ $posts->appends(request()->input())->links('pagination::bootstrap-4') }}
-                    {{ $posts->links('pagination::bootstrap-4') }}
                 </div>
             </div>
         </div>

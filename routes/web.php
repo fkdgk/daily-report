@@ -28,5 +28,6 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/users', [UserController::class, 'index'])->name('user.index');
     Route::get('/users/{id}', [UserController::class, 'show'])->name('user.show');
     Route::get('/posts', [PostController::class, 'index'])->name('post.index');
+    Route::get('/posts/{id}', [PostController::class, 'edit'])->name('post.edit');
 });
 
