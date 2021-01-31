@@ -19,9 +19,35 @@ class AppServiceProvider extends ServiceProvider
         $events->listen(BuildingMenu::class, function (BuildingMenu $event) {
             // $event->menu->add('MAIN NAVIGATION');
             $event->menu->add([
-                'text' => 'Blog',
-                'url' => 'admin/blog',
+                'text' => config('app.title_home'),
+                'route' => 'home',
+                'icon' => 'fa fa-fw fa-home mr-2',
             ]);
+
+            $event->menu->add([
+                'text' => config('app.title_post_index'),
+                'route' => 'post.index',
+                'icon' => 'fa fa-fw fa-pen mr-2',
+            ]);
+
+            $event->menu->add([
+                'text' => config('app.title_project_index'),
+                'route' => 'project.index',
+                'icon' => 'fa fa-fw fa-cog mr-2',
+            ]);
+            
+            $event->menu->add([
+                'text' => config('app.title_user_index'),
+                'route' => 'user.index',
+                'icon' => 'fa fa-fw fa-users mr-2',
+            ]);
+
+            $event->menu->add([
+                'text' => config('app.title_division_index'),
+                'route' => 'division.index',
+                'icon' => 'fa fa-fw fa-cubes mr-2',
+            ]);
+            
         });
     }
 }
