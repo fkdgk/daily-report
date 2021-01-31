@@ -69,6 +69,7 @@
 
     <style>
         img.user-image{
+            vertical-align: middle;
             height:20px;
             width:20px;
             border-radius: 100%;

@@ -14,8 +14,7 @@
                     <table class="table table-hover table-sm">
                         <thead>
                             <th>id</th>
-                            <th>img</th>
-                            <th>名前</th>
+                            <th>ユーザ</th>
                             <th>部署</th>
                             <th>Email</th>
                             <th>権限</th>
@@ -26,8 +25,7 @@
                             @foreach ($users as $user)
                                 <tr>
                                     <td>{{ $user -> id }}</td>
-                                    <td><img class="user-image" src="{{ asset('img/' . $user -> img) }}"></td>
-                                    <td>{{ $user -> name }}</td>
+                                    <td><img class="user-image" src="{{ asset('img/' . $user -> img) }}"> {{ $user -> name }}</td>
                                     <td>{{ ($user -> division)?$user -> division->name:null }}</td>
                                     <td>{{ $user -> email }}</td>
                                     <td><span class="badge badge-{{ ($user -> role == 'admin')?'danger':'info' }}">{{ $user -> role }}</span></td>

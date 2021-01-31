@@ -303,13 +303,13 @@ return [
             'files' => [
                 [
                     'type' => 'css',
-                    'asset' => false,
+                    'asset' => true,
                     // 'location' => 'vendor/pace-progress/themes/blue/pace-theme-material.css',
                     'location' => 'vendor/pace-progress/themes/blue/pace-theme-flash.css',
                 ],
                 [
                     'type' => 'js',
-                    'asset' => false,
+                    'asset' => true,
                     'location' => 'vendor/pace-progress/pace.min.js',
                 ],
             ],

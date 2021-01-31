@@ -1,4 +1,4 @@
-<table class="table table-sm">
+<table class="table table-sm table-hover">
     <thead>
         <tr>
             <th>ユーザ</th>
@@ -6,7 +6,7 @@
             <th>出社日</th>
             <th>出勤</th>
             <th>退勤</th>
-            <th>編集</th>
+            <th>詳細</th>
         </tr>
     </thead>
     <tbody>
@@ -17,7 +17,9 @@
                 <td>{{ $post -> work_date }}</td>
                 <td>{{ $post -> start_time }}</td>
                 <td>{{ $post -> finish_time }}</td>
-                <td>{!! ($post -> user_id == Auth::id())? '<a href="'. route('post.edit',$post -> id) .'" class="btn btn-xs btn-outline-primary" ><i class="fa fa-edit"></i> 編集</a>' :null !!}</td>
+                <td>
+                    <a class="btn btn-xs btn-default" href="{{ route('post.show', $post -> id) }}"> 詳細</a>
+                </td>
             </tr>
         @endforeach
     </tbody>

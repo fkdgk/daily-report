@@ -22,12 +22,22 @@ Auth::routes([
 Route::get('/', [HomeController::class, 'index'])->name('home');
 
 /*
-    ログインユーザのみ
+    ログイン、アクティブユーザのみ
 */ 
-Route::group(['middleware' => ['auth']], function () {
+Route::group(['middleware' => ['auth','can:active']], function () {
+    /* 
+     * users ---------------------------------------
+     */
     Route::get('/users', [UserController::class, 'index'])->name('user.index');
-    Route::get('/users/{id}', [UserController::class, 'show'])->name('user.show');
+    Route::get('/users/{user}', [UserController::class, 'show'])->name('user.show');
+
+    /*
+    * posts ---------------------------------------
+    */
     Route::get('/posts', [PostController::class, 'index'])->name('post.index');
-    Route::get('/posts/{id}', [PostController::class, 'edit'])->name('post.edit');
+    Route::get('/posts/{post}', [PostController::class, 'show'])->name('post.show');
+    Route::get('/posts/{post}/edit', [PostController::class, 'edit'])->name('post.edit');
+    Route::post('/posts', [PostController::class, 'store'])->name('post.store');
+    
 });
 
