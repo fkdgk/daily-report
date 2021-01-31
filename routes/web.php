@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\PostController;
 
 /* 
  * /home をTOPへリダイレクト
@@ -26,5 +27,6 @@ Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::group(['middleware' => ['auth']], function () {
     Route::get('/users', [UserController::class, 'index'])->name('user.index');
     Route::get('/users/{id}', [UserController::class, 'show'])->name('user.show');
+    Route::get('/posts', [PostController::class, 'index'])->name('post.index');
 });
 

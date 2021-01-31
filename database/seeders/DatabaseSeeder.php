@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Post;
 use App\Models\Division;
 use App\Models\User;
 use Illuminate\Database\Seeder;
@@ -66,6 +67,23 @@ class DatabaseSeeder extends Seeder
                 'password' => bcrypt('pw1234'),
             ]);
         }
+
+        // $table->date('work_date')->nullable();
+        // $table->time('start_time')->nullable();
+        // $table->time('finish_time')->nullable();
+        // $table->text('body')->nullable();
+        
+        for ($i=0; $i < 200; $i++) { 
+            Post::create([
+                'work_date' => $faker -> date(),
+                'start_time' => $faker -> time(),
+                'finish_time' => $faker -> time(),
+                'body' => $faker -> realText,
+                'user_id' => $faker -> numberBetween(1,10),
+            ]);
+        }
+
+
 
     }
 }

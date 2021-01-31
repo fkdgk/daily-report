@@ -3,6 +3,7 @@
 return [
     'title_home' => 'TOP',    
     'title_user_index' => 'ユーザ一覧',
+    'title_post_index' => '日報一覧',
     /*
     |--------------------------------------------------------------------------
     | Application Name

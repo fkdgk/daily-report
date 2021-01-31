@@ -11,6 +11,12 @@ Breadcrumbs::for('user.index', function ($trail) {
     $trail->push(config('app.title_user_index'), route('user.index'));
 });
 
+// Home > About
+Breadcrumbs::for('post.index', function ($trail) {
+    $trail->parent('home');
+    $trail->push(config('app.title_post_index'), route('post.index'));
+});
+
 // Home > Blog
 Breadcrumbs::for('blog', function ($trail) {
     $trail->parent('home');
