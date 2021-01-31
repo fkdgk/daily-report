@@ -16,8 +16,8 @@
                             <th>id</th>
                             <th>img</th>
                             <th>名前</th>
-                            <th>Email</th>
                             <th>部署</th>
+                            <th>Email</th>
                             <th>権限</th>
                             <th>ステータス</th>
                             <th>作成日</th>
@@ -27,9 +27,9 @@
                                 <tr>
                                     <td>{{ $user -> id }}</td>
                                     <td><img width="25" height="25" src="{{ asset('img/' . $user -> img) }}"></td>
-                                    <td>{{ $user -> name }}</td>
-                                    <td>{{ $user -> email }}</td>
+                                  <td>{{ $user -> name }}</td>
                                     <td>{{ ($user -> division)?$user -> division->name:null }}</td>
+                                    <td>{{ $user -> email }}</td>
                                     <td><span class="badge badge-{{ ($user -> role == 'admin')?'danger':'info' }}">{{ $user -> role }}</span></td>
                                     <td><span class="badge badge-{{ ($user -> active)?'primary':'warning' }}">{{ ($user -> active)?'有効':'無効' }}</span></td>
                                     <td>{{ $user -> created_at }}</td>
