@@ -13,11 +13,17 @@ use App\Http\Controllers\HomeController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::get('/home', function () {
+    return redirect() -> route('home');
 });
 
-Auth::routes();
+Auth::routes([
+    'login' => true, // メール確認機能（※5.7系以上のみ）
+    'verify' => false, // メール確認機能（※5.7系以上のみ）
+    'register' => false, // デフォルトの登録機能OFF
+    'reset' => false, // メールリマインダー機能ON
+]);
 
-Route::get('/home', [HomeController::class, 'index'])->name('home');
+Route::get('/', [HomeController::class, 'index'])->name('home');
+
 Route::get('/users', [UserController::class, 'index'])->name('user.index');
