@@ -304,17 +304,18 @@ return [
             ],
         ],
         'Pace' => [
-            'active' => false,
+            'active' => true,
             'files' => [
                 [
                     'type' => 'css',
                     'asset' => false,
-                    'location' => '//cdnjs.cloudflare.com/ajax/libs/pace/1.0.2/themes/blue/pace-theme-center-radar.min.css',
+                    // 'location' => 'vendor/pace-progress/themes/blue/pace-theme-material.css',
+                    'location' => 'vendor/pace-progress/themes/blue/pace-theme-flash.css',
                 ],
                 [
                     'type' => 'js',
                     'asset' => false,
-                    'location' => '//cdnjs.cloudflare.com/ajax/libs/pace/1.0.2/pace.min.js',
+                    'location' => 'vendor/pace-progress/pace.min.js',
                 ],
             ],
         ],

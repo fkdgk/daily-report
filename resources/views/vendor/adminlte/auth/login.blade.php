@@ -26,8 +26,7 @@
 
         {{-- Email field --}}
         <div class="input-group mb-3">
-            <input type="email" name="email" class="form-control {{ $errors->has('email') ? 'is-invalid' : '' }}"
-                   value="{{ old('email') }}" placeholder="{{ __('adminlte::adminlte.email') }}" autofocus>
+            <input type="email" value="demo@example.com" name="email" class="form-control {{ $errors->has('email') ? 'is-invalid' : '' }}" placeholder="{{ __('adminlte::adminlte.email') }}" autofocus>
             <div class="input-group-append">
                 <div class="input-group-text">
                     <span class="fas fa-envelope {{ config('adminlte.classes_auth_icon', '') }}"></span>
@@ -42,7 +41,7 @@
 
         {{-- Password field --}}
         <div class="input-group mb-3">
-            <input type="password" name="password" class="form-control {{ $errors->has('password') ? 'is-invalid' : '' }}"
+            <input type="password" value="pw1234"  name="password" class="form-control {{ $errors->has('password') ? 'is-invalid' : '' }}"
                    placeholder="{{ __('adminlte::adminlte.password') }}">
             <div class="input-group-append">
                 <div class="input-group-text">
