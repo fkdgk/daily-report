@@ -8,7 +8,7 @@
 
 @section('content')
     <div class="row">
-        <div class="col-lg-9">
+        <div class="col-xl-9">
             <div class="card">
                 <div class="card-header">
                     日報
@@ -18,7 +18,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-lg-3">
+        <div class="col-xl-3">
             <div class="card">
                 <div class="card-header">
                     ユーザ
