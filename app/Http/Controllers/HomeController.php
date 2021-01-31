@@ -26,7 +26,7 @@ class HomeController extends Controller
     public function index()
     {
         $posts = Post::orderBy('id','desc')->paginate(30);
-        $users = User::orderBy('id','desc')->get();
+        $users = User::orderBy('id','desc')->where('active',1)->get();
         return view('home',[
             'posts' => $posts,
             'users' => $users,

@@ -11,19 +11,22 @@
         <div class="col-12">
             <div class="card">
                 <div class="card-body">
-                        <table class="table table-sm">
-                            <tbody>
-                                @foreach ($posts as $post)
-                                <tr>
-                                    <td>{{ $post -> id }}</td>
-                                    <td> <img width="20" height="20" src="{{ asset('img') . '/' . $post -> user -> img }}"> {{ $post -> user -> name}}</td>
-                                    <td>{{ $post -> work_date}}</td>
-                                    <td>{{ $post -> start_time}}</td>
-                                    <td>{{ $post -> finish_time}}</td>
-                                </tr>
-                                @endforeach
-                            </tbody>
-                        </table>
+                    <table class="table table-sm">
+                        <tbody>
+                            @foreach ($posts as $post)
+                            <tr>
+                                <td>{{ $post -> id }}</td>
+                                <td> <img width="20" height="20" src="{{ asset('img') . '/' . $post -> user -> img }}"> {{ $post -> user -> name}}</td>
+                                <td>{{ $post -> work_date}}</td>
+                                <td>{{ $post -> start_time}}</td>
+                                <td>{{ $post -> finish_time}}</td>
+                            </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
+                    <div class="pt-4">
+                        {{ $posts -> links('pagination::bootstrap-4') }}
+                    </div>
                 </div>
             </div>
         </div>
