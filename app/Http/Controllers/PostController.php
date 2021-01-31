@@ -28,7 +28,10 @@ class PostController extends Controller
 
     public function show(Post $post)
     {
+<<<<<<< HEAD
 
+=======
+>>>>>>> 1.1
         $prev = Post::where('id', '<', $post->id)->max('id');
         $next = Post::where('id', '>', $post->id)->min('id');
         return view('post.show',[
@@ -36,7 +39,10 @@ class PostController extends Controller
             'prev' => $prev,
             'next' => $next,
         ]);
+<<<<<<< HEAD
 
+=======
+>>>>>>> 1.1
     }
 
     public function edit(Post $post)

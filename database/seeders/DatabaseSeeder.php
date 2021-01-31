@@ -5,6 +5,8 @@ namespace Database\Seeders;
 use App\Models\Post;
 use App\Models\Division;
 use App\Models\User;
+use App\Models\Project;
+use App\Models\Work;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -67,8 +69,13 @@ class DatabaseSeeder extends Seeder
                 'password' => bcrypt('pw1234'),
             ]);
         }
+<<<<<<< HEAD
         
         for ($i=0; $i < 200; $i++) { 
+=======
+
+        for ($i=0; $i < 100; $i++) { 
+>>>>>>> 1.1
             Post::create([
                 'work_date' => $faker -> date(),
                 'start_time' => $faker -> numberBetween(9,10) . ':' . $faker ->  numberBetween(1,59) . ':' . '00',
@@ -78,6 +85,47 @@ class DatabaseSeeder extends Seeder
             ]);
         }
 
+        /* 
+         *   ----------------------------------------------------------
+         *   projects
+         */
+        $projects = [
+            'ギャラクシー 打合せ', // 10
+            'ハック プロジェクト', // 9
+            'シンクロニシティ 開発', // 8
+            'エンペラー 開発', // 7
+            'ペルソナ ミーティング', // 6
+            'アビス 開発', // 5
+            'クロニクル 運用', // 4
+            'スマートリアル 要件定義', // 3
+            'データチェック 作業', // 2
+            'プリロード 設定', // 1
+        ];
+        foreach ($projects as $project) {
+            Project::create([
+                'name' => $project,
+            ]);
+        }
+
+        /*
+        * ----------------------------------------------------------
+        * works
+        */
+        $posts = Post::all()->pluck('id')->toArray();
+        foreach ($posts as $post) {
+            for ($i=1; $i <= 10; $i++) { 
+                if($faker -> boolean){
+                    Work::create([
+                        'project_id' => $i,
+                        'post_id' => $post,
+                        'work_time' => $faker -> numberBetween(0,3).':'. $faker -> numberBetween(0,59)  .':00',
+                        'progress' => $faker -> numberBetween(0,100),
+                        'limit' => $faker -> date,
+                    ]);
+                }
+            }
+            
+        }
 
 
     }
