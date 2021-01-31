@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\PostController;
+use App\Http\Controllers\DivisionController;
 
 /* 
  * /home をTOPへリダイレクト
@@ -30,6 +31,11 @@ Route::group(['middleware' => ['auth','can:active']], function () {
      */
     Route::get('/users', [UserController::class, 'index'])->name('user.index');
     Route::get('/users/{user}', [UserController::class, 'show'])->name('user.show');
+    
+    /* 
+     * divisions ---------------------------------------
+     */
+    Route::get('/divisions', [DivisionController::class, 'index'])->name('division.index');
 
     /*
     * posts ---------------------------------------

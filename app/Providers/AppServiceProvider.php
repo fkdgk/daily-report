@@ -35,6 +35,12 @@ class AppServiceProvider extends ServiceProvider
                 'route' => 'user.index',
                 'icon' => 'fa fa-fw fa-users mr-2',
             ]);
+
+            $event->menu->add([
+                'text' => config('app.title_division_index'),
+                'route' => 'division.index',
+                'icon' => 'fa fa-fw fa-cubes mr-2',
+            ]);
             
         });
     }

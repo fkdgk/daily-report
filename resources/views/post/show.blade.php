@@ -42,7 +42,7 @@
                             </dl>
                             <dl class="mr-4 mb-1">
                                 <dt class=" text-center">勤務時間</dt>
-                                <dd class=" text-center">{{ sumTime($post -> start_time,$post -> finish_time) }}</dd>
+                                <dd class=" text-center">{{ sumTime($post -> start_time, $post -> finish_time) }}</dd>
                             </dl>
                         </div>
                         <div class="">

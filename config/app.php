@@ -2,7 +2,8 @@
 
 return [
     'title_home' => 'TOP',    
-    'title_user_index' => 'ユーザ覧',
+    'title_division_index' => '部署 一覧',
+    'title_user_index' => 'ユーザ 一覧',
     'title_post_index' => 'My日報',
     /*
     |--------------------------------------------------------------------------
