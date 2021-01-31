@@ -15,7 +15,7 @@ Route::get('/home', function () {
 Auth::routes([
     'login' => true, // メール確認機能（※5.7系以上のみ）
     'verify' => false, // メール確認機能（※5.7系以上のみ）
-    'register' => false, // デフォルトの登録機能OFF
+    'register' => true, // デフォルトの登録機能OFF
     'reset' => false, // メールリマインダー機能ON
 ]);
 
