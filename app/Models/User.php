@@ -11,6 +11,7 @@ class User extends Authenticatable
 {
     use HasFactory, Notifiable;
 
+<<<<<<< HEAD
     public function adminlte_image()
     {
         return asset('img') . '/' . $this -> img;
@@ -26,6 +27,8 @@ class User extends Authenticatable
         return 'profile/username';
     }
 
+=======
+>>>>>>> main
     public function division(){
         return $this -> belongsTo('App\Models\Division');
     }

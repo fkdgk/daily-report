@@ -25,7 +25,11 @@
                             @foreach ($users as $user)
                                 <tr>
                                     <td>{{ $user -> id }}</td>
+<<<<<<< HEAD
                                     <td><img width="25" height="25" src="{{ asset('img/' . $user -> img) }}"></td>
+=======
+                                    <td>{{ $user -> img }}</td>
+>>>>>>> main
                                     <td>{{ $user -> name }}</td>
                                     <td>{{ $user -> email }}</td>
                                     <td>{{ ($user -> division)?$user -> division->name:null }}</td>

@@ -19,6 +19,11 @@ class AppServiceProvider extends ServiceProvider
         $events->listen(BuildingMenu::class, function (BuildingMenu $event) {
             // $event->menu->add('MAIN NAVIGATION');
             $event->menu->add([
+                'text' => config('app.title_user_index'),
+                'route' => 'user.index',
+                'icon' => 'fa fa-users',
+            ]);
+            $event->menu->add([
                 'text' => 'Blog',
                 'url' => 'admin/blog',
             ]);
