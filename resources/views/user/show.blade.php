@@ -40,7 +40,7 @@
                 <hr />
                 <div class="row">
                     <div class="col-sm-3">
-                        <h6 class="mb-0">アクティブ</h6>
+                        <h6 class="mb-0">ステータス</h6>
                     </div>
                     <div class="col-sm-9 text-secondary">
                         {{ ($user -> active)?'有効':'無効' }}
