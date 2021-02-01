@@ -21,18 +21,21 @@ class DatabaseSeeder extends Seeder
     {
         $faker = \Faker\Factory::create('ja_JP');
 
-        $sdivisions = [
-            "総務部", // 1
-            "人事部", // 2
-            "経理部", // 3
-            "営業部", // 4
-            "開発部", // 5
-            "事業部", // 6
-            "製造部", // 7
+        $divisions = [
+            "ITマネジメント部",
+            "ソリューション部",
+            "人事部",
+            "経理部",
+            "営業部",
+            "マーケティング部",
+            "システム部",
+            "製造部",
         ];
 
-        foreach ($sdivisions as $sivision) {
-            Division::create(['name'=>$sivision]);
+        $count_divisions = count($divisions);
+
+        foreach ($divisions as $division) {
+            Division::create(['name'=>$division]);
         }
 
         User::create([
@@ -67,7 +70,7 @@ class DatabaseSeeder extends Seeder
                 'active' => $active,
                 'img' => $faker->unique() -> numberBetween(10,21) . '.jpg',
                 // 'img' => $i . '.png',
-                'division_id' => $faker -> numberBetween(1,7),
+                'division_id' => $faker -> numberBetween(1,$count_divisions),
                 'password' => bcrypt('pw1234'),
             ]);
         }
