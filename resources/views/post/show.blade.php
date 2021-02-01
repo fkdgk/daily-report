@@ -99,13 +99,15 @@
                 @foreach ($comments as $comment)
                     <div class="row">
                         <div class="col-sm-2">
-                            <img src="{{ asset('img'). '/' . $comment -> user -> img  }}" class="user-image user-image-m">
-                            <span class="d-block small mt-1">
-                                {{ $comment -> user -> name }}
-                            </span>
-                            <span class="text-muted small d-block">
-                                {{ $comment -> created_at }}
-                            </span>
+                            <a href="{{ route('user.show', $comment -> user -> id) }}" class="text-dark">
+                                <img src="{{ asset('img'). '/' . $comment -> user -> img  }}" class="user-image user-image-m">
+                                <span class="d-block small mt-1">
+                                    {{ $comment -> user -> name }}
+                                </span>
+                                <span class="text-muted small d-block">
+                                    {{ $comment -> created_at }}
+                                </span>
+                            </a>
                         </div>
                         <div class="col-sm-10 small pt-2">
                             {{ $comment -> body }}

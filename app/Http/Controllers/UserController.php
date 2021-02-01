@@ -33,8 +33,11 @@ class UserController extends Controller
     public function show(User $user)
     {
         $posts = Post::where('user_id', $user -> id)->orderBy('id','desc')->paginate(5);
+        $users = User::where('id','!=',$user->id)->where('active',1)->get()->random(6);
+        // return $users;
         return view('user.show',[
             'user' => $user,
+            'users' => $users,
             'posts' => $posts,
         ]);
     }

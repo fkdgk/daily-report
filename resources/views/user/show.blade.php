@@ -65,15 +65,27 @@
                     </div>
                 </div>
             </div>
-
             <div class="col mt-4">
+                <h5>日報</h5>
                 @include('post.posts')
             </div>
-
         </div>
     </div>
 </div>
-    
+
+<div class="container pt-5 pb-5">
+    <h5 class="text-center">その他のユーザ</h5>
+    <div class="row text-center">
+        @foreach ($users as $user)
+        <div class="col-xl-2">
+            <a href="{{ route('user.show', $user -> id) }}" class="text-dark">
+                <h4 class="my-3 h4">{{$user -> name}}</h4>
+                <img class="rounded-circle" src="{{ asset('img'). '/' . $user -> img }}">
+            </a>
+        </div>
+        @endforeach
+    </div>
+</div>
 @stop
 
 

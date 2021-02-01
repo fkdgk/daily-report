@@ -43,7 +43,7 @@
             </div>
 
             {{-- Main Content --}}
-            <div class="content">
+            <div class="content pb-5">
                 <div class="{{ config('adminlte.classes_content') ?: $def_container_class }}">
                     @yield('content')
                 </div>
