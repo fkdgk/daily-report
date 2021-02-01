@@ -30,7 +30,11 @@
                             @foreach ($users as $user)
                                 <tr>
                                     <td>{{ $user -> id }}</td>
-                                    <td><img class="user-image" src="{{ asset('img/' . $user -> img) }}"> {{ $user -> name }}</td>
+                                    <td>
+                                        <a href="{{ route('user.show', $user -> id) }}" class="text-dark">
+                                            <img class="user-image" src="{{ asset('img/' . $user -> img) }}"> {{ $user -> name }}
+                                        </a>
+                                    </td>
                                     <td>{{ ($user -> division)?$user -> division->name:null }}</td>
                                     <td>{{ $user -> email }}</td>
                                     <td><span class="badge badge-{{ ($user -> role == 'admin')?'danger':'info' }}">{{ $user -> role }}</span></td>

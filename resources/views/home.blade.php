@@ -30,8 +30,10 @@
                             @foreach ($users as $user)
                                 <tr>
                                     <td>
+                                        <a href="{{ route('user.show', $user -> id) }}" class="text-dark">
                                         <img class="user-image" src="{{ asset('img') . '/' . $user -> img }}">
                                         {{ $user -> name }}
+                                        </a>
                                     </td>
                                     <td class="text-center">
                                         <span class="small ml-2">

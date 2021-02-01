@@ -15,7 +15,9 @@
             @foreach ($posts as $post)
                 <tr>
                     <td class="text-nowrap">
-                        <img class="user-image" src="{{ asset('img') . '/' . $post -> user -> img }}">{{ $post -> user -> name }}
+                        <a href="{{ route('user.show', $post -> user_id ) }}" class="text-dark">
+                            <img class="user-image" src="{{ asset('img') . '/' . $post -> user -> img }}">{{ $post -> user -> name }}
+                        </a>
                     </td>
                     <td class="text-nowrap">{{ ($post -> user -> division)? $post -> user -> division -> name :null }}</td>
                     <td>{{ $post -> work_date }}</td>
@@ -23,7 +25,7 @@
                     <td>{{ formatTime($post -> finish_time) }}</td>
                     <td>{{ sumTime($post -> start_time,$post -> finish_time) }}</td>
                     <td>
-                        <a class="btn btn-xs btn-default" href="{{ route('post.show', $post -> id) }}"> 詳細</a>
+                        <a class="btn btn-xs btn-outline-primary text-nowrap" href="{{ route('post.show', $post -> id) }}"> 詳細</a>
                     </td>
                 </tr>
             @endforeach

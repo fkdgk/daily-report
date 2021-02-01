@@ -123,9 +123,11 @@
             <div class="card-header">投稿者</div>
             <div class="card-body">
                 <div class="text-center">
-                    <img src="{{ asset('img') . '/' . $post -> user -> img }}" class="text-center rounded-circle w-25 h-25" >
-                    <h5 class="pt-3 mb-1">{{ $post -> user -> name }}</h5>
-                    <span class="small">{{ ($post -> user -> division)? $post -> user -> division -> name :null }}</span>
+                    <a href="{{ route('user.show', $post -> user_id) }}" class="text-dark">
+                        <img src="{{ asset('img') . '/' . $post -> user -> img }}" class="text-center rounded-circle w-25 h-25" >
+                        <h5 class="pt-3 mb-1">{{ $post -> user -> name }}</h5>
+                        <span class="small">{{ ($post -> user -> division)? $post -> user -> division -> name :null }}</span>
+                    </a>
                 </div>
             </div>
         </div>
