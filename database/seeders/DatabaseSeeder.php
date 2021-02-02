@@ -107,13 +107,15 @@ class DatabaseSeeder extends Seeder
             ]);
         }
 
+        $projects_count = count($projects);
+
         /*
         * ----------------------------------------------------------
         * works
         */
         $posts = Post::all()->pluck('id')->toArray();
         foreach ($posts as $post) {
-            for ($i=1; $i <= 10; $i++) { 
+            for ($i=1; $i <= $projects_count; $i++) {
                 if($faker -> boolean){
                     Work::create([
                         'project_id' => $i,

@@ -11,24 +11,26 @@
         <div class="col-12">
             <div class="card">
                 <div class="card-body">
-                    <table class="table table-sm">
-                        <thead>
-                            <th>id</th>
-                            <th>name</th>
-                            <th>created_at</th>
-                            <th>updated_at</th>
-                        </thead>
-                        <tbody>
-                            @foreach ($projects as $project)
-                                <tr>
-                                    <td>{{ $project -> id }}</td>
-                                    <td>{{ $project -> name }}</td>
-                                    <td>{{ $project -> created_at }}</td>
-                                    <td>{{ $project -> updated_at }}</td>
-                                </tr>
-                            @endforeach
-                        </tbody>
-                    </table>
+                    <div class="table-responsive">
+                        <table class="table table-sm">
+                            <thead>
+                                <th class="text-nowrap">id</th>
+                                <th class="text-nowrap">name</th>
+                                <th class="text-nowrap">created_at</th>
+                                <th class="text-nowrap">updated_at</th>
+                            </thead>
+                            <tbody>
+                                @foreach ($projects as $project)
+                                    <tr>
+                                        <td>{{ $project -> id }}</td>
+                                        <td class="text-nowrap">{{ $project -> name }}</td>
+                                        <td>{{ $project -> created_at }}</td>
+                                        <td>{{ $project -> updated_at }}</td>
+                                    </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             </div>
         </div>
