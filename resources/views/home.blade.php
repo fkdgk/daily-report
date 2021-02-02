@@ -60,5 +60,6 @@
 @endsection
 
 @section('js')
-<script></script>
+<script>
+</script>
 @endsection

@@ -1,0 +1,39 @@
+/* 土日祝の色(日曜はじまり) */
+span.flatpickr-weekday:nth-child(1) {
+    color: rgba(255, 0, 0, 0.6);
+}
+
+span.flatpickr-weekday:nth-child(7) {
+    color: rgba(0, 0, 255, 0.6);
+}
+
+.flatpickr-day.saturday {
+    color: rgb(0, 0, 255);
+}
+
+.flatpickr-day.sunday,
+.flatpickr-day.jp-holiday {
+    color: rgb(255, 0, 0);
+}
+
+.flatpickr-day.flatpickr-disabled.saturday {
+    color: rgba(0, 0, 255, 0.2);
+}
+
+.flatpickr-day.flatpickr-disabled.sunday,
+.flatpickr-day.flatpickr-disabled.jp-holiday {
+    color: rgba(255, 0, 0, 0.2);
+}
+
+img.user-image {
+    vertical-align: middle;
+    height: 20px;
+    width: 20px;
+    border-radius: 100%;
+    margin-right: 5px;
+}
+
+img.user-image-m {
+    height: 45px;
+    width: 45px;
+}

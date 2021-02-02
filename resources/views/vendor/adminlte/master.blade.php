@@ -67,19 +67,7 @@
         <meta name="msapplication-TileImage" content="{{ asset('favicon/ms-icon-144x144.png') }}">
     @endif
 
-    <style>
-        img.user-image{
-            vertical-align: middle;
-            height:20px;
-            width:20px;
-            border-radius: 100%;
-            margin-right: 5px;
-        }
-        img.user-image-m{
-            height:45px;
-            width:45px;
-        }
-    </style>
+    <link rel="stylesheet" href="{{ asset('css/custom.css?ver=') . config('app.asset_ver') }}">
 </head>
 
 <body class="@yield('classes_body')" @yield('body_data')>
@@ -112,7 +100,7 @@
 
     {{-- Custom Scripts --}}
     @yield('adminlte_js')
-
+    <script src="{{ asset('js/custom.js?ver=') . config('app.asset_ver') }}"></script>
 </body>
 
 </html>
