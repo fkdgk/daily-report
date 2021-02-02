@@ -13,29 +13,37 @@
             <div class="card">
                 <div class="card-body">
                 
+                    {{ Form::model($post) }}
                     <div class="row">
-                        <div class="col-lg-4 form-group">
+                        <div class="col-lg-3 form-group">
                             <label for="work_date">出社日</label>
-                            <input type="date" name="work_date" id="work_date" class="form-control is-invalid" placeholder="Enter text" autocomplete="off">
+                            {{ Form::text('work_date',null,['id'=>'work_date','class'=>'datepiker form-control','autocomplete'=>'off']) }}
+                            {{-- <input type="date" name="work_date" id="work_date" class="datepiker form-control is-invalid" placeholder="Enter text" autocomplete="off"> --}}
                             <span class="invalid-feedback">Please enter a text address</span>
                         </div>
-                        <div class="col-lg-4 form-group">
-                            <label for="start_date">出勤時刻</label>
-                            <input type="time" name="start_date" id="start_date" class="form-control is-invalid" placeholder="Enter text" autocomplete="off">
+                        <div class="col-lg-2 form-group">
+                            <label for="start_time">出勤時刻</label>
+                            {{ Form::text('start_time',null,['id'=>'start_time','class'=>'timepicker form-control','autocomplete'=>'off']) }}
+                            {{-- <input type="time" name="start_date" id="start_date" class="timepicker form-control is-invalid" placeholder="Enter text" autocomplete="off"> --}}
                             <span class="invalid-feedback">Please enter a text address</span>
                         </div>
-                        <div class="col-lg-4 form-group">
-                            <label for="finish_date">退勤時刻</label>
-                            <input type="time" name="finish_date" id="finish_date" class="form-control is-invalid" placeholder="Enter text" autocomplete="off">
+                        <div class="col-lg-2 form-group">
+                            <label for="finish_time">退勤時刻</label>
+                            {{ Form::text('finish_time',null,['id'=>'finish_time','class'=>'timepicker form-control','autocomplete'=>'off']) }}
+                            {{-- <input type="text" name="finish_date" id="finish_date" class="timepicker form-control is-invalid" placeholder="Enter text" autocomplete="off"> --}}
                             <span class="invalid-feedback">Please enter a text address</span>
+                        </div>
+                        <div class="col-lg-2 form-group ml-auto mt-3">
+                            <button type="button" class="btn btn-outline-success float-right btn-block">更新</button>
                         </div>
                     </div>
+                    {{ Form::close() }}
             
-                    <div class="form-group">
+                    {{-- <div class="form-group">
                         <label for="exampleInputEmail1">Email address</label>
                         <input type="text" name="text" class="form-control is-invalid" placeholder="Enter text" autocomplete="off">
                         <span class="invalid-feedback">Please enter a text address</span>
-                    </div>
+                    </div> --}}
 
                 </div>
             </div>

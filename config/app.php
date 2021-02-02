@@ -1,6 +1,7 @@
 <?php
 
 return [
+    'asset_ver' => date('YmdH'),
     'title_home' => 'TOP',    
     'title_division_index' => '部署 一覧',
     'title_user_index' => 'ユーザ 一覧',
