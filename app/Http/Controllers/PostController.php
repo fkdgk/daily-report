@@ -10,6 +10,15 @@ use Illuminate\Support\Facades\Auth;
 
 class PostController extends Controller
 {
+    public function user($id)
+    {
+        $posts = Post::where('user_id', $id)->orderBy('id','desc')->paginate(15);
+        return view('post.user',[
+            'posts'  => $posts,
+            'id'=> $id,
+        ]);
+    }
+
     public function index()
     {
         $posts = Post::where('user_id', Auth::id())->orderBy('id','desc')->paginate(15);
@@ -45,7 +54,9 @@ class PostController extends Controller
 
     public function edit(Post $post)
     {
-        //
+        return view('post.edit',[
+            'post' => $post,
+        ]);
     }
 
     public function update(Request $request, Post $post)

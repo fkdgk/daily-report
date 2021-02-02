@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Contracts\Events\Dispatcher;
 use JeroenNoten\LaravelAdminLte\Events\BuildingMenu;
@@ -18,15 +19,16 @@ class AppServiceProvider extends ServiceProvider
     {
         $events->listen(BuildingMenu::class, function (BuildingMenu $event) {
             // $event->menu->add('MAIN NAVIGATION');
+            // https://github.com/jeroennoten/Laravel-AdminLTE/wiki/8.-Menu-Configuration
             $event->menu->add([
                 'text' => config('app.title_home'),
-                'route' => 'home',
+                'url' => route('home'),
                 'icon' => 'fa fa-fw fa-home mr-2',
             ]);
 
             $event->menu->add([
                 'text' => config('app.title_post_index'),
-                'route' => 'post.index',
+                'url' => route('post.user', Auth::id()),
                 'icon' => 'fa fa-fw fa-pen mr-2',
             ]);
 

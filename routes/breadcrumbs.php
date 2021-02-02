@@ -18,14 +18,27 @@ Breadcrumbs::for('user.show', function ($trail,$user) {
 });
 
 // Home > About
+Breadcrumbs::for('post.user', function ($trail,$id) {
+    $trail->parent('home');
+    $trail->push( getUser($id) -> name . 'の日報', route('post.user',$id));
+});
+
+// Home > About
 Breadcrumbs::for('post.index', function ($trail) {
     $trail->parent('home');
     $trail->push(config('app.title_post_index'), route('post.index'));
 });
+
 // Home > About
 Breadcrumbs::for('post.show', function ($trail,$post) {
-    $trail->parent('post.index');
+    $trail->parent('post.user',$post->user_id);
     $trail->push($post -> work_date, route('post.show',$post -> id));
+});
+
+// Home > About
+Breadcrumbs::for('post.edit', function ($trail,$post) {
+    $trail->parent('post.show',$post);
+    $trail->push('編集', route('post.edit',$post -> id));
 });
 
 // Home > Blog

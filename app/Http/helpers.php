@@ -1,6 +1,10 @@
 <?php
 use Carbon\Carbon;
 
+function getUser($id){
+    return App\Models\User::find($id);
+}
+
 function formatTime($time){
     if($time){
         return Carbon::parse($time)->format('H:i');
