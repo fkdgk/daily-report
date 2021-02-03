@@ -12,7 +12,6 @@
         <div class="col-12">
             <div class="card">
                 <div class="card-body">
-                
                     {{ Form::model($post) }}
                     <div class="row">
                         <div class="col-lg-3 form-group">
@@ -37,6 +36,7 @@
                             <button type="button" class="btn btn-outline-success float-right btn-block">更新</button>
                         </div>
                     </div>
+<<<<<<< Updated upstream
                     <div class="row">
                         @foreach ($works as $work)
                         <div class="col-lg-3 mb-2">
@@ -56,9 +56,36 @@
                             {{-- <button class="btn btn-outline-danger btn-sm"><i class="fa fa-times"></i></button> --}}
                         </div>
                         @endforeach
+=======
+
+                    <h6 class="text-bold mb-0 mt-3">作業内容</h6>
+                    @foreach ($works as $work)
+                        @include('post.work',[
+                            'project_id' => $work -> project_id,
+                            'work_time' => $work -> work_time,
+                            'progress' => $work -> progress,
+                            'limit' => $work -> limit,
+                        ])
+                    @endforeach
+                    <div id="append-to"></div>
+                    <div class="row">
+                        <div class="col-lg-11">
+                        </div>
+                        <div class="col-lg-1 pl-0">
+                            <button type="button" class="btn btn-outline-primary btn-sm" id="append-btn"> <i class="fa fa-plus"></i> </button>
+                        </div>
+                    </div>
+                    <div id="repeat-content" style="display:none;">
+                        @include('post.work',[
+                            'project_id' => null,
+                            'work_time' => null,
+                            'progress' => null,
+                            'limit' => null,
+                        ])
+>>>>>>> Stashed changes
                     </div>
                     <div class="row">
-                        <div class="col-12 pt-2">
+                        <div class="col-11 pt-2">
                             {{ Form::textarea('body',null,['class'=>'form-control form-control-sm small','rows'=>7]) }}
                         </div>
                     </div>
@@ -83,5 +110,35 @@
 @endsection
 
 @section('js')
+<<<<<<< Updated upstream
 <script></script>
+=======
+<script>
+
+const init = () => {
+    datepiker();
+    timepiker();
+    slider();
+}
+
+init();
+
+// const formHtml = document.getElementById("repeat-content").innerHTML
+// document.getElementById("append-to").innerHTML += formHtml;
+
+$(document).on('click','.work-delete',function(){
+    $(this)
+    .parent()
+    .parent()
+    .remove();
+});
+
+$('#append-btn').click(function(){
+    $('#repeat-content .row')
+    .clone()
+    .insertBefore('#append-to');
+    init();
+});
+</script>
+>>>>>>> Stashed changes
 @endsection
