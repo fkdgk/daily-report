@@ -37,11 +37,7 @@
                         </div>
                     </div>
 
-<<<<<<< HEAD
-                    <h6>作業内容</h6>
-=======
                     <h6 class="text-bold mb-0 mt-3">作業内容</h6>
->>>>>>> 1.5.1
                     @foreach ($works as $work)
                         @include('post.work',[
                             'project_id' => $work -> project_id,
@@ -51,9 +47,6 @@
                         ])
                     @endforeach
                     <div id="append-to"></div>
-<<<<<<< HEAD
-                    <div id="repeat-content">
-=======
                     <div class="row">
                         <div class="col-lg-11">
                         </div>
@@ -62,7 +55,6 @@
                         </div>
                     </div>
                     <div id="repeat-content" style="display:none;">
->>>>>>> 1.5.1
                         @include('post.work',[
                             'project_id' => null,
                             'work_time' => null,
@@ -97,18 +89,7 @@
 @endsection
 
 @section('js')
-<<<<<<< HEAD
-<script>
-    $(document).on('click','.work-delete',function(){
-        $(this).parent().parent().remove();
-    })
-    
-    $('#repeat-content').clone().appendTo('#append-to');
-</script>
-=======
-<<<<<<< Updated upstream
-<script></script>
-=======
+
 <script>
 
 const init = () => {
@@ -118,9 +99,6 @@ const init = () => {
 }
 
 init();
-
-// const formHtml = document.getElementById("repeat-content").innerHTML
-// document.getElementById("append-to").innerHTML += formHtml;
 
 $(document).on('click','.work-delete',function(){
     $(this)
@@ -136,6 +114,4 @@ $('#append-btn').click(function(){
     init();
 });
 </script>
->>>>>>> Stashed changes
->>>>>>> 1.5.1
 @endsection
