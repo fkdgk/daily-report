@@ -36,27 +36,6 @@
                             <button type="button" class="btn btn-outline-success float-right btn-block">更新</button>
                         </div>
                     </div>
-<<<<<<< Updated upstream
-                    <div class="row">
-                        @foreach ($works as $work)
-                        <div class="col-lg-3 mb-2">
-                            {{ Form::select('project_id',$projects, $work -> project_id, ['class'=>'form-control form-control-sm']) }}
-                        </div>
-                        <div class="col-lg-2 mb-2">
-                            {{ Form::text('work_time',$work -> work_time,['class'=>'timepicker form-control form-control-sm','autocomplete'=>'off']) }}
-                        </div>
-                        <div class="col-lg-2 mb-2">
-                            {{ Form::text('progress',$work -> progress,['class'=>'form-control form-control-sm','autocomplete'=>'off']) }}
-                        </div>
-                        <div class="col-lg-3 mb-2">
-                            {{ Form::text('limit',$work -> limit,['class'=>'datepicker form-control form-control-sm','autocomplete'=>'off']) }}
-                        </div>
-                        <div class="col-lg-2 mb-2 form-group d-flex align-items-center">
-                            <i class="fa fa-times text-danger"></i>
-                            {{-- <button class="btn btn-outline-danger btn-sm"><i class="fa fa-times"></i></button> --}}
-                        </div>
-                        @endforeach
-=======
 
                     <h6 class="text-bold mb-0 mt-3">作業内容</h6>
                     @foreach ($works as $work)
@@ -82,7 +61,6 @@
                             'progress' => null,
                             'limit' => null,
                         ])
->>>>>>> Stashed changes
                     </div>
                     <div class="row">
                         <div class="col-11 pt-2">
