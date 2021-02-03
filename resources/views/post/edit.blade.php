@@ -17,8 +17,8 @@
                     <div class="row">
                         <div class="col-lg-3 form-group">
                             <label for="work_date">出社日</label>
-                            {{ Form::text('work_date',null,['id'=>'work_date','class'=>'datepiker form-control','autocomplete'=>'off']) }}
-                            {{-- <input type="date" name="work_date" id="work_date" class="datepiker form-control is-invalid" placeholder="Enter text" autocomplete="off"> --}}
+                            {{ Form::text('work_date',null,['id'=>'work_date','class'=>'datepicker form-control','autocomplete'=>'off']) }}
+                            {{-- <input type="date" name="work_date" id="work_date" class="datepicker form-control is-invalid" placeholder="Enter text" autocomplete="off"> --}}
                             <span class="invalid-feedback">Please enter a text address</span>
                         </div>
                         <div class="col-lg-2 form-group">
@@ -35,6 +35,31 @@
                         </div>
                         <div class="col-lg-2 form-group ml-auto mt-3">
                             <button type="button" class="btn btn-outline-success float-right btn-block">更新</button>
+                        </div>
+                    </div>
+
+                    <h6>作業内容</h6>
+                    @foreach ($works as $work)
+                        @include('post.work',[
+                            'project_id' => $work -> project_id,
+                            'work_time' => $work -> work_time,
+                            'progress' => $work -> progress,
+                            'limit' => $work -> limit,
+                        ])
+                    @endforeach
+                    <div id="append-to"></div>
+                    <div id="repeat-content">
+                        @include('post.work',[
+                            'project_id' => null,
+                            'work_time' => null,
+                            'progress' => null,
+                            'limit' => null,
+                        ])
+                    </div>
+
+                    <div class="row">
+                        <div class="col-12 pt-2">
+                            {{ Form::textarea('body',null,['class'=>'form-control form-control-sm small','rows'=>7]) }}
                         </div>
                     </div>
                     {{ Form::close() }}
@@ -58,5 +83,11 @@
 @endsection
 
 @section('js')
-<script></script>
+<script>
+    $(document).on('click','.work-delete',function(){
+        $(this).parent().parent().remove();
+    })
+    
+    $('#repeat-content').clone().appendTo('#append-to');
+</script>
 @endsection

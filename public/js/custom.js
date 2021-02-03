@@ -1,4 +1,4 @@
-flatpickr('.datepiker', {
+flatpickr('.datepicker', {
     locale: "ja",
     disableMobile: true,
     dateFormat: 'Y-m-d',

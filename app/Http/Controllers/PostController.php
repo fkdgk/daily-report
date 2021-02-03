@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Post;
 use App\Models\Work;
+use App\Models\Project;
 use App\Models\Comment;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -54,8 +55,12 @@ class PostController extends Controller
 
     public function edit(Post $post)
     {
+        $works = Work::where('post_id', $post->id)->get();
+        $projects = Project::all()->pluck('name','id');
         return view('post.edit',[
             'post' => $post,
+            'works' => $works,
+            'projects' => $projects,
         ]);
     }
 
