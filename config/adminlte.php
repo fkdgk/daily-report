@@ -244,6 +244,21 @@ return [
     */
 
     'plugins' => [
+        'ionRangslider' => [
+            'active' => true,
+            'files' => [
+                [
+                    'type' => 'js',
+                    'asset' => true,
+                    'location' => 'vendor/ion-rangeslider/js/ion.rangeSlider.min.js',
+                ],
+                [
+                    'type' => 'css',
+                    'asset' => true,
+                    'location' => 'vendor/ion-rangeslider/css/ion.rangeSlider.min.css',
+                ],
+            ],
+        ],
         'timepiker' => [
             'active' => true,
             'files' => [

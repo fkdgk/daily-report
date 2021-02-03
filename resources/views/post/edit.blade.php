@@ -12,7 +12,6 @@
         <div class="col-12">
             <div class="card">
                 <div class="card-body">
-                
                     {{ Form::model($post) }}
                     <div class="row">
                         <div class="col-lg-3 form-group">
@@ -38,7 +37,11 @@
                         </div>
                     </div>
 
+<<<<<<< HEAD
                     <h6>作業内容</h6>
+=======
+                    <h6 class="text-bold mb-0 mt-3">作業内容</h6>
+>>>>>>> 1.5.1
                     @foreach ($works as $work)
                         @include('post.work',[
                             'project_id' => $work -> project_id,
@@ -48,7 +51,18 @@
                         ])
                     @endforeach
                     <div id="append-to"></div>
+<<<<<<< HEAD
                     <div id="repeat-content">
+=======
+                    <div class="row">
+                        <div class="col-lg-11">
+                        </div>
+                        <div class="col-lg-1 pl-0">
+                            <button type="button" class="btn btn-outline-primary btn-sm" id="append-btn"> <i class="fa fa-plus"></i> </button>
+                        </div>
+                    </div>
+                    <div id="repeat-content" style="display:none;">
+>>>>>>> 1.5.1
                         @include('post.work',[
                             'project_id' => null,
                             'work_time' => null,
@@ -58,7 +72,7 @@
                     </div>
 
                     <div class="row">
-                        <div class="col-12 pt-2">
+                        <div class="col-11 pt-2">
                             {{ Form::textarea('body',null,['class'=>'form-control form-control-sm small','rows'=>7]) }}
                         </div>
                     </div>
@@ -83,6 +97,7 @@
 @endsection
 
 @section('js')
+<<<<<<< HEAD
 <script>
     $(document).on('click','.work-delete',function(){
         $(this).parent().parent().remove();
@@ -90,4 +105,37 @@
     
     $('#repeat-content').clone().appendTo('#append-to');
 </script>
+=======
+<<<<<<< Updated upstream
+<script></script>
+=======
+<script>
+
+const init = () => {
+    datepiker();
+    timepiker();
+    slider();
+}
+
+init();
+
+// const formHtml = document.getElementById("repeat-content").innerHTML
+// document.getElementById("append-to").innerHTML += formHtml;
+
+$(document).on('click','.work-delete',function(){
+    $(this)
+    .parent()
+    .parent()
+    .remove();
+});
+
+$('#append-btn').click(function(){
+    $('#repeat-content .row')
+    .clone()
+    .insertBefore('#append-to');
+    init();
+});
+</script>
+>>>>>>> Stashed changes
+>>>>>>> 1.5.1
 @endsection
