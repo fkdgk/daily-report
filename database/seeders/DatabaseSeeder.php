@@ -8,6 +8,7 @@ use App\Models\User;
 use App\Models\Project;
 use App\Models\Work;
 use App\Models\Comment;
+use Carbon\Carbon;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -77,7 +78,7 @@ class DatabaseSeeder extends Seeder
 
         for ($i=0; $i < 100; $i++) { 
             Post::create([
-                'work_date' => $faker -> date(),
+                'work_date' => Carbon::parse(date('Y-m-d'))->addDay( - $faker->randomNumber(2)) -> format('Y-m-d'),
                 'start_time' => $faker -> numberBetween(9,10) . ':' . $faker ->  numberBetween(1,59) . ':' . '00',
                 'finish_time' => $faker -> numberBetween(16,19) . ':' . $faker -> numberBetween(1,59) . ':' . '00',
                 'body' => $faker -> realText,
