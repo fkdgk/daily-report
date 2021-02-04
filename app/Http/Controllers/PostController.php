@@ -43,7 +43,7 @@ class PostController extends Controller
         $prev = Post::where('id', '<', $post->id)->max('id');
         $next = Post::where('id', '>', $post->id)->min('id');
         $works = Work::where('post_id', $post->id)->get();
-        $comments = Comment::where('post_id',$post -> id)->get();
+        $comments = Comment::where('post_id',$post -> id)->orderBy('id','desc')->get();
         return view('post.show',[
             'post' => $post,
             'prev' => $prev,
