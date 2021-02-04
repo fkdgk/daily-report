@@ -123,7 +123,7 @@ class DatabaseSeeder extends Seeder
                         'post_id' => $post,
                         'work_time' => $faker -> numberBetween(0,3).':'. $faker -> numberBetween(0,59)  .':00',
                         'progress' => $faker -> numberBetween(0,100),
-                        'limit' => $faker -> date,
+                        'limit' => Carbon::parse(date('Y-m-d'))->addDay($faker->randomNumber(2)) -> format('Y-m-d'),
                     ]);
                 }
             }   
