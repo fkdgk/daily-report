@@ -60,7 +60,7 @@
     <div class="col-lg-11">
     </div>
     <div class="col-lg-1 pl-0">
-        <button type="button" class="btn btn-outline-primary btn-sm" id="append-btn"> <i class="fa fa-plus"></i> </button>
+        <button type="button" class="btn btn-outline-primary btn-sm small text-nowrap" id="append-btn"> <i class="fa fa-plus"></i> 追加 </button>
     </div>
 </div>
 
