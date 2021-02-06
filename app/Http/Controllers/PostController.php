@@ -31,12 +31,37 @@ class PostController extends Controller
 
     public function create()
     {
-        //
+        $projects = Project::all()->pluck('name','id');
+        return view('post.create',[
+            'works' => [],
+            'projects' => $projects,
+        ]);
     }
 
     public function store(Request $request)
     {
-        //
+        $this -> validateForm($request);
+
+        DB::beginTransaction();
+        try {
+            // $post = Post::create($request->all());
+            $post = Post::create(array_merge($request->all(), [
+                'user_id' => Auth::id(),
+            ]));
+
+            /* store works */
+            $this -> createWork($post -> id, request('project_id'));
+
+            toastr() -> success('新規作成しました');
+            DB::commit();
+
+        } catch (\Exception $e) {
+            toastr() -> error('エラーが発生しました');
+            DB::rollback();
+            return redirect() -> back();
+        }
+
+        return redirect() -> route('post.show', $post -> id);
     }
 
     public function show(Post $post)
@@ -65,14 +90,40 @@ class PostController extends Controller
         ]);
     }
 
-    public function update(Request $request, Post $post)
+    public function createWork($post_id, $project_id)
+    {
+        $check_count = $project_id;
+        $count = ($check_count) ? count($check_count) : null;
+
+        /* delete all works */
+        Work::where('post_id',$post_id)->delete();
+
+        for ($i=0; $i < $count; $i++) {
+            if(!request('project_id')[$i]) continue;
+
+            Work::create([
+                'post_id' => $post_id,
+                'project_id' => request('project_id')[$i],
+                'work_time' => request('work_time')[$i],
+                'progress' => request('progress')[$i],
+                'limit' => request('limit')[$i],
+            ]);
+        }
+    }
+
+    public function validateForm(Request $request)
     {
         $request->validate([
             'work_date' => 'required|date',
             'start_time' => 'date_format:H:i',
             'finish_time' => 'date_format:H:i',
         ]);
+    }
 
+    public function update(Request $request, Post $post)
+    {
+        
+        $this -> validateForm($request);
 
         DB::beginTransaction();
         try {
@@ -81,25 +132,8 @@ class PostController extends Controller
             $post -> fill(request()->all())->save();    
 
             /* update works */
-            $check_count = request('project_id');
-            $count = ($check_count) ? count($check_count) : null;
-            $post_id = $post -> id;
+            $this -> createWork($post -> id, request('project_id'));
 
-            /* delete all works */
-            Work::where('post_id',$post_id)->delete();
-
-            for ($i=0; $i < $count; $i++) {
-                if(!request('project_id')[$i]) continue;
-
-                Work::create([
-                    'post_id' => $post_id,
-                    'project_id' => request('project_id')[$i],
-                    'work_time' => request('work_time')[$i],
-                    'progress' => request('progress')[$i],
-                    'limit' => request('limit')[$i],
-                ]);
-                
-            }
             toastr() -> success('更新しました');
             DB::commit();
         } catch (\Exception $e) {
@@ -115,6 +149,7 @@ class PostController extends Controller
     {
         $user_id = $post -> user_id;
         $post -> delete();
+        toastr() -> error('削除しました');
         return redirect() -> route('post.user',$user_id);
     }
 }

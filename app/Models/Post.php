@@ -10,6 +10,7 @@ class Post extends Model
     use HasFactory;
     protected $fillable = [
         'work_date', 
+        'user_id', 
         'start_time', 
         'finish_time', 
         'body', 

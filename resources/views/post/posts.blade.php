@@ -1,4 +1,5 @@
-
+    <a href="{{ route('post.create') }}" class="btn btn-sm btn-outline-success float-right"><i class="fa fa-plus"></i> 新規作成</a>
+    <div class="clearfix"></div>
     <table class="table table-sm table-hover responsive nowrap">
         <thead>
             <tr>

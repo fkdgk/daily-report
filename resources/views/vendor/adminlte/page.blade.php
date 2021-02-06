@@ -37,7 +37,7 @@
 
             {{-- Content Header --}}
             <div class="content-header">
-                <div class="{{ config('adminlte.classes_content_header') ?: $def_container_class }}">
+                <div class="{{ config('adminlte.classes_content_header') ?: $def_container_class }} d-flex justify-content-between">
                     @yield('content_header')
                 </div>
             </div>
