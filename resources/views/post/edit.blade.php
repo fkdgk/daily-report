@@ -88,9 +88,6 @@
 @endsection
 
 @section('js')
-<<<<<<< Updated upstream
-<script></script>
-=======
 <script>
 
 const init = () => {
@@ -118,5 +115,4 @@ $('#append-btn').click(function(){
     init();
 });
 </script>
->>>>>>> Stashed changes
 @endsection
