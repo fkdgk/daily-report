@@ -135,7 +135,9 @@ class DatabaseSeeder extends Seeder
         */
         $users = User::all()->pluck('id')->toArray();
         foreach ($posts as $post) {
+            $count = 0;
             foreach ($users as $index => $user) {
+                if($count == 3) break ;
                 if($faker -> boolean){
                     $time = $faker -> time();
                     Comment::create([
@@ -144,6 +146,7 @@ class DatabaseSeeder extends Seeder
                         'body' => $faker -> realText(),
                         'created_at' => Carbon::parse(date('Y-m-d'))->addDay(-$index) -> format('Y-m-d ' . $time),
                     ]);
+                    $count ++;
                 }
             }
         }
