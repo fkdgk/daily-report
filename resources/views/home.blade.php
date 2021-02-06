@@ -13,6 +13,7 @@
         <div class="col-xl-8">
             <div class="card">
                 <div class="card-body">
+                    <h5 class="float-left">日報一覧</h5>
                     @include('post.posts')
                 </div>
             </div>

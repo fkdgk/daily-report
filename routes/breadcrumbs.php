@@ -36,6 +36,12 @@ Breadcrumbs::for('post.show', function ($trail,$post) {
 });
 
 // Home > About
+Breadcrumbs::for('post.create', function ($trail) {
+    $trail->parent('post.index');
+    $trail->push('新規作成', route('post.create'));
+});
+
+// Home > About
 Breadcrumbs::for('post.edit', function ($trail,$post) {
     $trail->parent('post.show',$post);
     $trail->push('編集', route('post.edit',$post -> id));
