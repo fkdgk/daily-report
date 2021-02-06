@@ -67,6 +67,8 @@
         <meta name="msapplication-TileImage" content="{{ asset('favicon/ms-icon-144x144.png') }}">
     @endif
 
+    @toastr_css
+
     <link rel="stylesheet" href="{{ asset('css/custom.css?ver=') . config('app.asset_ver') }}">
 </head>
 
@@ -101,6 +103,8 @@
     {{-- Custom Scripts --}}
     <script src="{{ asset('js/custom.js?ver=') . config('app.asset_ver') }}"></script>
     @yield('adminlte_js')
+    @toastr_js
+    @toastr_render    
     
 </body>
 
