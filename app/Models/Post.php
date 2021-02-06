@@ -16,16 +16,43 @@ class Post extends Model
         'body', 
     ];
 
-    public function user(){
+    public function user()
+    {
         return $this -> belongsTo('App\Models\User');
     }
 
+    public function scopePrev($query,$post)
+    {
+        return $query -> where('user_id',$post -> user_id)
+                      -> where('work_date', '<', $post -> work_date)
+                      -> orderBy('work_date', 'desc')
+                      -> limit(1);
+    }
 
-    public function scopeIsActive(){
+    public function scopeNext($query,$post)
+    {
+        return $query -> where('user_id',$post -> user_id)
+                      -> where('work_date', '>',  $post -> work_date)
+                      -> orderBy('work_date','asc')
+                      -> limit('1');
+    }
+
+    public function scopeWhereUserId($query, $id)
+    {
+        return $query -> where('user_id', $id);
+    }
+
+    public function scopeOrderWorkDate($query)
+    {
+        return $query -> orderBy('work_date','desc');
+    }
+
+    public function scopeIsActive()
+    {
         return Post::select('posts.*')
                -> join('users','users.id','=','posts.user_id')
                -> where('users.active', 1)
-               -> orderBy('posts.id','desc');
+               -> orderBy('posts.work_date','desc');
     }
 
 }
