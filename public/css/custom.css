@@ -1,3 +1,10 @@
+/* datatable */
+table.dataTable.dtr-inline.collapsed>tbody>tr[role="row"]>td:first-child:before{
+    top:0;
+    bottom:0;
+    margin:auto auto;
+}
+
 /* range slider */
 input[type="range"] {
     -webkit-appearance: none;

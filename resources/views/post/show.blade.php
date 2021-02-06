@@ -7,31 +7,39 @@
 @stop
 
 @section('content')
+<div class="row">
+    <div class="col">
+        <div class="card">
+            <div class="card-body">
+                <table id="example" class="responsive nowrap table table-hover">
+                    <thead>
+                        <tr>
+                            <th>プロジェクト名</th>
+                            <th>作業時間</th>
+                            <th>進捗率</th>
+                            <th>期限</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    @foreach ($works as $work)
+                        <tr>
+                            <td>{{ $work -> project -> name}}</td>
+                            <td>{{ formatTime($work -> work_time)}}</td>
+                            <td>
+                                <div class="progress">
+                                  <div class="progress-bar" role="progressbar" style="width: {{ $work -> progress }}%;" aria-valuenow="{{ $work -> progress }}" aria-valuemin="0" aria-valuemax="100">{{ $work -> progress }}%</div>
+                                </div>
+                            </td>
+                            <td>{{ $work -> limit }}</td>
+                        </tr>    
+                    @endforeach
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
 
-<table id="example" class="display responsive nowrap">
-    <thead>
-        <tr>
-            <th>プロジェクト名</th>
-            <th>作業時間</th>
-            <th>進捗率</th>
-            <th>期限</th>
-        </tr>
-    </thead>
-    <tbody>
-    @foreach ($works as $work)
-        <tr>
-            <td>{{ $work -> project -> name}}</td>
-            <td>{{ formatTime($work -> work_time)}}</td>
-            <td>
-                <div class="progress">
-                  <div class="progress-bar" role="progressbar" style="width: {{ $work -> progress }}%;" aria-valuenow="{{ $work -> progress }}" aria-valuemin="0" aria-valuemax="100">{{ $work -> progress }}%</div>
-                </div>
-            </td>
-            <td>{{ $work -> limit }}</td>
-        </tr>    
-    @endforeach
-    </tbody>
-</table>
 
 
 
@@ -175,9 +183,12 @@
 @section('js')
 <script>
 $('#example').DataTable( {
-    responsive: {
-        details: true
-    }
+    "responsive":true,
+    "searching": false,
+    "sort": false,
+    "info": false,
+    "paging": false,
+    "order": [],
 } );
 
 </script>
