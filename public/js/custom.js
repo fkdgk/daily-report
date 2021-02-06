@@ -21,11 +21,11 @@ const datepiker = () => {
 /* TimePicker */
 const timepiker = () => {
     $('.timepicker').timepicker({
-        'minTime': '07:00',
-        'maxTime': '23:30',
+        // 'minTime': '00:00',
+        // 'maxTime': '23:30',
         'step': 15,
         'timeFormat': 'H:i',
-        'showDuration': false
+        // 'showDuration': false
     });
 }
 

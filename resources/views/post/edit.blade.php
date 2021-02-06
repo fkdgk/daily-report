@@ -12,8 +12,8 @@
         <div class="col-12">
             <div class="card">
                 <div class="card-body">
-                    {{ Form::model($post) }}
-                    <div class="row d-flex align-items-center">
+                    {{ Form::model($post,['route'=>['post.update',$post -> id],'method'=>'put']) }}
+                    <div class="row">
                         <div class="col-lg-3 form-group">
                             <label for="work_date">出社日</label>
                             {{ Form::text('work_date',null,['id'=>'work_date','class'=>'datepicker form-control','autocomplete'=>'off']) }}
@@ -31,9 +31,6 @@
                             {{ Form::text('finish_time',null,['id'=>'finish_time','class'=>'timepicker form-control','autocomplete'=>'off']) }}
                             {{-- <input type="text" name="finish_date" id="finish_date" class="timepicker form-control is-invalid" placeholder="Enter text" autocomplete="off"> --}}
                             <span class="invalid-feedback">Please enter a text address</span>
-                        </div>
-                        <div class="col-lg-2 form-group ml-auto mt-3">
-                            <button type="button" class="btn btn-outline-success float-right btn-block">更新</button>
                         </div>
                     </div>
 
@@ -76,14 +73,10 @@
                             {{ Form::textarea('body',null,['class'=>'form-control form-control-sm small','rows'=>7]) }}
                         </div>
                     </div>
-                    {{ Form::close() }}
-            
-                    {{-- <div class="form-group">
-                        <label for="exampleInputEmail1">Email address</label>
-                        <input type="text" name="text" class="form-control is-invalid" placeholder="Enter text" autocomplete="off">
-                        <span class="invalid-feedback">Please enter a text address</span>
-                    </div> --}}
 
+                    {{ Form::submit('更新',['class'=>'btn btn-lg btn-outline-success mt-3 btn-block'])}}
+
+                    {{ Form::close() }}
                 </div>
             </div>
         </div>

@@ -28,15 +28,8 @@ class HomeController extends Controller
 
         /* すべての投稿 */
         // $posts = Post::orderBy('id','desc')->paginate(15);
-
-        /* ユーザが有効のみ */
-        $posts = Post::select('posts.*')
-        -> join('users','users.id','=','posts.user_id')
-        -> where('users.active', 1)
-        -> orderBy('posts.id','desc')
-        -> paginate(15);
-
-        $users = User::orderBy('id','desc')->where('active',1)->get();
+        $posts = Post::isActive() -> paginate(15);
+        $users = User::latest()->isActive()->get();
         
         return view('home',[
             'posts' => $posts,

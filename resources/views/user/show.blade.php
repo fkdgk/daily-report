@@ -76,13 +76,16 @@
 <div class="container pt-5 pb-5">
     <h5 class="text-center">その他のユーザ</h5>
     <div class="row text-center">
-        @foreach ($users as $user)
-        <div class="col-xl-2 mb-4">
-            <a href="{{ route('user.show', $user -> id) }}" class="text-dark">
-                <h5 class="my-3">{{$user -> name}}</h5>
-                <img class="rounded-circle" src="{{ asset('img'). '/' . $user -> img }}">
-            </a>
-        </div>
+        @foreach ($users as $index => $user)
+            @php
+                if($index == 6) break;
+            @endphp
+            <div class="col-xl-2 mb-4">
+                <a href="{{ route('user.show', $user -> id) }}" class="text-dark">
+                    <h5 class="my-3">{{$user -> name}}</h5>
+                    <img class="rounded-circle" src="{{ asset('img'). '/' . $user -> img }}">
+                </a>
+            </div>
         @endforeach
     </div>
 </div>
