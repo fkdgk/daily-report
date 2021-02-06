@@ -68,30 +68,35 @@ class PostController extends Controller
     public function update(Request $request, Post $post)
     {
         /* post update */
-        // return $post;
         $post -> fill(request()->all())->save();
+
+        /* update works */
+        $count = count(request('project_id'));
+        $post_id = $post -> id;
+
+        DB::beginTransaction();
+        try {
+            Work::where('post_id',$post_id)->delete();
+            for ($i=0; $i < $count; $i++) { 
+                Work::create([
+                    'post_id' => $post_id,
+                    'project_id' => request('project_id')[$i],
+                    'work_time' => request('work_time')[$i],
+                    'progress' => request('progress')[$i],
+                    'limit' => request('limit')[$i],
+                ]);
+            }
+            DB::commit();
+        } catch (\Exception $e) {
+            DB::rollback();
+        }
 
         // $post -> update([request()->all()]);
         return redirect() -> back();
         /* works delete,insert */
 
-        DB::beginTransaction();
-        try {
-            DB::commit();
-        } catch (\Exception $e) {
-            DB::rollback();
-        }
-        $post_id = $post -> id;
-        $works = Work::where('post_id',$post_id)->get();
-        dd($works);
-        $count = count(request('project_id'));
-        for ($i=0; $i < $count; $i++) { 
-            echo $i;
-            echo "<br>";
-        }
-        return request('project_id');
-        return count(request('project_id'));
-        return $request;
+
+        
     }
 
     public function destroy(Post $post)

@@ -11,4 +11,12 @@ class Work extends Model
     public function project(){
         return $this -> belongsTo('App\Models\Project');
     }
+
+    protected $fillable = [
+        'post_id',
+        'project_id',
+        'work_time',
+        'progress',
+        'limit',
+    ];
 }

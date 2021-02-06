@@ -60,24 +60,25 @@
                             <button type="button" class="btn btn-outline-primary btn-sm" id="append-btn"> <i class="fa fa-plus"></i> </button>
                         </div>
                     </div>
-                    <div id="repeat-content" style="display:none;">
-                        @include('post.work',[
-                            'project_id' => null,
-                            'work_time' => null,
-                            'progress' => null,
-                            'limit' => null,
-                        ])
-                    </div>
-
                     <div class="row">
                         <div class="col-11 pt-2">
                             {{ Form::textarea('body',null,['class'=>'form-control form-control-sm small','rows'=>7]) }}
                         </div>
                     </div>
 
-                    {{ Form::submit('更新',['class'=>'btn btn-lg btn-outline-success mt-3 btn-block'])}}
+                    {{ Form::submit('更新',['class'=>'btn btn-lg btn-success mt-4 mb-2 btn-block','style'=>'max-width:300px;margin:0 auto;'])}}
 
                     {{ Form::close() }}
+
+                    <div id="repeat-content" style="display:none;">
+                        @include('post.work',[
+                            'project_id' => null,
+                            'work_time' => null,
+                            'progress' => 0,
+                            'limit' => null,
+                        ])
+                    </div>
+
                 </div>
             </div>
         </div>
