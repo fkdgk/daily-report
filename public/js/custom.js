@@ -28,3 +28,13 @@ const timepiker = () => {
         'showDuration': false
     });
 }
+
+/* datatable responsive */
+$('.table.responsive').DataTable( {
+    "responsive":true,
+    "searching": false,
+    "sort": false,
+    "info": false,
+    "paging": false,
+    "order": [],
+});

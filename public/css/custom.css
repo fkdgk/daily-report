@@ -5,6 +5,10 @@ table.dataTable.dtr-inline.collapsed>tbody>tr[role="row"]>td:first-child:before{
     margin:auto auto;
 }
 
+table.dataTable.nowrap th, table.dataTable.nowrap td{
+    vertical-align: middle;
+}
+
 /* range slider */
 input[type="range"] {
     -webkit-appearance: none;
