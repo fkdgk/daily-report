@@ -34,7 +34,7 @@ class Post extends Model
         return $query -> where('user_id',$post -> user_id)
                       -> where('work_date', '>',  $post -> work_date)
                       -> orderBy('work_date','asc')
-                      -> limit('1');
+                      -> limit(1);
     }
 
     public function scopeWhereUserId($query, $id)
