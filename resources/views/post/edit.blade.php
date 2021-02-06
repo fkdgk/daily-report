@@ -13,7 +13,7 @@
             <div class="card">
                 <div class="card-body">
                     {{ Form::model($post) }}
-                    <div class="row">
+                    <div class="row d-flex align-items-center">
                         <div class="col-lg-3 form-group">
                             <label for="work_date">出社日</label>
                             {{ Form::text('work_date',null,['id'=>'work_date','class'=>'datepicker form-control','autocomplete'=>'off']) }}
