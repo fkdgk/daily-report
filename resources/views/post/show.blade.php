@@ -10,8 +10,8 @@
 
 <div class="row">
     <div class="col-12">
-        <div class="d-flex justify-content-between">
-            <div class="btn-group mb-3">
+        <div class="d-flex justify-content-between mb-3">
+            <div class="btn-group">
                 {!! ($prev)? '<a href="'. route('post.show', $prev) .'" class="btn btn-default btn-sm"><i class="fa fa-chevron-left"></i> Prev</a>' :null !!}
                 {!! ($next)? '<a href="'. route('post.show', $next) .'" class="btn btn-default btn-sm">Next <i class="fa fa-chevron-right"></i></a>' :null !!}
             </div>
