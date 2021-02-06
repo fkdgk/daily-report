@@ -116,7 +116,7 @@ class PostController extends Controller
         $request->validate([
             'work_date' => 'required|date',
             'start_time' => 'date_format:H:i',
-            'finish_time' => 'date_format:H:i',
+            'finish_time' => 'date_format:H:i|after:start_time',
         ]);
     }
 
