@@ -71,7 +71,7 @@ class PostController extends Controller
         $post -> fill(request()->all())->save();
 
         /* update works */
-        $count = count(request('project_id'));
+        $count = (request('project_id')) ? count(request('project_id')) : null ;
         $post_id = $post -> id;
 
         DB::beginTransaction();

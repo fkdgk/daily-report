@@ -15,6 +15,7 @@ const datepiker = () => {
         disableMobile: true,
         dateFormat: 'Y-m-d',
         allowInput: true,
+        showButtonPanel: true,
     });
 }
 
