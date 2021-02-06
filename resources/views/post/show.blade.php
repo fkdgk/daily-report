@@ -92,7 +92,7 @@
         <div class="card">
             <div class="card-header">コメント</div>
             <div class="card-body pl-4">
-                @foreach ($comments as $comment)
+                @forelse ($comments as $comment)
                     <div class="row">
                         <div class="col-sm-2">
                             <a href="{{ route('user.show', $comment -> user -> id) }}" class="text-dark">
@@ -106,12 +106,27 @@
                             </a>
                         </div>
                         <div class="col-sm-10 small pt-2">
-                            {{ $comment -> body }}
+                            {!! nl2br(e($comment -> body)) !!}
                         </div>
                         
                     </div>
                     <hr>
-                @endforeach
+                    @empty
+                     <p>コメントはありません</p>
+                    @endforelse
+                    {{ Form::open(['route'=>['comment.store',$post -> id]]) }}
+                        {{ Form::textarea('body',null,
+                            [
+                                'class'=>'form-control' . ($errors->has('body') ? ' is-invalid' : null) ,
+                                'required'=>true,
+                                'rows'=>5,
+                            ])
+                        }}
+                        <span class="invalid-feedback">{{ $errors -> first('body') }}</span>
+                        {{ Form::hidden('user_id',Auth::id()) }}
+                        {{ Form::hidden('post_id',$post -> id) }}
+                        {{ Form::submit('コメントを投稿',['class'=>'btn btn-success mt-2']) }}
+                    {{ Form::close() }}
             </div>
         </div>
         
