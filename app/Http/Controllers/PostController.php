@@ -71,13 +71,16 @@ class PostController extends Controller
         $post -> fill(request()->all())->save();
 
         /* update works */
-        $count = (request('project_id')) ? count(request('project_id')) : null ;
+        $check_count = request('project_id');
+        $count = ($check_count) ? count($check_count) : null;
         $post_id = $post -> id;
 
         DB::beginTransaction();
         try {
             Work::where('post_id',$post_id)->delete();
-            for ($i=0; $i < $count; $i++) { 
+            for ($i=0; $i < $count; $i++) {
+                if(!request('project_id')[$i]) continue;
+
                 Work::create([
                     'post_id' => $post_id,
                     'project_id' => request('project_id')[$i],
@@ -85,6 +88,7 @@ class PostController extends Controller
                     'progress' => request('progress')[$i],
                     'limit' => request('limit')[$i],
                 ]);
+                
             }
             DB::commit();
         } catch (\Exception $e) {
@@ -93,9 +97,6 @@ class PostController extends Controller
 
         // $post -> update([request()->all()]);
         return redirect() -> back();
-        /* works delete,insert */
-
-
         
     }
 

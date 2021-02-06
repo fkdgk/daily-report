@@ -7,6 +7,7 @@
 @stop
 
 @section('content')
+
 <div class="container">
     <div class="row">
         <div class="col-12">
@@ -16,7 +17,13 @@
                     <div class="row">
                         <div class="col-lg-3 form-group">
                             <label for="work_date">出社日</label>
-                            {{ Form::text('work_date',null,['id'=>'work_date','class'=>'datepicker form-control','autocomplete'=>'off']) }}
+                            {{ Form::text('work_date',null,
+                                [
+                                    'id'=>'work_date',
+                                    'class'=> 'datepicker form-control'. ($errors->has('work_date') ? ' is-invalid' : null) ,
+                                    'autocomplete'=>'off',
+                                ]
+                            ) }}
                             {{-- <input type="date" name="work_date" id="work_date" class="datepicker form-control is-invalid" placeholder="Enter text" autocomplete="off"> --}}
                             <span class="invalid-feedback">Please enter a text address</span>
                         </div>
@@ -61,7 +68,7 @@
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-11 pt-2">
+                        <div class="col-lg-11 pt-2">
                             {{ Form::textarea('body',null,['class'=>'form-control form-control-sm small','rows'=>7]) }}
                         </div>
                     </div>
@@ -85,11 +92,6 @@
     </div>
 </div>
 @stop
-
-
-@section('css')
-<style></style>
-@endsection
 
 @section('js')
 <script>

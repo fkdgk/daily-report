@@ -8,6 +8,7 @@ const slider = () => {
     });
 }
 
+
 /* FlatPicker */
 const datepiker = () => {
     flatpickr('.datepicker', {
