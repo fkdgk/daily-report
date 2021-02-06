@@ -129,5 +129,6 @@ $('#append-btn').click(function(){
     .insertBefore('#append-to');
     init();
 });
+
 </script>
 @endsection
