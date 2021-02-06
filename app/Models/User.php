@@ -22,6 +22,11 @@ class User extends Authenticatable
         return $query->where('active', true);
     }
 
+    public function scopeOrderIdDesc($query)
+    {
+        return $query->orderBy('id','desc');
+    }
+
     /* 
      * adminlte settings
      */
