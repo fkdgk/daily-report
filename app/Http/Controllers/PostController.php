@@ -76,9 +76,10 @@ class PostController extends Controller
 
         DB::beginTransaction();
         try {
+            
             /* post update */
-            $post -> fill(request()->all())->save();
-    
+            $post -> fill(request()->all())->save();    
+
             /* update works */
             $check_count = request('project_id');
             $count = ($check_count) ? count($check_count) : null;
@@ -99,12 +100,13 @@ class PostController extends Controller
                 ]);
                 
             }
+            toastr() -> success('更新しました');
             DB::commit();
         } catch (\Exception $e) {
+            toastr() -> error('エラーが発生しました');
             DB::rollback();
         }
 
-        // $post -> update([request()->all()]);
         return redirect() -> back();
         
     }
