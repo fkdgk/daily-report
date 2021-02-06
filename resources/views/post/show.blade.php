@@ -83,7 +83,7 @@
                 <hr class="mt-0 mb-4">
                 <span class="text-bold d-block mb-1">作業内容</span>
                 <div>
-                    {{ $post -> body }}
+                    {!! nl2br(e($post -> body)) !!}
                 </div>
             </div>
         </div>
