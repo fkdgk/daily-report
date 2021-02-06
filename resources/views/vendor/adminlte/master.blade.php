@@ -102,9 +102,9 @@
 
     {{-- Custom Scripts --}}
     <script src="{{ asset('js/custom.js?ver=') . config('app.asset_ver') }}"></script>
-    @yield('adminlte_js')
     @toastr_js
-    @toastr_render    
+    @toastr_render 
+    @yield('adminlte_js')
     
 </body>
 

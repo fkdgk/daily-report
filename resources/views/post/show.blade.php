@@ -93,7 +93,7 @@
             <div class="card-header">コメント</div>
             <div class="card-body pl-4">
                 @forelse ($comments as $comment)
-                    <div class="row">
+                    <div class="row" id="a{{ $comment -> id }}">
                         <div class="col-sm-2">
                             <a href="{{ route('user.show', $comment -> user -> id) }}" class="text-dark">
                                 <img src="{{ asset('img'). '/' . $comment -> user -> img  }}" class="user-image user-image-m">
@@ -114,7 +114,7 @@
                     @empty
                      <p>コメントはありません</p>
                     @endforelse
-                    {{ Form::open(['route'=>['comment.store',$post -> id]]) }}
+                    {{ Form::open(['route'=>['comment.store',$post -> id],'id'=>'comment']) }}
                         {{ Form::textarea('body',null,
                             [
                                 'class'=>'form-control' . ($errors->has('body') ? ' is-invalid' : null) ,
@@ -153,4 +153,10 @@
 @endsection
 
 @section('js')
+<script>
+    @if ($errors->has('body'))
+        toastr.error('コメントが空です', 'Error!!');
+        document.getElementById("comment").scrollIntoView();
+    @endif
+</script>
 @endsection
