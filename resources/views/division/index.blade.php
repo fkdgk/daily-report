@@ -3,7 +3,7 @@
 @section('title', config('app.title_division_index'))
 
 @section('content_header')
-    {{ Breadcrumbs::render('home') }}
+    {{ Breadcrumbs::render('division.index') }}
 @stop
 
 @section('content')
@@ -11,7 +11,7 @@
         <div class="col-12">
             <div class="card">
                 <div class="card-body">
-                    <table class="table table-sm">
+                    <table class="table table-sm responsive nowrap">
                         <thead>
                             <tr>
                                 <th>id</th>
