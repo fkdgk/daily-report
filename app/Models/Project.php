@@ -8,4 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Project extends Model
 {
     use HasFactory;
+    public function scopeSelect(){
+        return Project::all()->pluck('name','id');
+    }
 }
