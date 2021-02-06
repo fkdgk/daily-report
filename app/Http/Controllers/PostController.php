@@ -67,6 +67,12 @@ class PostController extends Controller
 
     public function update(Request $request, Post $post)
     {
+        $request->validate([
+            'work_date' => 'required|date',
+            'start_time' => 'date_format:H:i',
+            'finish_time' => 'date_format:H:i',
+        ]);
+        
         /* post update */
         $post -> fill(request()->all())->save();
 
