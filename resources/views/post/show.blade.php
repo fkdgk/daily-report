@@ -7,6 +7,34 @@
 @stop
 
 @section('content')
+
+<table id="example" class="display responsive nowrap">
+    <thead>
+        <tr>
+            <th>プロジェクト名</th>
+            <th>作業時間</th>
+            <th>進捗率</th>
+            <th>期限</th>
+        </tr>
+    </thead>
+    <tbody>
+    @foreach ($works as $work)
+        <tr>
+            <td>{{ $work -> project -> name}}</td>
+            <td>{{ formatTime($work -> work_time)}}</td>
+            <td>
+                <div class="progress">
+                  <div class="progress-bar" role="progressbar" style="width: {{ $work -> progress }}%;" aria-valuenow="{{ $work -> progress }}" aria-valuemin="0" aria-valuemax="100">{{ $work -> progress }}%</div>
+                </div>
+            </td>
+            <td>{{ $work -> limit }}</td>
+        </tr>    
+    @endforeach
+    </tbody>
+</table>
+
+
+
 <div class="row">
     <div class="col-12">
         <div class="d-flex justify-content-between">
@@ -145,5 +173,12 @@
 @endsection
 
 @section('js')
-<script></script>
+<script>
+$('#example').DataTable( {
+    responsive: {
+        details: true
+    }
+} );
+
+</script>
 @endsection
