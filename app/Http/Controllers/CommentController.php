@@ -23,9 +23,9 @@ class CommentController extends Controller
             'body' => 'required',
         ]);
         
-        Comment::create($request->all());
+        $comment = Comment::create($request->all());
         toastr() -> success('コメントを投稿しました');
-        return redirect() -> back();
+        return redirect() -> route('post.show', request('post_id') . '#a' . $comment -> id);
     }
 
     public function show(Comment $comment)
