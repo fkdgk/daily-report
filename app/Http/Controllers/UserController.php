@@ -14,7 +14,9 @@ class UserController extends Controller
         /* 
          * https://www.pakutaso.com/model.html
          */
-        $users = User::orderBy('id','desc')->get();
+        // $users = User::all();
+        $users = User::latest()->get();
+        // $users = User::orderBy('id','desc')->get();
         return view('user.index',[
             'users' => $users,
         ]);
@@ -32,8 +34,9 @@ class UserController extends Controller
 
     public function show(User $user)
     {
-        $posts = Post::where('user_id', $user -> id)->orderBy('id','desc')->paginate(5);
-        $users = User::where('id','!=',$user->id)->where('active',1)->get()->random(6);
+        $posts = Post::where('user_id', $user -> id)->orderBy('id', 'desc')->paginate(5);
+        $users = User::where('id','!=', $user->id)->isActive()->get();
+        // $users = User::where('id','!=', $user->id)->isActive()->get()->random(6);
         // return $users;
         return view('user.show',[
             'user' => $user,

@@ -13,6 +13,18 @@ class User extends Authenticatable
 {
     use HasFactory, Notifiable;
 
+    
+    /* 
+     * adminlte settings
+     */
+    public function scopeIsActive($query)
+    {
+        return $query->where('active', true);
+    }
+
+    /* 
+     * adminlte settings
+     */
     public function adminlte_image()
     {
         return asset('img') . '/' . $this -> img;
@@ -28,6 +40,9 @@ class User extends Authenticatable
         return route('user.show', Auth::id());
     }
 
+    /* 
+     * table  relations
+     */
     public function division(){
         return $this -> belongsTo('App\Models\Division');
     }
