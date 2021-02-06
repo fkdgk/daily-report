@@ -70,7 +70,7 @@ class PostController extends Controller
         $prev = Post::prev($post)->first();
         $next = Post::next($post)->first();
         $works = Work::where('post_id', $post->id)->get();
-        $comments = Comment::where('post_id',$post -> id)->orderBy('id','desc')->get();
+        $comments = Comment::where('post_id',$post -> id)->get();
 
         return view('post.show',[
             'post' => $post,

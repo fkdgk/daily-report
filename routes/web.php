@@ -6,7 +6,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\DivisionController;
 use App\Http\Controllers\ProjectController;
-use App\Http\Controllers\WorkController;
+use App\Http\Controllers\CommentController;
 
 /* 
  * /home をTOPへリダイレクト
@@ -55,6 +55,11 @@ Route::group(['middleware' => ['auth','can:active']], function () {
     Route::get('/posts/{post}/edit', [PostController::class, 'edit'])->name('post.edit');
     Route::put('/posts/{post}', [PostController::class, 'update'])->name('post.update');
     Route::delete('/posts/{post}', [PostController::class, 'destroy'])->name('post.destroy');
+
+    /*
+    * comments ---------------------------------------
+    */
+    Route::post('/posts/{post}', [CommentController::class, 'store'])->name('comment.store');
     
 });
 
