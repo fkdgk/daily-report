@@ -134,11 +134,6 @@
 
 
 @section('css')
-<style>
-    table.table tbody th{
-        white-space: nowrap;
-    }
-</style>
 @endsection
 
 @section('js')

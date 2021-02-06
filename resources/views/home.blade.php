@@ -18,7 +18,7 @@
         <div class="col-xl-4">
             <div class="card">
                 <div class="card-body">
-                    <table class="table table-sm">
+                    <table class="table responsive nowrap table-sm">
                         <thead>
                             <tr>
                                 <th class="text-nowrap">ユーザ</th>
