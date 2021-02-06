@@ -72,18 +72,22 @@ class PostController extends Controller
             'start_time' => 'date_format:H:i',
             'finish_time' => 'date_format:H:i',
         ]);
-        
-        /* post update */
-        $post -> fill(request()->all())->save();
 
-        /* update works */
-        $check_count = request('project_id');
-        $count = ($check_count) ? count($check_count) : null;
-        $post_id = $post -> id;
 
         DB::beginTransaction();
         try {
+            
+            /* post update */
+            $post -> fill(request()->all())->save();    
+
+            /* update works */
+            $check_count = request('project_id');
+            $count = ($check_count) ? count($check_count) : null;
+            $post_id = $post -> id;
+
+            /* delete all works */
             Work::where('post_id',$post_id)->delete();
+
             for ($i=0; $i < $count; $i++) {
                 if(!request('project_id')[$i]) continue;
 
@@ -96,18 +100,21 @@ class PostController extends Controller
                 ]);
                 
             }
+            toastr() -> success('更新しました');
             DB::commit();
         } catch (\Exception $e) {
+            toastr() -> error('エラーが発生しました');
             DB::rollback();
         }
 
-        // $post -> update([request()->all()]);
         return redirect() -> back();
         
     }
 
     public function destroy(Post $post)
     {
-        //
+        $user_id = $post -> user_id;
+        $post -> delete();
+        return redirect() -> route('post.user',$user_id);
     }
 }

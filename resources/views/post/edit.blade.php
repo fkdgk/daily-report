@@ -89,6 +89,10 @@
 
                     {{ Form::close() }}
 
+                    {{ Form::open(['route'=>['post.destroy',$post->id],'method'=>'delete','class'=>'delete']) }}
+                        {{ Form::submit('削除',['class'=>'btn btn-sm btn-outline-danger float-right']) }}
+                    {{ Form::close() }}
+
                     <div id="repeat-content" style="display:none;">
                         @include('post.work',[
                             'project_id' => null,
@@ -129,5 +133,6 @@ $('#append-btn').click(function(){
     .insertBefore('#append-to');
     init();
 });
+
 </script>
 @endsection
