@@ -27,6 +27,7 @@ class CreateDivisionsTable extends Migration
      */
     public function down()
     {
+        Schema::dropIfExists('users');
         Schema::dropIfExists('divisions');
     }
 }

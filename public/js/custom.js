@@ -8,6 +8,7 @@ const slider = () => {
     });
 }
 
+
 /* FlatPicker */
 const datepiker = () => {
     flatpickr('.datepicker', {
@@ -15,6 +16,7 @@ const datepiker = () => {
         disableMobile: true,
         dateFormat: 'Y-m-d',
         allowInput: true,
+        showButtonPanel: true,
     });
 }
 

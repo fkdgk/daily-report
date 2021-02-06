@@ -44,7 +44,7 @@ class PostController extends Controller
         $prev = Post::where('id', '<', $post->id)->max('id');
         $next = Post::where('id', '>', $post->id)->min('id');
         $works = Work::where('post_id', $post->id)->get();
-        $comments = Comment::where('post_id',$post -> id)->get();
+        $comments = Comment::where('post_id',$post -> id)->orderBy('id','desc')->get();
         return view('post.show',[
             'post' => $post,
             'prev' => $prev,
@@ -67,31 +67,43 @@ class PostController extends Controller
 
     public function update(Request $request, Post $post)
     {
+        $request->validate([
+            'work_date' => 'required|date',
+            'start_time' => 'date_format:H:i',
+            'finish_time' => 'date_format:H:i',
+        ]);
+        
         /* post update */
-        // return $post;
         $post -> fill(request()->all())->save();
 
-        // $post -> update([request()->all()]);
-        return redirect() -> back();
-        /* works delete,insert */
+        /* update works */
+        $check_count = request('project_id');
+        $count = ($check_count) ? count($check_count) : null;
+        $post_id = $post -> id;
 
         DB::beginTransaction();
         try {
+            Work::where('post_id',$post_id)->delete();
+            for ($i=0; $i < $count; $i++) {
+                if(!request('project_id')[$i]) continue;
+
+                Work::create([
+                    'post_id' => $post_id,
+                    'project_id' => request('project_id')[$i],
+                    'work_time' => request('work_time')[$i],
+                    'progress' => request('progress')[$i],
+                    'limit' => request('limit')[$i],
+                ]);
+                
+            }
             DB::commit();
         } catch (\Exception $e) {
             DB::rollback();
         }
-        $post_id = $post -> id;
-        $works = Work::where('post_id',$post_id)->get();
-        dd($works);
-        $count = count(request('project_id'));
-        for ($i=0; $i < $count; $i++) { 
-            echo $i;
-            echo "<br>";
-        }
-        return request('project_id');
-        return count(request('project_id'));
-        return $request;
+
+        // $post -> update([request()->all()]);
+        return redirect() -> back();
+        
     }
 
     public function destroy(Post $post)

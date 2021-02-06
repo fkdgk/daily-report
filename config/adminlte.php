@@ -322,11 +322,6 @@ return [
                     'asset' => true,
                     'location' => 'vendor/datatables-plugins/responsive/js/dataTables.responsive.min.js',
                 ],
-                // [
-                //     'type' => 'js',
-                //     'asset' => true,
-                //     'location' => 'vendor/datatables-plugins/responsive/js/responsive.bootstrap4.min.js',
-                // ],
                 [
                     'type' => 'css',
                     'asset' => true,

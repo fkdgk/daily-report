@@ -15,11 +15,15 @@
             @foreach ($posts as $post)
                 <tr>
                     <td class="text-nowrap">
-                        <a href="{{ route('user.show', $post -> user_id ) }}" class="text-dark">
+                        <a href="{{ route('post.show', $post -> id ) }}" class="text-dark">
                             <img class="user-image" src="{{ asset('img') . '/' . $post -> user -> img }}">{{ $post -> user -> name }}
                         </a>
                     </td>
-                    <td class="text-nowrap">{{ ($post -> user -> division)? $post -> user -> division -> name :null }}</td>
+                    <td class="text-nowrap">
+                        <a href="{{ route('post.show', $post -> id ) }}" class="text-dark">
+                            {{ ($post -> user -> division)? $post -> user -> division -> name :null }}
+                        </a>
+                    </td>
                     <td>{{ $post -> work_date }}</td>
                     <td>{{ formatTime($post -> start_time) }}</td>
                     <td>{{ formatTime($post -> finish_time) }}</td>

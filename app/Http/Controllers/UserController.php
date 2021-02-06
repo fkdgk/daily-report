@@ -15,7 +15,8 @@ class UserController extends Controller
          * https://www.pakutaso.com/model.html
          */
         // $users = User::all();
-        $users = User::latest()->get();
+        $users = User::orderIdDesc()->get();
+        // $users = User::latest()->get();
         // $users = User::orderBy('id','desc')->get();
         return view('user.index',[
             'users' => $users,

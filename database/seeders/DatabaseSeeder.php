@@ -8,6 +8,7 @@ use App\Models\User;
 use App\Models\Project;
 use App\Models\Work;
 use App\Models\Comment;
+use Carbon\Carbon;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -77,7 +78,7 @@ class DatabaseSeeder extends Seeder
 
         for ($i=0; $i < 100; $i++) { 
             Post::create([
-                'work_date' => $faker -> date(),
+                'work_date' => Carbon::parse(date('Y-m-d'))->addDay( - $faker->randomNumber(2)) -> format('Y-m-d'),
                 'start_time' => $faker -> numberBetween(9,10) . ':' . $faker ->  numberBetween(1,59) . ':' . '00',
                 'finish_time' => $faker -> numberBetween(16,19) . ':' . $faker -> numberBetween(1,59) . ':' . '00',
                 'body' => $faker -> realText,
@@ -122,7 +123,7 @@ class DatabaseSeeder extends Seeder
                         'post_id' => $post,
                         'work_time' => $faker -> numberBetween(0,3).':'. $faker -> numberBetween(0,59)  .':00',
                         'progress' => $faker -> numberBetween(0,100),
-                        'limit' => $faker -> date,
+                        'limit' => Carbon::parse(date('Y-m-d'))->addDay($faker->randomNumber(2)) -> format('Y-m-d'),
                     ]);
                 }
             }   
@@ -134,12 +135,14 @@ class DatabaseSeeder extends Seeder
         */
         $users = User::all()->pluck('id')->toArray();
         foreach ($posts as $post) {
-            foreach ($users as $user) {
+            foreach ($users as $index => $user) {
                 if($faker -> boolean){
+                    $time = $faker -> time();
                     Comment::create([
                         'post_id' => $post,
                         'user_id' => $user,
                         'body' => $faker -> realText(),
+                        'created_at' => Carbon::parse(date('Y-m-d'))->addDay(-$index) -> format('Y-m-d ' . $time),
                     ]);
                 }
             }
