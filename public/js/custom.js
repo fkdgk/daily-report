@@ -1,3 +1,11 @@
+/* form delete confirm */
+$('.delete').on('submit',function(e){
+    if(!confirm('削除しますか？')){
+          e.preventDefault();
+    }
+});
+    
+
 /* ionRangeSlider */
 const slider = () => {
     $(".slider:not(#repeat-content .slider)").ionRangeSlider({
