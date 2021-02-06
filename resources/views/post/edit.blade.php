@@ -38,6 +38,15 @@
                     </div>
 
                     <h6 class="text-bold mb-0 mt-3">作業内容</h6>
+
+                    <div class="row align-items-center">
+                        <div class="col-lg-3 mt-2 text-bold small">プロジェクト名</div>
+                        <div class="col-lg-2 mt-2 text-bold small">作業時間</div>
+                        <div class="col-lg-3 mt-2 text-bold small">進捗率</div>
+                        <div class="col-lg-3 mt-2 text-bold small">納期</div>
+                        <div class="col-lg-1 mt-2 text-bold small"></div>
+                    </div>
+
                     @foreach ($works as $work)
                         @include('post.work',[
                             'project_id' => $work -> project_id,
