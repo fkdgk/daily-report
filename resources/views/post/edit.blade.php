@@ -89,7 +89,6 @@
 @endsection
 
 @section('js')
-
 <script>
 
 const init = () => {
