@@ -14,7 +14,7 @@ class PostController extends Controller
 {
     public function user($id)
     {
-        $posts = Post::where('user_id', $id)->orderBy('id','desc')->paginate(15);
+        $posts = Post::whereUserId($id)->orderWorkDate()->paginate(15);
         return view('post.user',[
             'posts'  => $posts,
             'id'=> $id,
@@ -23,7 +23,7 @@ class PostController extends Controller
 
     public function index()
     {
-        $posts = Post::where('user_id', Auth::id())->orderBy('id','desc')->paginate(15);
+        $posts = Post::whereUserId(Auth::id())->orderWorkDate()->paginate(15);
         return view('post.index',[
             'posts' => $posts,
         ]);
@@ -31,7 +31,7 @@ class PostController extends Controller
 
     public function create()
     {
-        $projects = Project::all()->pluck('name','id');
+        $projects = Project::select();
         return view('post.create',[
             'works' => [],
             'projects' => $projects,
@@ -66,10 +66,12 @@ class PostController extends Controller
 
     public function show(Post $post)
     {
-        $prev = Post::where('id', '<', $post->id)->max('id');
-        $next = Post::where('id', '>', $post->id)->min('id');
+
+        $prev = Post::prev($post)->first();
+        $next = Post::next($post)->first();
         $works = Work::where('post_id', $post->id)->get();
         $comments = Comment::where('post_id',$post -> id)->orderBy('id','desc')->get();
+
         return view('post.show',[
             'post' => $post,
             'prev' => $prev,
@@ -81,8 +83,8 @@ class PostController extends Controller
 
     public function edit(Post $post)
     {
-        $works = Work::where('post_id', $post->id)->latest()->get();
-        $projects = Project::all()->pluck('name','id');
+        $works = Work::where('post_id', $post->id)->get();
+        $projects = Project::select();
         return view('post.edit',[
             'post' => $post,
             'works' => $works,
