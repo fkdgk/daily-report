@@ -1,5 +1,5 @@
-<div class="table-responsive">
-    <table class="table table-sm table-hover">
+
+    <table class="table table-sm table-hover responsive nowrap">
         <thead>
             <tr>
                 <th class="text-nowrap">ユーザ</th>
@@ -31,7 +31,7 @@
             @endforeach
         </tbody>
     </table>
-</div>
+
 <div class="p-4">
     {{ $posts->links('pagination::bootstrap-4') }}
 </div>
