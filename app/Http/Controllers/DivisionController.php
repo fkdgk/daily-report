@@ -51,8 +51,10 @@ class DivisionController extends Controller
         return redirect() -> back();
     }
 
-    public function destroy(Division $division)
+    public function destroy(Request $request, Division $division)
     {
-        //
+        Division::find(request('division_id'))->delete();
+        toastr() -> error('削除しました');
+        return redirect() -> back();
     }
 }

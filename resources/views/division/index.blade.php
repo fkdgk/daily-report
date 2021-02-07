@@ -19,6 +19,7 @@
                                 <th>部署名</th>
                                 <th>作成日時</th>
                                 <th>更新日時</th>
+                                <th>削除</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -31,6 +32,9 @@
                                 </td>
                                 <td>{{ $division -> created_at }}</td>
                                 <td>{{ $division -> updated_at }}</td>
+                                <td>
+                                    <button type="button" class="btn btn-xs btn-outline-danger" onclick="deleteDivision({{$division->id}})">削除</button>
+                                </td>
                             </tr>
                         @endforeach
                         </tbody>
@@ -45,13 +49,18 @@
         </div>
     </div>
 </div>
+
+{{ Form::open(['route'=>'division.destroy','class'=>'delete','method'=>'delete']) }}
+    {{ Form::hidden('division_id',null,['id'=>'division_id'])}}
+{{ Form::close() }}
+
 @stop
 
-
-@section('css')
-<style></style>
-@endsection
-
 @section('js')
-<script></script>
+<script>
+const deleteDivision = (id) => {
+    $('#division_id').val(id);
+    $('.delete').submit();
+}
+</script>
 @endsection
