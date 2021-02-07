@@ -6,6 +6,7 @@ use App\Models\User;
 use App\Models\Post;
 use App\Models\Division;
 use Illuminate\Http\Request;
+use App\Http\Requests\UpdateUser;
 use Illuminate\Support\Facades\Auth;
 use Intervention\Image\Facades\Image;
 
@@ -55,34 +56,19 @@ class UserController extends Controller
         ]);
     }
 
-    public function update(Request $request, User $user)
+    public function update(UpdateUser $request, User $user)
     {
+        /* User Store Validate */
+        // request()->validate([
+            // 'img' => 'image|mimes:jpeg,png,jpg,gif,webp|max:2048',
+            // 'name' => 'required|max:50',
+            // 'email' => 'email|unique:users,email,' . $user->id,
+            // 'password' => 'sometimes|nullable|min:6',
+            // 'division_id' => 'required',
+        // ]);
 
-        request()->validate([
-            'img' => 'image|mimes:jpeg,png,jpg,gif,webp|max:2048',
-            'name' => 'required|max:50',
-            'email' => 'email|unique:users,email,' . $user->id,
-            'password' => 'sometimes|nullable|min:6',
-            'division_id' => 'required',
-        ]);
-
-        $ext = 'jpg';
-        $size = 150;
-        $quality = 80;
-        $save_path = 'img/';
-        $now = date('Ymd_His');
-        $user_id = $user -> id;
-
-        /* update image */
-        $img = request('img');
-        $file_name = $user_id . '_' . $now . '.' . $ext; // 1_20210207_120006.jpg
-        if ($img) {
-            Image::make($img)
-                -> fit($size)
-                -> encode($ext)
-                -> save(public_path($save_path) . $file_name, $quality);
-            $user -> img = $file_name;
-        }
+        // 画像更新
+        makeUserImage($user);
 
         /* update password */
         $password = request('password');
@@ -92,6 +78,7 @@ class UserController extends Controller
             }
 
         $user->save();
+
         // return $request -> all();
         $user -> fill($request->only([
                 'name',
@@ -100,10 +87,7 @@ class UserController extends Controller
                 'division_id',
                 'active',
             ]))->save();
-<<<<<<< Updated upstream
-=======
         
->>>>>>> Stashed changes
         toastr() -> success('更新しました');
         return redirect() -> back();
     }
