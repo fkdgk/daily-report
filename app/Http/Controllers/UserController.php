@@ -87,7 +87,7 @@ class UserController extends Controller
                 'division_id',
                 'active',
             ]))->save();
-
+        
         toastr() -> success('更新しました');
         return redirect() -> back();
     }
