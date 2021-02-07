@@ -76,13 +76,21 @@
                                 <label class="col-sm-2 col-form-label">ステータス</label>
                                 <div class="col-sm-10">
                                     <div class="form-check">
-                                        {{ Form::radio('active', 1, null, ['class' => 'form-check-input', 'id' => 'active']) }}
+                                        {{ Form::radio('active', 1, null, [
+                                                'class' => 'form-check-input',
+                                                'id' => 'active',
+                                                'disabled' => App::environment('demo') ? true : false,
+                                             ]) }}
                                         <label class="form-check-label" for="active">
                                             有効
                                         </label>
                                     </div>
                                     <div class="form-check">
-                                        {{ Form::radio('active', 0, null, ['class' => 'form-check-input', 'id' => 'deactive']) }}
+                                        {{ Form::radio('active', 0, null, [
+                                                'class' => 'form-check-input',
+                                                'id' => 'deactive',
+                                                'disabled' => App::environment('demo') ? true : false,
+                                            ]) }}
                                         <label class="form-check-label" for="deactive">
                                             無効
                                         </label>
