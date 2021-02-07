@@ -131,7 +131,7 @@ class PostController extends Controller
         try {
             
             /* post update */
-            $post -> fill(request()->all())->save();    
+            $post -> fill($request->all())->save(); 
 
             /* update works */
             $this -> createWork($post -> id, request('project_id'));

@@ -22,12 +22,14 @@ Auth::routes([
     'reset' => false, // メールリマインダー機能ON
 ]);
 
-Route::get('/', [HomeController::class, 'index'])->name('home');
 
 /*
-    ログイン、アクティブユーザのみ
+ログイン、アクティブユーザのみ
 */ 
 Route::group(['middleware' => ['auth','can:active']], function () {
+    
+    Route::get('/', [HomeController::class, 'index'])->name('home');
+
     /* 
      * users ---------------------------------------
      */

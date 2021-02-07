@@ -43,15 +43,16 @@
                             <div class="form-group row">
                                 <label class="col-sm-2 col-form-label">Password</label>
                                 <div class="col-sm-10">
-                                    {{ Form::password('password',['class'=>'form-control','placeholder'=>'Password','autocomplete'=>'off']) }}
+                                    {{ Form::password('password',['class'=>'form-control '. ($errors->has('password') ? ' is-invalid' : null),'placeholder'=>'Password','autocomplete'=>'off']) }}
+                                    <span class="invalid-feedback">{{ $errors->first('password') }}</span>
                                 </div>
                             </div>
 
                             <div class="form-group row">
                                 <label class="col-sm-2 col-form-label">部署</label>
                                 <div class="col-sm-10">
-                                    {{ Form::select('division_id', $divisions,null,['class'=>'form-control','placeholder'=>'選択してください']) }}
-                                    <span class="invalid-feedback">{{ $errors->first('name') }}</span>
+                                    {{ Form::select('division_id', $divisions,null,['class'=>'form-control '. ($errors->has('division_id') ? ' is-invalid' : null),'placeholder'=>'選択してください']) }}
+                                    <span class="invalid-feedback">{{ $errors->first('division_id') }}</span>
                                 </div>
                             </div>
                             <div class="form-group row">
