@@ -119,7 +119,7 @@
                             
                             <div class="form-group row">
                                 <div class="col-sm-12 text-center">
-                                    <button type="submit" class="btn btn-success btn-lg">更新</button>
+                                    <button type="submit" class="btn btn-success btn-lg mt-2" style="min-width:200px;">更新</button>
                                 </div>
                             </div>
 

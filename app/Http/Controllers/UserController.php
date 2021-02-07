@@ -62,7 +62,7 @@ class UserController extends Controller
         makeUserImage($user,$request);
         
         toastr() -> success('ユーザを作成しました');
-        return redirect() -> route('user.show',$user -> id);
+        return redirect() -> route('user.edit',$user -> id);
     }
 
     public function show(User $user)
