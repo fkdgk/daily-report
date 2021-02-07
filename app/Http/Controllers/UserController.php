@@ -54,9 +54,12 @@ class UserController extends Controller
         ]);
     }
 
-    public function update(Request $request, $id)
+    public function update(Request $request, User $user)
     {
-        //
+        // return $request;
+        // return $user;
+        toastr() -> success('更新しました');
+        return redirect() -> back();
     }
 
     public function destroy($id)
