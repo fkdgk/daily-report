@@ -37,10 +37,17 @@ class DivisionController extends Controller
 
     public function update(Request $request, Division $division)
     {
-        // return $request;
         $request -> validate([
-            'name' => 'required',
+            'name.*' => 'required',
         ]);
+
+        foreach (request('name') as $key => $name) {
+            $division = Division::find($key);
+            $division -> name = $name;
+            $division -> save();
+        }
+
+        toastr() -> success('更新しました');
         return redirect() -> back();
     }
 

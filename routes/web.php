@@ -45,7 +45,7 @@ Route::group(['middleware' => ['auth','can:active']], function () {
      * divisions ---------------------------------------
      */
     Route::get('/divisions', [DivisionController::class, 'index'])->name('division.index');
-    Route::put('/divisions/{division}', [DivisionController::class, 'update'])->name('division.update');
+    Route::put('/divisions', [DivisionController::class, 'update'])->name('division.update');
     
     /* 
      * projects ---------------------------------------
