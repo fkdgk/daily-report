@@ -115,7 +115,7 @@
                     </div>
                     <hr>
                     @empty
-                     <p>コメントはありません</p>
+                     <p class="small text-muted">コメントはありません</p>
                     @endforelse
                     {{ Form::open(['route'=>['comment.store',$post -> id],'id'=>'comment']) }}
                         {{ Form::textarea('body',null,
@@ -132,7 +132,7 @@
                             <img src="{{ asset('img'.'/'.Auth::user()->img) }}" class="user-image user-image-m mr-1">
                             {{ Form::submit('コメントを投稿',['class'=>'btn btn-success mt-2']) }}
                         </div>
-                    {{ Form::close() }}
+                   {{ Form::close() }}
             </div>
         </div>
         
