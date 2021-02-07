@@ -58,7 +58,7 @@
                     </dl>
                 </div>
 
-                <table class="responsive nowrap table table-hover table-sm mb-3">
+                <table class="responsive nowrap table table-hover table-sm mb-3 ">
                     <thead>
                         <tr>
                             <th>プロジェクト名</th>
@@ -108,7 +108,7 @@
                                 </span>
                             </a>
                         </div>
-                        <div class="col-sm-10 small pt-2">
+                        <div class="col-sm-10 pt-2">
                             {!! nl2br(e($comment -> body)) !!}
                         </div>
                         
