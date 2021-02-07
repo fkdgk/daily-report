@@ -16,7 +16,8 @@
         <div class="col-12">
             <div class="card">
                 <div class="card-body">
-
+                    <a class="mb-2 btn btn-outline-success btn-sm float-right" href="{{ route('user.create') }}"><i class="fas fa-user-plus"></i> {{ config('app.title_user_create') }}</a>
+                    <div class="clearfix"></div>
                     <table class="table table-hover table-sm responsive nowrap">
                         <thead>
                             <th>id</th>

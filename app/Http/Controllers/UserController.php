@@ -28,12 +28,41 @@ class UserController extends Controller
 
     public function create()
     {
-        //
+        $divisions = Division::all()->pluck('name','id');
+        return view('user.create',[
+            'divisions' => $divisions,
+        ]);   
     }
 
     public function store(Request $request)
     {
-        //
+        $user = new User();
+        /* User Store Validate */
+        request()->validate([
+            'img' => 'image|mimes:jpeg,png,jpg,gif,webp|max:2048',
+            'name' => 'required|max:50',
+            'email' => 'email|unique:users',
+            'password' => 'required|min:6',
+            'division_id' => 'required',
+        ]);
+
+        $password = bcrypt(request('password'));
+        $user -> fill($request->only([
+                'img',
+                'name',
+                'email',
+                'role',
+                'division_id',
+                'active',
+            ]));
+        $user -> password = $password;
+        $user -> save();
+        
+        // 画像更新
+        makeUserImage($user,$request);
+        
+        toastr() -> success('ユーザを作成しました');
+        return redirect() -> route('user.show',$user -> id);
     }
 
     public function show(User $user)
@@ -68,7 +97,7 @@ class UserController extends Controller
         // ]);
 
         // 画像更新
-        makeUserImage($user);
+        makeUserImage($user,$request);
 
         /* update password */
         $password = request('password');

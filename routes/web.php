@@ -34,8 +34,10 @@ Route::group(['middleware' => ['auth','can:active']], function () {
      * users ---------------------------------------
      */
     Route::get('/users', [UserController::class, 'index'])->name('user.index');
+    Route::get('/users/create', [UserController::class, 'create'])->name('user.create');
     Route::get('/users/{user}', [UserController::class, 'show'])->name('user.show');
     Route::get('/users/{user}/edit', [UserController::class, 'edit'])->name('user.edit');
+    Route::post('/users', [UserController::class, 'store'])->name('user.store');
     Route::put('/users/{user}', [UserController::class, 'update'])->name('user.update');
     
     /* 

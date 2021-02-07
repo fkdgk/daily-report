@@ -69,7 +69,7 @@ class DatabaseSeeder extends Seeder
                 'email' => $faker -> safeEmail,
                 'role' => $role,
                 'active' => $active,
-                'img' => $faker->unique() -> numberBetween(10,21) . '.jpg',
+                'img' => $faker->unique() -> numberBetween(10,22) . '.jpg',
                 // 'img' => $i . '.png',
                 'division_id' => $faker -> numberBetween(1,$count_divisions),
                 'password' => bcrypt('pw1234'),
