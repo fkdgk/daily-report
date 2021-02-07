@@ -100,6 +100,10 @@ class UserController extends Controller
                 'division_id',
                 'active',
             ]))->save();
+<<<<<<< Updated upstream
+=======
+        
+>>>>>>> Stashed changes
         toastr() -> success('更新しました');
         return redirect() -> back();
     }
