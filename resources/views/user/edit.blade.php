@@ -13,15 +13,15 @@
                 <div class="card">
                     <div class="card-body">
                         {{ Form::model($user, ['route' => ['user.update', $user->id], 'method' => 'put', 'files' => true]) }}
-                            <div class="form-group row">
-                                <label class="col-sm-2 col-form-label">プロフ画像</label>
-                                
+                            
+                            <div class="form-group row align-items-center">
+                                <label class="col-sm-2 col-form-label" for="file">
+                                    <img src="{{ asset('img') . '/' . $user -> img }}" alt="Admin" class="rounded-circle" width="100">
+                                </label>
                                 <div class="col-sm-10">
-
                                     <div class="custom-file">
                                         {{ Form::file('img', ['id'=>'file' ,'class' => 'custom-file-input' . ($errors->has('img') ? ' is-invalid' : null)]) }}
                                         <span class="invalid-feedback">{{ $errors->first('img') }}</span>
-                                        {{-- <input type="file" class="custom-file-input" id="customFile"> --}}
                                         <label class="custom-file-label" for="file">Choose file</label>
                                     </div>
                                 </div>
