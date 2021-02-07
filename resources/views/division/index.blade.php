@@ -24,7 +24,11 @@
                         @foreach ($divisions as $division)
                             <tr>
                                 <td>{{ $division -> id }}</td>
-                                <td>{{ $division -> name }}</td>
+                                <td>
+                                    {{ Form::open(['route'=>['division.update',$division -> id]]) }}
+                                        {{ Form::text('name',$division -> name,['class'=>'form-control']) }}
+                                    {{ Form::close() }}
+                                </td>
                                 <td>{{ $division -> created_at }}</td>
                                 <td>{{ $division -> updated_at }}</td>
                             </tr>
