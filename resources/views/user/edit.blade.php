@@ -105,10 +105,4 @@
 
 
 @section('js')
-<script>
-    $('#file').on('change',function(e){
-        const fileName = e.target.files[0].name;
-        $('.custom-file-label').html(fileName);
-    });
-</script>
 @endsection

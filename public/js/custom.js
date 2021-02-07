@@ -1,10 +1,15 @@
+/* display File name */
+$('#file').on('change',function(e){
+    const fileName = e.target.files[0].name;
+    $('.custom-file-label').html(fileName);
+});
+
 /* form delete confirm */
 $('.delete').on('submit',function(e){
     if(!confirm('削除しますか？')){
           e.preventDefault();
     }
 });
-    
 
 /* ionRangeSlider */
 const slider = () => {
