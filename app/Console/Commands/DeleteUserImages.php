@@ -38,7 +38,7 @@ class DeleteUserImages extends Command
      */
     public function handle()
     {
-        File::delete(File::glob(public_path('img/*.png')));
+        File::delete(File::glob(public_path('img/*_*_*.*')));
         return 0;
     }
 }
