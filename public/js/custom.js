@@ -1,3 +1,10 @@
+/* form delete confirm */
+$('.copy').on('submit',function(e){
+    if(!confirm('複製しますか？')){
+          e.preventDefault();
+    }
+});
+
 /* display File name */
 $('#file').on('change',function(e){
     const fileName = e.target.files[0].name;
