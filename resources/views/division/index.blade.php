@@ -7,20 +7,18 @@
 @stop
 
 @section('content')
-{{-- {{ var_dump($errors -> all()) }} --}}
-{{ var_dump($errors -> get('name.1')) }}
-    <div class="row">
-        <div class="col-12">
-            <div class="card">
-                <div class="card-body">
-                    {{ Form::open(['route'=>['division.update'],'method'=>'put']) }}
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+                {{ Form::open(['route'=>['division.update'],'method'=>'put']) }}
                     <table class="table table-sm responsive nowrap">
                         <thead>
                             <tr>
                                 <th>id</th>
-                                <th>name</th>
-                                <th>created_at</th>
-                                <th>updated_at</th>
+                                <th>部署名</th>
+                                <th>作成日時</th>
+                                <th>更新日時</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -28,7 +26,7 @@
                             <tr>
                                 <td>{{ $division -> id }}</td>
                                 <td>
-                                    {{ Form::text('name['.$division -> id.']', $division -> name, ['class'=>'form-control'. ($errors -> get('name.'.$division -> id) ? ' is-invalid' : null)]) }}
+                                    {{ Form::text('name['.$division -> id.']', $division -> name, ['class'=>'form-control form-control-sm'. ($errors -> get('name.'.$division -> id) ? ' is-invalid' : null)]) }}
                                     <span class="invalid-feedback">{{ $errors -> first('name.'.$division -> id) }}</span>
                                 </td>
                                 <td>{{ $division -> created_at }}</td>
@@ -37,12 +35,16 @@
                         @endforeach
                         </tbody>
                     </table>
-                    {{ Form::submit('send') }}
-                    {{ Form::close() }}
-                </div>
+
+                    <div class="">
+                        {{ Form::submit('更新',['class'=>'btn btn-success mt-2','style'=>'min-width:200px;']) }}
+                    </div>
+
+                {{ Form::close() }}
             </div>
         </div>
     </div>
+</div>
 @stop
 
 
