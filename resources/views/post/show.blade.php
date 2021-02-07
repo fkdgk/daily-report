@@ -125,7 +125,10 @@
                         <span class="invalid-feedback">{{ $errors -> first('body') }}</span>
                         {{ Form::hidden('user_id',Auth::id()) }}
                         {{ Form::hidden('post_id',$post -> id) }}
-                        {{ Form::submit('コメントを投稿',['class'=>'btn btn-success mt-2']) }}
+                        <div class="mt-2">
+                            <img src="{{ asset('img'.'/'.Auth::user()->img) }}" class="user-image user-image-m mr-1">
+                            {{ Form::submit('コメントを投稿',['class'=>'btn btn-success mt-2']) }}
+                        </div>
                     {{ Form::close() }}
             </div>
         </div>

@@ -33,6 +33,12 @@ class AppServiceProvider extends ServiceProvider
             ]);
 
             $event->menu->add([
+                'text' => config('app.title_post_create'),
+                'url' => route('post.create'),
+                'icon' => 'fa fa-fw fa-plus-square mr-2',
+            ]);
+
+            $event->menu->add([
                 'text' => config('app.title_project_index'),
                 'route' => 'project.index',
                 'icon' => 'fa fa-fw fa-cog mr-2',

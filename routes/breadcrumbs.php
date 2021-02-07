@@ -44,13 +44,26 @@ Breadcrumbs::for('post.show', function ($trail,$post) {
 // Home > About
 Breadcrumbs::for('post.create', function ($trail) {
     $trail->parent('post.index');
-    $trail->push('新規作成', route('post.create'));
+    $trail->push(config('app.title_post_create'), route('post.create'));
 });
 
 // Home > About
 Breadcrumbs::for('post.edit', function ($trail,$post) {
     $trail->parent('post.show',$post);
     $trail->push('編集', route('post.edit',$post -> id));
+});
+
+
+// Home > About
+Breadcrumbs::for('project.index', function ($trail) {
+    $trail->parent('home');
+    $trail->push(config('app.title_project_index'), route('project.index'));
+});
+
+// Home > About
+Breadcrumbs::for('division.index', function ($trail) {
+    $trail->parent('home');
+    $trail->push(config('app.title_division_index'), route('division.index'));
 });
 
 // Home > Blog
