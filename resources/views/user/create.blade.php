@@ -34,7 +34,11 @@
                             <div class="form-group row">
                                 <label class="col-sm-2 col-form-label">Email</label>
                                 <div class="col-sm-10">
-                                    {{ Form::text('email', null, ['class' => 'form-control ' . ($errors->has('email') ? ' is-invalid' : null), 'placeholder' => App::environment('demo') ? config('app.demo_msg') : 'example@email.com', 'autocomplete' => 'off']) }}
+                                    {{ Form::text('email', null, [
+                                        'class' => 'form-control ' . ($errors->has('email') ? ' is-invalid' : null),
+                                        'placeholder' => 'example@email.com',
+                                        'autocomplete' => 'off',
+                                     ]) }}
                                     <span class="invalid-feedback">{{ $errors->first('email') }}</span>
                                 </div>
                             </div>
@@ -42,7 +46,10 @@
                                 <label class="col-sm-2 col-form-label">Password</label>
                                 <div class="col-sm-10">
                                     {{ Form::password('password',[
-                                            'class'=>'form-control '. ($errors->has('password') ? ' is-invalid' : null),'placeholder'=>App::environment('demo') ? config('app.demo_msg') : 'Password','autocomplete'=>'off']) }}
+                                            'class'=>'form-control '. ($errors->has('password') ? ' is-invalid' : null),
+                                            'placeholder'=>'Password',
+                                            'autocomplete'=>'off',
+                                        ]) }}
                                     <span class="invalid-feedback">{{ $errors->first('password') }}</span>
                                 </div>
                             </div>
