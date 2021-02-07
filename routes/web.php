@@ -33,6 +33,8 @@ Route::group(['middleware' => ['auth','can:active']], function () {
      */
     Route::get('/users', [UserController::class, 'index'])->name('user.index');
     Route::get('/users/{user}', [UserController::class, 'show'])->name('user.show');
+    Route::get('/users/{user}/edit', [UserController::class, 'edit'])->name('user.edit');
+    Route::put('/users/{user}', [UserController::class, 'update'])->name('user.update');
     
     /* 
      * divisions ---------------------------------------
