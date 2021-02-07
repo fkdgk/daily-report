@@ -43,7 +43,7 @@
                             <div class="form-group row">
                                 <label class="col-sm-2 col-form-label">Password</label>
                                 <div class="col-sm-10">
-                                    {{ Form::password('password',['class'=>'form-control '. ($errors->has('password') ? ' is-invalid' : null),'placeholder'=>'Password','autocomplete'=>'off']) }}
+                                    {{ Form::password('password',['class'=>'form-control '. ($errors->has('password') ? ' is-invalid' : null),'placeholder'=>'Password','autocomplete'=>'off', App::environment('demo')?'disabled':null]) }}
                                     <span class="invalid-feedback">{{ $errors->first('password') }}</span>
                                 </div>
                             </div>
