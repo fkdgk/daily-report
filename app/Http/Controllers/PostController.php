@@ -66,7 +66,6 @@ class PostController extends Controller
 
     public function show(Post $post)
     {
-
         $prev = Post::prev($post)->first();
         $next = Post::next($post)->first();
         $works = Work::where('post_id', $post->id)->get();
@@ -124,32 +123,43 @@ class PostController extends Controller
 
     public function copy(Request $request, Post $post)
     {
-        /* copy post */
-        $old_id = $post -> id;
-        $old_post = Post::find($old_id);
+        DB::beginTransaction();
+        try {
 
-        $new_post = $old_post
-                  -> replicate()
-                  -> fill([
-                        'user_id' => Auth::id(),
-                        'work_date' => date('Y-m-d'),
-                     ]);
-        $new_post->save();
-        $new_id = $new_post -> id;
+            /* copy post */
+            $old_id = $post -> id;
+            $old_post = Post::find($old_id);
 
-        /* copy work */
-        $old_works= Work::where('post_id',$old_id)->get();
-        foreach ($old_works as $old_work) {
-            $new_work = $old_work
-                      -> replicate()
-                      -> fill([
-                          'user_id' => Auth::id(),
-                          'post_id' => $new_post -> id,
-                      ]);
-            $new_work -> save();
+            $new_post = $old_post
+                    -> replicate()
+                    -> fill([
+                            'user_id' => Auth::id(),
+                            'work_date' => date('Y-m-d'),
+                        ]);
+            $new_post->save();
+            $new_id = $new_post -> id;
+
+            /* copy work */
+            $old_works= Work::where('post_id',$old_id)->get();
+            foreach ($old_works as $old_work) {
+                $new_work = $old_work
+                        -> replicate()
+                        -> fill([
+                            'user_id' => Auth::id(),
+                            'post_id' => $new_post -> id,
+                        ]);
+                $new_work -> save();
+            }
+
+            toastr() -> success('新規作成しました');
+            DB::commit();
+
+        } catch (\Exception $e) {
+            toastr() -> error('エラーが発生しました');
+            DB::rollback();
+            return redirect() -> back();
         }
 
-        toastr() -> success('複製しました');
         return redirect() -> route('post.show',$new_id);
     }
 
