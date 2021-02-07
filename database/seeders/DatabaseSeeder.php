@@ -87,8 +87,8 @@ class DatabaseSeeder extends Seeder
          * 
          */
 
-        $user_count = 15;
-        $photo_count = 22;
+        $user_count = 15; // ユーザ数
+        $photo_count = 22; // public/imgに保存されている画像
 
         for ($i=0; $i < $user_count; $i++) { 
 
