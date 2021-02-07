@@ -1,6 +1,7 @@
 <?php
 
 return [
+    'demo_msg' => 'DEMO環境のため変更できません',
     'asset_ver' => date('YmdH'),
     'title_home' => 'TOP',    
     'title_division_index' => '部署 一覧',

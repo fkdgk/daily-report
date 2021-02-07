@@ -36,14 +36,16 @@
                             <div class="form-group row">
                                 <label class="col-sm-2 col-form-label">Email</label>
                                 <div class="col-sm-10">
-                                    {{ Form::text('email', null, ['class' => 'form-control ' . ($errors->has('email') ? ' is-invalid' : null), 'placeholder' => App::environment('demo')?'DEMO環境のため変更できません':'example@email.com', 'autocomplete' => 'off', 'disabled'=>App::environment('demo')?true:false]) }}
+                                    {{ Form::text('email', null, ['class' => 'form-control ' . ($errors->has('email') ? ' is-invalid' : null), 'placeholder' => App::environment('demo') ? config('app.demo_msg') : 'example@email.com', 'autocomplete' => 'off', 'disabled'=>App::environment('demo') ? true:false]) }}
                                     <span class="invalid-feedback">{{ $errors->first('email') }}</span>
                                 </div>
                             </div>
                             <div class="form-group row">
                                 <label class="col-sm-2 col-form-label">Password</label>
                                 <div class="col-sm-10">
-                                    {{ Form::password('password',['class'=>'form-control '. ($errors->has('password') ? ' is-invalid' : null),'placeholder'=>App::environment('demo')?'DEMO環境のため変更できません':'Password','autocomplete'=>'off','disabled'=>App::environment('demo')?true:false]) }}
+                                    {{ Form::password('password',[
+                                            'class'=>'form-control '. ($errors->has('password') ? ' is-invalid' : null),'placeholder'=>App::environment('demo') ? config('app.demo_msg') : 'Password','autocomplete'=>'off','disabled'=>App::environment('demo') ? true:false
+                                        ]) }}
                                     <span class="invalid-feedback">{{ $errors->first('password') }}</span>
                                 </div>
                             </div>
@@ -51,7 +53,10 @@
                             <div class="form-group row">
                                 <label class="col-sm-2 col-form-label">部署</label>
                                 <div class="col-sm-10">
-                                    {{ Form::select('division_id', $divisions,null,['class'=>'form-control '. ($errors->has('division_id') ? ' is-invalid' : null),'placeholder'=>'選択してください']) }}
+                                    {{ Form::select('division_id', $divisions,null,[
+                                            'class'=>'form-control '. ($errors->has('division_id') ? ' is-invalid' : null),
+                                            'placeholder'=>'選択してください',
+                                        ]) }}
                                     <span class="invalid-feedback">{{ $errors->first('division_id') }}</span>
                                 </div>
                             </div>
@@ -59,16 +64,25 @@
                                 <label class="col-sm-2 col-form-label">権限</label>
                                 <div class="col-sm-10">
                                     <div class="form-check">
-                                        {{ Form::radio('role', 'user', null, ['class' => 'form-check-input', 'id' => 'user']) }}
+                                        {{ Form::radio('role', 'user', null, [
+                                            'class' => 'form-check-input',
+                                            'id' => 'user',
+                                            'disabled'=> App::environment('demo')?true:false,
+                                        ]) }}
                                         <label class="form-check-label" for="user">
                                             ユーザ
                                         </label>
                                     </div>
                                     <div class="form-check">
-                                        {{ Form::radio('role', 'admin', null, ['class' => 'form-check-input', 'id' => 'admin']) }}
+                                        {{ Form::radio('role', 'admin', null, [
+                                                'class' => 'form-check-input',
+                                                'id' => 'admin',
+                                                'disabled'=> App::environment('demo')?true:false,
+                                            ]) }}
                                         <label class="form-check-label" for="admin">
                                             管理者
                                         </label>
+                                        {!! App::environment('demo')?'<span class="small text-danger">' . config('app.demo_msg') . '</span>':null !!}
                                     </div>
                                 </div>
                             </div>
@@ -94,6 +108,7 @@
                                         <label class="form-check-label" for="deactive">
                                             無効
                                         </label>
+                                        {!! App::environment('demo')?'<span class="small text-danger">' . config('app.demo_msg') . '</span>':null !!}
                                     </div>
                                 </div>
                             </div>
