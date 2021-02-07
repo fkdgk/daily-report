@@ -11,6 +11,11 @@
     <div class="col-12">
         <div class="card">
             <div class="card-body">
+                {{ Form::open(['route'=>'division.store','class'=>'form-inline mb-2']) }}
+                    {{ Form::text('name',null,['placeholder'=>'部署名','class'=>'form-control mr-2'. ($errors->has('name') ? ' is-invalid' : null)]) }}
+                    {{ Form::submit('新規作成',['class'=>'btn btn-success']) }}
+                    <span class="invalid-feedback">{{ $errors -> first('name') }}</span>
+                {{ Form::close() }}
                 {{ Form::open(['route'=>['division.update'],'method'=>'put']) }}
                     <table class="table table-sm responsive nowrap table-hover">
                         <thead>
