@@ -36,14 +36,14 @@
                             <div class="form-group row">
                                 <label class="col-sm-2 col-form-label">Email</label>
                                 <div class="col-sm-10">
-                                    {{ Form::text('email', null, ['class' => 'form-control ' . ($errors->has('email') ? ' is-invalid' : null), 'placeholder' => 'example@email.com', 'autocomplete' => 'off']) }}
+                                    {{ Form::text('email', null, ['class' => 'form-control ' . ($errors->has('email') ? ' is-invalid' : null), 'placeholder' => App::environment('demo')?'DEMO環境のため変更できません':'example@email.com', 'autocomplete' => 'off', 'disabled'=>App::environment('demo')?true:false]) }}
                                     <span class="invalid-feedback">{{ $errors->first('email') }}</span>
                                 </div>
                             </div>
                             <div class="form-group row">
                                 <label class="col-sm-2 col-form-label">Password</label>
                                 <div class="col-sm-10">
-                                    {{ Form::password('password',['class'=>'form-control '. ($errors->has('password') ? ' is-invalid' : null),'placeholder'=>App::environment('demo')?'DEMO環境のため変更できません':'Password','autocomplete'=>'off', App::environment('demo')?'disabled':null]) }}
+                                    {{ Form::password('password',['class'=>'form-control '. ($errors->has('password') ? ' is-invalid' : null),'placeholder'=>App::environment('demo')?'DEMO環境のため変更できません':'Password','autocomplete'=>'off','disabled'=>App::environment('demo')?true:false]) }}
                                     <span class="invalid-feedback">{{ $errors->first('password') }}</span>
                                 </div>
                             </div>
