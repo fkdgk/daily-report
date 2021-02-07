@@ -46,6 +46,7 @@ Route::group(['middleware' => ['auth','can:active']], function () {
      */
     Route::get('/divisions', [DivisionController::class, 'index'])->name('division.index');
     Route::put('/divisions', [DivisionController::class, 'update'])->name('division.update');
+    Route::delete('/divisions', [DivisionController::class, 'destroy'])->name('division.destroy');
     
     /* 
      * projects ---------------------------------------

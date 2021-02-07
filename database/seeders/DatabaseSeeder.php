@@ -23,14 +23,41 @@ class DatabaseSeeder extends Seeder
         $faker = \Faker\Factory::create('ja_JP');
 
         $divisions = [
-            "ITマネジメント部",
+            "財務部",
             "ソリューション部",
             "人事部",
-            "経理部",
-            "営業部",
-            "マーケティング部",
-            "システム部",
+            "物流部",
+            "IT部",
+            "技術部",
+            "購買部",
+            "品質保証部",
+            "知的財産部",
             "製造部",
+            "開発部",
+            "経理部",
+            "資材部",
+            "法務部",
+            "販売促進部",
+            "広報部",
+            "流通部門",
+            "企画開発部",
+            "研究室",
+            "営業推進部",
+            "調査部",
+            "マーケティング部",
+            "調達課",
+            "システム部",
+            "総務部",
+            "生産技術部",
+            "新事業企画部",
+            "生産安全基盤部",
+            "社長室",
+            "ITマネジメント部",
+            "営業部",
+            "CSR部",
+            "秘書室",
+            "宣伝部",
+            "輸出部",
         ];
 
         $count_divisions = count($divisions);
@@ -39,8 +66,13 @@ class DatabaseSeeder extends Seeder
             Division::create(['name'=>$division]);
         }
 
+        /*
+         * -----------------------------------
+         * create demo user
+         * 
+         */
         User::create([
-            'img' => $faker -> numberBetween(1,10) . '.jpg',
+            'img' => $faker -> numberBetween(1,5) . '.jpg',
             'name' => $faker -> name,
             'role' => 'admin',
             'email' => 'demo@example.com',
@@ -48,7 +80,17 @@ class DatabaseSeeder extends Seeder
             'password' => bcrypt('pw1234'),
         ]);
 
-        for ($i=0; $i < 9; $i++) { 
+
+        /*
+         * -----------------------------------
+         * users
+         * 
+         */
+
+        $user_count = 15;
+        $photo_count = 22;
+
+        for ($i=0; $i < $user_count; $i++) { 
 
             /* ユーザ権限 */
             if(($i % 5)==0 ){
@@ -69,20 +111,20 @@ class DatabaseSeeder extends Seeder
                 'email' => $faker -> safeEmail,
                 'role' => $role,
                 'active' => $active,
-                'img' => $faker->unique() -> numberBetween(10,22) . '.jpg',
+                'img' => $faker->unique() -> numberBetween(6, $photo_count) . '.jpg',
                 // 'img' => $i . '.png',
-                'division_id' => $faker -> numberBetween(1,$count_divisions),
+                'division_id' => $faker -> numberBetween(1, $count_divisions),
                 'password' => bcrypt('pw1234'),
             ]);
         }
 
-        for ($i=0; $i < 100; $i++) { 
+        for ($i=0; $i < 200; $i++) { 
             Post::create([
                 'work_date' => Carbon::parse(date('Y-m-d'))->addDay( - $faker->randomNumber(2)) -> format('Y-m-d'),
                 'start_time' => $faker -> numberBetween(9,10) . ':' . $faker ->  numberBetween(1,59) . ':' . '00',
                 'finish_time' => $faker -> numberBetween(16,19) . ':' . $faker -> numberBetween(1,59) . ':' . '00',
                 'body' => $faker -> realText,
-                'user_id' => $faker -> numberBetween(1,10),
+                'user_id' => $faker -> numberBetween(1, $user_count),
             ]);
         }
 
@@ -131,7 +173,7 @@ class DatabaseSeeder extends Seeder
 
         /*
         * ----------------------------------------------------------
-        * works
+        * comments
         */
         $users = User::all()->pluck('id')->toArray();
         foreach ($posts as $post) {
