@@ -48,7 +48,6 @@ class UserController extends Controller
 
         $password = bcrypt(request('password'));
         $user -> fill($request->only([
-                'img',
                 'name',
                 'email',
                 'role',
