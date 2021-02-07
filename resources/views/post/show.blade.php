@@ -15,7 +15,10 @@
                 {!! ($prev)? '<a href="'. route('post.show', $prev) .'" class="btn btn-default btn-sm"><i class="fa fa-chevron-left"></i> Prev</a>' :null !!}
                 {!! ($next)? '<a href="'. route('post.show', $next) .'" class="btn btn-default btn-sm">Next <i class="fa fa-chevron-right"></i></a>' :null !!}
             </div>
-            <div>
+            <div class="d-flex">
+                    {{ Form::open(['route'=>['post.copy', $post -> id],'class'=>'copy mr-2']) }}
+                        {!! Form::button('<i class="fa fa-clone"></i> 日報を複製',['type'=>'submit','class'=>'btn btn-outline-dark btn-sm']) !!}
+                    {{ Form::close() }}
                 {{-- @if (Auth::id()==$post->user_id) --}}
                     <a href="{{ route('post.edit', $post -> id) }}" class="btn btn-sm btn-outline-success"><i class="fa fa-edit"></i> 日報を編集</a> 
                 {{-- @endif --}}

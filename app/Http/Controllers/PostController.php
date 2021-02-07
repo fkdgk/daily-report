@@ -122,6 +122,37 @@ class PostController extends Controller
         ]);
     }
 
+    public function copy(Request $request, Post $post)
+    {
+        /* copy post */
+        $old_id = $post -> id;
+        $old_post = Post::find($old_id);
+
+        $new_post = $old_post
+                  -> replicate()
+                  -> fill([
+                        'user_id' => Auth::id(),
+                        'work_date' => date('Y-m-d'),
+                     ]);
+        $new_post->save();
+        $new_id = $new_post -> id;
+
+        /* copy work */
+        $old_works= Work::where('post_id',$old_id)->get();
+        foreach ($old_works as $old_work) {
+            $new_work = $old_work
+                      -> replicate()
+                      -> fill([
+                          'user_id' => Auth::id(),
+                          'post_id' => $new_post -> id,
+                      ]);
+            $new_work -> save();
+        }
+
+        toastr() -> success('複製しました');
+        return redirect() -> route('post.show',$new_id);
+    }
+
     public function update(Request $request, Post $post)
     {
         
