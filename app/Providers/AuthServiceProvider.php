@@ -30,11 +30,11 @@ class AuthServiceProvider extends ServiceProvider
         });
 
         Gate::define('user',function($user){
-            return $user -> user;
+            return $user -> role == 'user';
         });
         
         Gate::define('admin',function($user){
-            return $user -> admin;
+            return $user -> role == 'admin';
         });
         //
     }

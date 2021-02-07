@@ -67,7 +67,7 @@
                 </div>
             </div>
             <div class="col mt-4">
-                <h5>日報</h5>
+                <h5 class="float-left">日報</h5>
                 @include('post.posts')
             </div>
         </div>
