@@ -22,7 +22,16 @@ class DivisionController extends Controller
 
     public function store(Request $request)
     {
-        //
+        $request -> validate([
+            'name' => 'required',
+        ]);
+
+        Division::create([
+            'name' => request('name'),
+        ]);
+        
+        toastr()->success('部署を追加しました');
+        return redirect() -> back();
     }
 
     public function show(Division $division)
