@@ -18,9 +18,9 @@
                             <thead>
                                 <tr>
                                     <th>id</th>
-                                    <th>name</th>
-                                    <th>created_at</th>
-                                    <th>updated_at</th>
+                                    <th>部署名</th>
+                                    <th>作成日時</th>
+                                    <th>更新日時</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -28,7 +28,7 @@
                                 <tr>
                                     <td>{{ $division -> id }}</td>
                                     <td>
-                                        {{ Form::text('name['.$division -> id.']', $division -> name, ['class'=>'form-control'. ($errors -> get('name.'.$division -> id) ? ' is-invalid' : null)]) }}
+                                        {{ Form::text('name['.$division -> id.']', $division -> name, ['class'=>'form-control form-control-sm'. ($errors -> get('name.'.$division -> id) ? ' is-invalid' : null)]) }}
                                         <span class="invalid-feedback">{{ $errors -> first('name.'.$division -> id) }}</span>
                                     </td>
                                     <td>{{ $division -> created_at }}</td>
