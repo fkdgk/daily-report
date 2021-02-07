@@ -14,30 +14,34 @@
             <div class="card">
                 <div class="card-body">
                     {{ Form::open(['route'=>['division.update'],'method'=>'put']) }}
-                    <table class="table table-sm responsive nowrap">
-                        <thead>
-                            <tr>
-                                <th>id</th>
-                                <th>name</th>
-                                <th>created_at</th>
-                                <th>updated_at</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                        @foreach ($divisions as $division)
-                            <tr>
-                                <td>{{ $division -> id }}</td>
-                                <td>
-                                    {{ Form::text('name['.$division -> id.']', $division -> name, ['class'=>'form-control'. ($errors -> get('name.'.$division -> id) ? ' is-invalid' : null)]) }}
-                                    <span class="invalid-feedback">{{ $errors -> first('name.'.$division -> id) }}</span>
-                                </td>
-                                <td>{{ $division -> created_at }}</td>
-                                <td>{{ $division -> updated_at }}</td>
-                            </tr>
-                        @endforeach
-                        </tbody>
-                    </table>
-                    {{ Form::submit('send') }}
+                        <table class="table table-sm responsive nowrap">
+                            <thead>
+                                <tr>
+                                    <th>id</th>
+                                    <th>name</th>
+                                    <th>created_at</th>
+                                    <th>updated_at</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            @foreach ($divisions as $division)
+                                <tr>
+                                    <td>{{ $division -> id }}</td>
+                                    <td>
+                                        {{ Form::text('name['.$division -> id.']', $division -> name, ['class'=>'form-control'. ($errors -> get('name.'.$division -> id) ? ' is-invalid' : null)]) }}
+                                        <span class="invalid-feedback">{{ $errors -> first('name.'.$division -> id) }}</span>
+                                    </td>
+                                    <td>{{ $division -> created_at }}</td>
+                                    <td>{{ $division -> updated_at }}</td>
+                                </tr>
+                            @endforeach
+                            </tbody>
+                        </table>
+
+                        <div class="">
+                            {{ Form::submit('更新',['class'=>'btn btn-success mt-2','style'=>'min-width:200px;']) }}
+                        </div>
+
                     {{ Form::close() }}
                 </div>
             </div>
