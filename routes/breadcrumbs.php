@@ -14,7 +14,13 @@ Breadcrumbs::for('user.index', function ($trail) {
 // Home > About
 Breadcrumbs::for('user.show', function ($trail,$user) {
     $trail->parent('user.index');
-    $trail->push($user->name, route('user.show',$user->id));
+    $trail->push($user -> name, route('user.show',$user->id));
+});
+
+// Home > About
+Breadcrumbs::for('user.edit', function ($trail, $user) {
+    $trail->parent('user.show', $user);
+    $trail->push(config('app.title_user_edit'), route('user.edit', $user -> id));
 });
 
 // Home > About

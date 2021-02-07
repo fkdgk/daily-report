@@ -8,6 +8,7 @@ return [
     'title_post_index' => 'My日報',
     'title_post_create' => '日報 新規作成',
     'title_project_index' => 'プロジェクト 一覧',
+    'title_user_edit' => 'プロフィール 編集',
     /*
     |--------------------------------------------------------------------------
     | Application Name
