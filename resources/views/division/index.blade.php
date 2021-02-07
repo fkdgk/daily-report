@@ -25,8 +25,9 @@
                             <tr>
                                 <td>{{ $division -> id }}</td>
                                 <td>
-                                    {{ Form::open(['route'=>['division.update',$division -> id]]) }}
-                                        {{ Form::text('name',$division -> name,['class'=>'form-control']) }}
+                                    {{ Form::open(['route'=>['division.update',$division -> id],'method'=>'put']) }}
+                                        {{ Form::text('name',$division -> name,['class'=>'form-control'. ($errors->has('name') ? ' is-invalid' : null)]) }}
+                                        <span class="invalid-feedback">{{ $errors -> first('name') }}</span>
                                     {{ Form::close() }}
                                 </td>
                                 <td>{{ $division -> created_at }}</td>

@@ -37,7 +37,11 @@ class DivisionController extends Controller
 
     public function update(Request $request, Division $division)
     {
-        //
+        // return $request;
+        $request -> validate([
+            'name' => 'required',
+        ]);
+        return redirect() -> back();
     }
 
     public function destroy(Division $division)
