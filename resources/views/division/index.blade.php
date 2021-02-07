@@ -12,7 +12,7 @@
         <div class="card">
             <div class="card-body">
                 {{ Form::open(['route'=>['division.update'],'method'=>'put']) }}
-                    <table class="table table-sm responsive nowrap">
+                    <table class="table table-sm responsive nowrap table-hover">
                         <thead>
                             <tr>
                                 <th>id</th>
