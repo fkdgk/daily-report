@@ -7,6 +7,7 @@ use App\Models\Post;
 use App\Models\Division;
 use Illuminate\Http\Request;
 use App\Http\Requests\UpdateUser;
+use App\Http\Requests\StoreUser;
 use Illuminate\Support\Facades\Auth;
 use Intervention\Image\Facades\Image;
 
@@ -34,17 +35,9 @@ class UserController extends Controller
         ]);   
     }
 
-    public function store(Request $request)
+    public function store(StoreUser $request)
     {
         $user = new User();
-        /* User Store Validate */
-        request()->validate([
-            'img' => 'image|mimes:jpeg,png,jpg,gif,webp|max:2048',
-            'name' => 'required|max:50',
-            'email' => 'email|unique:users',
-            'password' => 'required|min:6',
-            'division_id' => 'required',
-        ]);
 
         $password = bcrypt(request('password'));
         $user -> fill($request->only([
