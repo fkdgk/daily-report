@@ -67,6 +67,7 @@ class UserController extends Controller
             // 'division_id' => 'required',
         // ]);
 
+        // 画像更新
         makeUserImage($user);
 
         /* update password */

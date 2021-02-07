@@ -25,13 +25,12 @@ class UpdateUser extends FormRequest
      */
     public function rules()
     {
+        // IDを取得
         $id = $this -> user -> id;
-
         return [
             'img' => 'image|mimes:jpeg,png,jpg,gif,webp|max:2048',
             'name' => 'required|max:50',
-            'email' => 'email|unique:users,email,' . $id,
-            // 'email' => 'email|unique:users,email,' . $user->id,
+            'email' => 'email|unique:users,email,' . $id, // $user->id を 変更
             'password' => 'sometimes|nullable|min:6',
             'division_id' => 'required',
         ];
