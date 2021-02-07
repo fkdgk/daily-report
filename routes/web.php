@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\UserController;
@@ -44,6 +45,7 @@ Route::group(['middleware' => ['auth','can:active']], function () {
      * divisions ---------------------------------------
      */
     Route::get('/divisions', [DivisionController::class, 'index'])->name('division.index');
+    Route::put('/divisions', [DivisionController::class, 'update'])->name('division.update');
     
     /* 
      * projects ---------------------------------------
