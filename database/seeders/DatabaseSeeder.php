@@ -66,8 +66,13 @@ class DatabaseSeeder extends Seeder
             Division::create(['name'=>$division]);
         }
 
+        /*
+         * -----------------------------------
+         * create demo user
+         * 
+         */
         User::create([
-            'img' => $faker -> numberBetween(1,10) . '.jpg',
+            'img' => $faker -> numberBetween(1,5) . '.jpg',
             'name' => $faker -> name,
             'role' => 'admin',
             'email' => 'demo@example.com',
@@ -75,7 +80,17 @@ class DatabaseSeeder extends Seeder
             'password' => bcrypt('pw1234'),
         ]);
 
-        for ($i=0; $i < 9; $i++) { 
+
+        /*
+         * -----------------------------------
+         * users
+         * 
+         */
+
+        $user_count = 15;
+        $photo_count = 22;
+
+        for ($i=0; $i < $user_count; $i++) { 
 
             /* ユーザ権限 */
             if(($i % 5)==0 ){
@@ -96,20 +111,20 @@ class DatabaseSeeder extends Seeder
                 'email' => $faker -> safeEmail,
                 'role' => $role,
                 'active' => $active,
-                'img' => $faker->unique() -> numberBetween(10,22) . '.jpg',
+                'img' => $faker->unique() -> numberBetween(6, $photo_count) . '.jpg',
                 // 'img' => $i . '.png',
-                'division_id' => $faker -> numberBetween(1,$count_divisions),
+                'division_id' => $faker -> numberBetween(1, $count_divisions),
                 'password' => bcrypt('pw1234'),
             ]);
         }
 
-        for ($i=0; $i < 100; $i++) { 
+        for ($i=0; $i < 200; $i++) { 
             Post::create([
                 'work_date' => Carbon::parse(date('Y-m-d'))->addDay( - $faker->randomNumber(2)) -> format('Y-m-d'),
                 'start_time' => $faker -> numberBetween(9,10) . ':' . $faker ->  numberBetween(1,59) . ':' . '00',
                 'finish_time' => $faker -> numberBetween(16,19) . ':' . $faker -> numberBetween(1,59) . ':' . '00',
                 'body' => $faker -> realText,
-                'user_id' => $faker -> numberBetween(1,10),
+                'user_id' => $faker -> numberBetween(1, $user_count),
             ]);
         }
 
@@ -158,7 +173,7 @@ class DatabaseSeeder extends Seeder
 
         /*
         * ----------------------------------------------------------
-        * works
+        * comments
         */
         $users = User::all()->pluck('id')->toArray();
         foreach ($posts as $post) {
