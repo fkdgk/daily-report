@@ -98,10 +98,10 @@
                 @forelse ($comments as $comment)
                     <div class="row" id="a{{ $comment -> id }}">
                         <div class="col-sm-2">
-                            <a href="{{ route('user.show', $comment -> user -> id) }}" class="text-dark">
-                                <img src="{{ asset('img'). '/' . $comment -> user -> img  }}" class="user-image user-image-m">
+                            <a href="{{ route('user.show', @$comment -> user -> id) }}" class="text-dark">
+                                <img src="{{ @$comment -> user -> getImage()  }}" class="user-image user-image-m">
                                 <span class="d-block small mt-1">
-                                    {{ $comment -> user -> name }}
+                                    {{ @$comment -> user -> name }}
                                 </span>
                                 <span class="text-muted small d-block">
                                     {{ $comment -> created_at }}
@@ -129,7 +129,8 @@
                         {{ Form::hidden('user_id',Auth::id()) }}
                         {{ Form::hidden('post_id',$post -> id) }}
                         <div class="mt-2">
-                            <img src="{{ asset('img'.'/'.Auth::user()->img) }}" class="user-image user-image-m mr-1">
+                            {{-- <img src="{{ asset('img'.'/'.Auth::user()->img) }}" class="user-image user-image-m mr-1"> --}}
+                            {{-- <img src="{{ asset('img'.'/'.Auth::user()->img) }}" class="user-image user-image-m mr-1"> --}}
                             {{ Form::submit('コメントを投稿',['class'=>'btn btn-success mt-2']) }}
                         </div>
                    {{ Form::close() }}
@@ -143,9 +144,10 @@
             <div class="card-body">
                 <div class="text-center">
                     <a href="{{ route('user.show', $post -> user_id) }}" class="text-dark">
-                        <img src="{{ asset('img') . '/' . $post -> user -> img }}" class="text-center rounded-circle w-25 h-25" >
-                        <h5 class="pt-3 mb-1">{{ $post -> user -> name }}</h5>
-                        <span class="small">{{ ($post -> user -> division)? $post -> user -> division -> name :null }}</span>
+                        <img src="{{ @$post -> user -> getImage() }}" class="text-center rounded-circle w-25 h-25" >
+                        {{-- <img src="{{ asset('img') . '/' . $post -> user -> img }}" class="text-center rounded-circle w-25 h-25" > --}}
+                        <h5 class="pt-3 mb-1">{{ @$post -> user -> name }}</h5>
+                        <span class="small">{{ @$post -> user -> division -> name }}</span>
                     </a>
                 </div>
             </div>

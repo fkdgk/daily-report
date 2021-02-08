@@ -40,12 +40,13 @@
                                     </td>
                                     <td class="">
                                         <span class="small ml-2 text-nowrap">
-                                            {{ ($user -> division) ? $user -> division -> name : null }}
+                                            {{ @$user -> division -> name }}
                                         </span>
                                     </td>
                                     
                                     <td class="text-right">
-                                       <span class="small text-nowrap">{{ count(App\Models\Post::where('user_id',$user->id)->get()) }} 投稿</span>
+                                       <span class="small text-nowrap">{{ $user -> getPostCount() }} 投稿</span>
+                                       {{-- <span class="small text-nowrap">{{ count(App\Models\Post::where('user_id',$user->id)->get()) }} 投稿</span> --}}
                                     </td>
                                 </tr>
                             @endforeach
@@ -56,13 +57,3 @@
         </div>
     </div>
 @stop
-
-
-@section('css')
-<style></style>
-@endsection
-
-@section('js')
-<script>
-</script>
-@endsection
