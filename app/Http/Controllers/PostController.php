@@ -71,7 +71,8 @@ class PostController extends Controller
         // $works = Work::where('post_id', $post->id)->get(); // opt 1
         // $works = $post -> works() -> get();// opt 2
         $works = $post -> works; // opt 3
-        $comments = Comment::where('post_id',$post -> id)->get();
+        // $comments = Comment::where('post_id',$post -> id)->get(); // opt 1
+        $comments = $post -> comments;  // opt 2
 
         return view('post.show',[
             'post' => $post,
@@ -84,7 +85,8 @@ class PostController extends Controller
 
     public function edit(Post $post)
     {
-        $works = Work::where('post_id', $post->id)->get();
+        // $works = Work::where('post_id', $post->id)->get();
+        $works = $post -> works;
         $projects = Project::select();
         return view('post.edit',[
             'post' => $post,
