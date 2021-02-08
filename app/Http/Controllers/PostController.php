@@ -68,7 +68,9 @@ class PostController extends Controller
     {
         $prev = Post::prev($post)->first();
         $next = Post::next($post)->first();
-        $works = Work::where('post_id', $post->id)->get();
+        // $works = Work::where('post_id', $post->id)->get(); // opt 1
+        // $works = $post -> works() -> get();// opt 2
+        $works = $post -> works; // opt 3
         $comments = Comment::where('post_id',$post -> id)->get();
 
         return view('post.show',[
