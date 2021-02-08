@@ -13,6 +13,15 @@ class User extends Authenticatable
 {
     use HasFactory, Notifiable;
 
+    public function getImage()
+    {
+        return asset('img') . '/' . $this -> img;
+    }
+
+    public function getPostCount()
+    {
+        return Post::where('user_id',$this -> id) ->get() -> count();
+    }
     
     /* 
      * adminlte settings

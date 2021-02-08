@@ -22,7 +22,7 @@
                     </td>
                     <td class="text-nowrap">
                         <a href="{{ route('post.show', $post -> id ) }}" class="text-dark">
-                            {{ ($post -> user -> division)? $post -> user -> division -> name :null }}
+                            {{ @$post -> user -> division -> name }}
                         </a>
                     </td>
                     <td>{{ $post -> work_date }}</td>

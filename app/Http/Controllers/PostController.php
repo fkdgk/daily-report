@@ -164,7 +164,7 @@ class PostController extends Controller
             return redirect() -> back();
         }
 
-        return redirect() -> route('post.show',$new_id);
+        return redirect() -> route('post.edit',$new_id);
     }
 
     public function update(Request $request, Post $post)
