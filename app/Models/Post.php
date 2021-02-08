@@ -16,6 +16,16 @@ class Post extends Model
         'body', 
     ];
 
+    public function works()
+    {
+        return $this -> hasMany('App\Models\Work');
+    }
+
+    public function comments()
+    {
+        return $this -> hasMany('App\Models\Comment');
+    }
+
     public function user()
     {
         return $this -> belongsTo('App\Models\User');
