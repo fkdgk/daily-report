@@ -46,7 +46,8 @@ class User extends Authenticatable
 
     public function adminlte_desc()
     {
-        return ($this -> division) ? $this -> division -> name :null;
+        return @$this -> division -> name;
+        // return ($this -> division) ? $this -> division -> name :null;
     }
 
     public function adminlte_profile_url()
