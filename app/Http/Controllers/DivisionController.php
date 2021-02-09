@@ -10,7 +10,7 @@ class DivisionController extends Controller
 {
     public function index()
     {
-        $divisions = Division::all();
+        $divisions = Division::orderBy('id','desc')->get();
         return view('division.index',[
             'divisions' => $divisions,
         ]);
