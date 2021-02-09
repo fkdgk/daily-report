@@ -19,9 +19,9 @@
                     {{ Form::open(['route'=>['post.copy', $post -> id],'class'=>'copy mr-2']) }}
                         {!! Form::button('<i class="fa fa-clone"></i> 日報を複製',['type'=>'submit','class'=>'btn btn-outline-dark btn-sm']) !!}
                     {{ Form::close() }}
-                {{-- @if (Auth::id()==$post->user_id) --}}
+                @if (Auth::id()==$post->user_id)
                     <a href="{{ route('post.edit', $post -> id) }}" class="btn btn-sm btn-outline-success"><i class="fa fa-edit"></i> 日報を編集</a> 
-                {{-- @endif --}}
+                @endif
             </div>
         </div>
     </div>
