@@ -9,6 +9,7 @@
                 <th class="text-nowrap">出勤</th>
                 <th class="text-nowrap">退勤</th>
                 <th class="text-nowrap">勤務時間</th>
+                <th class="text-nowrap">作成日時</th>
                 <th class="text-nowrap">詳細</th>
             </tr>
         </thead>
@@ -29,6 +30,7 @@
                     <td>{{ formatTime($post -> start_time) }}</td>
                     <td>{{ formatTime($post -> finish_time) }}</td>
                     <td>{{ sumTime($post -> start_time,$post -> finish_time) }}</td>
+                    <td class="small">{{ $post -> created_at }}</td>
                     <td>
                         <a class="btn btn-xs btn-outline-primary text-nowrap" href="{{ route('post.show', $post -> id) }}"> 詳細</a>
                     </td>

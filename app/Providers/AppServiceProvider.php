@@ -39,15 +39,21 @@ class AppServiceProvider extends ServiceProvider
             ]);
 
             $event->menu->add([
-                'text' => config('app.title_project_index'),
-                'route' => 'project.index',
-                'icon' => 'fa fa-fw fa-cog mr-2',
+                'text' => config('app.title_user_profile'),
+                'url' => route('user.show',Auth::id()),
+                'icon' => 'fa fa-fw fa-user mr-2',
             ]);
-            
+
             $event->menu->add([
                 'text' => config('app.title_user_index'),
                 'route' => 'user.index',
                 'icon' => 'fa fa-fw fa-users mr-2',
+            ]);
+
+            $event->menu->add([
+                'text' => config('app.title_project_index'),
+                'route' => 'project.index',
+                'icon' => 'fa fa-fw fa-cog mr-2',
             ]);
 
             $event->menu->add([

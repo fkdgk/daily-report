@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Division;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class DivisionController extends Controller
 {
@@ -50,13 +51,24 @@ class DivisionController extends Controller
             'name.*' => 'required',
         ]);
 
-        foreach (request('name') as $key => $name) {
-            $division = Division::find($key);
-            $division -> name = $name;
-            $division -> save();
+        if(!request('name')){
+            toastr() -> error('データがありません');
+            return redirect() -> back();
         }
-
-        toastr() -> success('更新しました');
+        
+        DB::beginTransaction(); // ここまでロールバック
+        try {
+            foreach (request('name') as $key => $name) {
+                $division = Division::find($key);
+                $division -> name = $name;
+                $division -> save();
+            }
+            toastr() -> success('更新しました');
+            DB::commit();
+        } catch (\Exception $e) {
+            // 失敗
+            DB::rollback();
+        }
         return redirect() -> back();
     }
 

@@ -13,6 +13,7 @@ return [
     'title_project_index' => 'プロジェクト 一覧',
     'title_user_edit' => 'プロフィール 編集',
     'title_user_create' => 'ユーザ 新規作成',
+    'title_user_profile' => 'プロフィール',
     /*
     |--------------------------------------------------------------------------
     | Application Name

@@ -52,6 +52,9 @@ const timepiker = () => {
 
 /* datatable responsive */
 $('.table.responsive').DataTable( {
+    "language" : {
+        "zeroRecords": "データがありません"             
+    },
     "responsive":true,
     "searching": false,
     "sort": false,
