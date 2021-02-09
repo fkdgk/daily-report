@@ -68,7 +68,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                    @foreach ($works as $work)
+                    @forelse ($works as $work)
                         <tr>
                             <td>{{ $work -> project -> name}}</td>
                             <td>{{ formatTime($work -> work_time)}}</td>
@@ -78,8 +78,12 @@
                                 </div>
                             </td>
                             <td>{{ $work -> limit }}</td>
-                        </tr>    
-                    @endforeach
+                        </tr>  
+                    @empty
+                    <tr>
+                        <td colspan="4" class="text-center pt-4 pb-3 text-muted"> 作業したプロジェクトはありません </td>
+                    </tr>  
+                    @endforelse
                     </tbody>
                 </table>
 
