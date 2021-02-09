@@ -54,6 +54,12 @@ class AppServiceProvider extends ServiceProvider
                 'icon' => 'fa fa-fw fa-users mr-2',
             ]);
 
+            $event->menu->add([
+                'text' => config('app.title_user_create'),
+                'route' => 'user.create',
+                'icon' => 'fa fa-fw fa-user-plus mr-2',
+            ]);
+
             $event->menu->add('マスタ');
             
             $event->menu->add([
