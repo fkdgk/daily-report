@@ -27,7 +27,7 @@
                     <table class="table table-sm responsive nowrap table-hover">
                         <thead>
                             <tr>
-                                <th>id</th>
+                                <th></th>
                                 <th>部署名</th>
                                 <th>作成日時</th>
                                 <th>更新日時</th>
