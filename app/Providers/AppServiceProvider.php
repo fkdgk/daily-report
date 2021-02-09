@@ -26,6 +26,8 @@ class AppServiceProvider extends ServiceProvider
                 'icon' => 'fa fa-fw fa-home mr-2',
             ]);
 
+            $event->menu->add('日報');
+
             $event->menu->add([
                 'text' => config('app.title_post_index'),
                 'url' => route('post.user', Auth::id()),
@@ -37,6 +39,8 @@ class AppServiceProvider extends ServiceProvider
                 'url' => route('post.create'),
                 'icon' => 'fa fa-fw fa-plus-square mr-2',
             ]);
+
+            $event->menu->add('アカウント');
 
             $event->menu->add([
                 'text' => config('app.title_user_profile'),
@@ -50,6 +54,8 @@ class AppServiceProvider extends ServiceProvider
                 'icon' => 'fa fa-fw fa-users mr-2',
             ]);
 
+            $event->menu->add('マスタ');
+            
             $event->menu->add([
                 'text' => config('app.title_project_index'),
                 'route' => 'project.index',
