@@ -1,6 +1,8 @@
 <?php
 
 return [
+    'start_time'=>'09:00',
+    'finish_time'=>'18:00',
     'demo_msg' => 'DEMO環境のため変更できません',
     'asset_ver' => date('YmdH'),
     'title_home' => 'TOP',    
