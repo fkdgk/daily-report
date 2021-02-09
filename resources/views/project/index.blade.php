@@ -7,56 +7,58 @@
 @stop
 
 @section('content')
-<div class="row">
-    <div class="col-12">
-        <div class="card">
-            <div class="card-body">
-                
-                {{ Form::open(['route'=>'project.store','class'=>'form-inline mb-2']) }}
-                    {{ Form::text('name',null,[
-                            'placeholder'=>'部署名',
-                            'autocomplete' => 'off',
-                            'class'=>'form-control mr-2'. ($errors->has('name') ? ' is-invalid' : null),
-                            'required'=>true,
-                        ]) }}
-                    {{ Form::button('<i class="fa fa-plus"></i> 新規作成',['class'=>'btn btn-success','type'=>'submit']) }}
-                    <span class="invalid-feedback">{{ $errors -> first('name') }}</span>
-                {{ Form::close() }}
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-body">
+                    
+                    {{ Form::open(['route'=>'project.store','class'=>'form-inline mb-2']) }}
+                        {{ Form::text('name',null,[
+                                'placeholder'=>'部署名',
+                                'autocomplete' => 'off',
+                                'class'=>'form-control mr-2'. ($errors->has('name') ? ' is-invalid' : null),
+                                'required'=>true,
+                            ]) }}
+                        {{ Form::button('<i class="fa fa-plus"></i> 新規作成',['class'=>'btn btn-success','type'=>'submit']) }}
+                        <span class="invalid-feedback">{{ $errors -> first('name') }}</span>
+                    {{ Form::close() }}
 
-                {{ Form::open(['route'=>['project.update'],'method'=>'put']) }}
-                    <table class="table table-sm responsive nowrap table-hover">
-                        <thead>
-                            <tr>
-                                <th></th>
-                                <th>部署名</th>
-                                <th>作成日時</th>
-                                <th>更新日時</th>
-                                <th class="text-right">削除</th>
-                            </tr>
-                        </thead>
-                        <tbody id="sortable">
-                        @foreach ($projects as $project)
-                            <tr>
-                                <td class="handle"><i class="fa fa-bars"></i></td>
-                                <td>
-                                    {{ Form::text('name['.$project -> id.']', $project -> name, ['class'=>'form-control form-control-sm'. ($errors -> get('name.'.$project -> id) ? ' is-invalid' : null)]) }}
-                                    <span class="invalid-feedback">{{ $errors -> first('name.'.$project -> id) }}</span>
-                                </td>
-                                <td>{{ $project -> created_at }}</td>
-                                <td>{{ $project -> updated_at }}</td>
-                                <td class="text-right pr-3">
-                                    <button type="button" class="btn btn-xs btn-outline-danger" onclick="deleteProject({{$project->id}})">削除</button>
-                                </td>
-                            </tr>
-                        @endforeach
-                        </tbody>
-                    </table>
+                    {{ Form::open(['route'=>['project.update'],'method'=>'put']) }}
+                        <table class="table table-sm responsive nowrap table-hover">
+                            <thead>
+                                <tr>
+                                    <th></th>
+                                    <th>部署名</th>
+                                    <th>作成日時</th>
+                                    <th>更新日時</th>
+                                    <th class="text-right">削除</th>
+                                </tr>
+                            </thead>
+                            <tbody id="sortable">
+                            @foreach ($projects as $project)
+                                <tr>
+                                    <td class="handle"><i class="fa fa-bars"></i></td>
+                                    <td>
+                                        {{ Form::text('name['.$project -> id.']', $project -> name, ['class'=>'form-control form-control-sm'. ($errors -> get('name.'.$project -> id) ? ' is-invalid' : null)]) }}
+                                        <span class="invalid-feedback">{{ $errors -> first('name.'.$project -> id) }}</span>
+                                    </td>
+                                    <td>{{ $project -> created_at }}</td>
+                                    <td>{{ $project -> updated_at }}</td>
+                                    <td class="text-right pr-3">
+                                        <button type="button" class="btn btn-xs btn-outline-danger" onclick="deleteProject({{$project->id}})">削除</button>
+                                    </td>
+                                </tr>
+                            @endforeach
+                            </tbody>
+                        </table>
 
-                    @if(!$projects -> isEmpty())
-                        {{ Form::submit('更新',['class'=>'btn btn-success mt-2','style'=>'min-width:200px;']) }}
-                    @endif
+                        @if(!$projects -> isEmpty())
+                            {{ Form::submit('更新',['class'=>'btn btn-success mt-2','style'=>'min-width:200px;']) }}
+                        @endif
 
-                {{ Form::close() }}
+                    {{ Form::close() }}
+                </div>
             </div>
         </div>
     </div>
