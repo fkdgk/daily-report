@@ -1,7 +1,7 @@
 <div class="row">
     <div class="col-lg-3 form-group">
         <label for="work_date">出社日</label>
-        {{ Form::text('work_date',null,
+        {{ Form::text('work_date',(Route::is('post.create')?date('Y-m-d'):null),
             [
                 'id'=>'work_date',
                 'class'=> 'datepicker form-control'. ($errors->has('work_date') ? ' is-invalid' : null) ,
@@ -13,7 +13,7 @@
     </div>
     <div class="col-lg-2 form-group">
         <label for="start_time">出勤時刻</label>
-        {{ Form::text('start_time',null,
+        {{ Form::text('start_time',(Route::is('post.create'))?config('app.start_time'):null,
             [
                 'id'=>'start_time',
                 'class'=>'timepicker form-control' . ($errors->has('start_time') ? ' is-invalid' : null) ,
@@ -24,7 +24,7 @@
     </div>
     <div class="col-lg-2 form-group">
         <label for="finish_time">退勤時刻</label>
-        {{ Form::text('finish_time',null,
+        {{ Form::text('finish_time',(Route::is('post.create'))?config('app.finish_time'):null,
             [
                 'id'=>'finish_time',
                 'class'=>'timepicker form-control'. ($errors->has('finish_time') ? ' is-invalid' : null) ,
