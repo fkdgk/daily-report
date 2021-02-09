@@ -50,9 +50,9 @@
                         </tbody>
                     </table>
 
-                    <div class="">
+                    @if(!$divisions -> isEmpty())
                         {{ Form::submit('更新',['class'=>'btn btn-success mt-2','style'=>'min-width:200px;']) }}
-                    </div>
+                    @endif
 
                 {{ Form::close() }}
             </div>
