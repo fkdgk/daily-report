@@ -53,6 +53,9 @@ Route::group(['middleware' => ['auth','can:active']], function () {
      * projects ---------------------------------------
      */
     Route::get('/projects', [ProjectController::class, 'index'])->name('project.index');
+    Route::post('/projects', [ProjectController::class, 'store'])->name('project.store');
+    Route::put('/projects', [ProjectController::class, 'update'])->name('project.update');
+    Route::delete('/projects', [ProjectController::class, 'destroy'])->name('project.destroy');
 
     /*
     * posts ---------------------------------------
