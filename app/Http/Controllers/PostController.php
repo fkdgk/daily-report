@@ -85,6 +85,11 @@ class PostController extends Controller
 
     public function edit(Post $post)
     {
+        if(Auth::id() != $post -> user_id){
+            toastr() -> error('権限がありません');
+            return redirect() -> route('home');
+        }
+        
         // $works = Work::where('post_id', $post->id)->get();
         $works = $post -> works;
         $projects = Project::select();
