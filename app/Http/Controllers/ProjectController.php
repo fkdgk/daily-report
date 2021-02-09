@@ -10,7 +10,7 @@ class ProjectController extends Controller
 {
     public function index()
     {
-        $projects = Project::orderBy('sort')->get();
+        $projects = Project::orderBy('sort')->orderBy('created_at','desc')->get();
         return view('project.index',[
             'projects' => $projects,
         ]);
@@ -76,6 +76,8 @@ class ProjectController extends Controller
 
     public function destroy(Project $project)
     {
-        //
+        Project::find(request('project_id'))->delete();
+        toastr() -> error('削除しました');
+        return redirect() -> back();
     }
 }
