@@ -59,7 +59,7 @@ class PostController extends Controller
         // $works = Work::where('post_id', $post->id)->get();
         $works = $post -> works;
         $user = $post -> user;
-        $projects = Project::select();
+        $projects = Project::formSelect();
         return view('post.edit',[
             'post' => $post,
             'user' => $user,
