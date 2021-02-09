@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Post;
 use App\Models\Work;
+use App\Models\User;
 use App\Models\Project;
 use App\Models\Comment;
 use Illuminate\Http\Request;
@@ -12,27 +13,67 @@ use Illuminate\Support\Facades\Auth;
 
 class PostController extends Controller
 {
-    public function user($id)
+
+    public function index($id)
     {
-        $posts = Post::whereUserId($id)->orderWorkDate()->paginate(15);
+        $user = User::find($id);
+        $posts = $user -> posts(15);
         return view('post.user',[
+            'user'  => $user,
             'posts'  => $posts,
             'id'=> $id,
         ]);
     }
 
-    public function index()
+
+    public function show(Post $post)
     {
-        $posts = Post::whereUserId(Auth::id())->orderWorkDate()->paginate(15);
-        return view('post.index',[
-            'posts' => $posts,
+        $prev = Post::prev($post)->first();
+        $next = Post::next($post)->first();
+        // $works = Work::where('post_id', $post->id)->get(); // opt 1
+        // $works = $post -> works() -> get();// opt 2
+        $works = $post -> works; // opt 3
+        // $comments = Comment::where('post_id',$post -> id)->get(); // opt 1
+        $comments = $post -> comments;  // opt 2
+        $user = $post -> user;
+
+        return view('post.show',[
+            'user' => $user,
+            'post' => $post,
+            'prev' => $prev,
+            'next' => $next,
+            'works' => $works,
+            'comments' => $comments,
+        ]);
+    }
+
+
+    public function edit(Post $post)
+    {
+
+        if(Auth::id() != $post -> user_id){
+            toastr() -> error('権限がありません');
+            return redirect() -> route('home');
+        }
+        
+        // $works = Work::where('post_id', $post->id)->get();
+        $works = $post -> works;
+        $user = $post -> user;
+        $projects = Project::select();
+        return view('post.edit',[
+            'post' => $post,
+            'user' => $user,
+            'works' => $works,
+            'projects' => $projects,
         ]);
     }
 
     public function create()
     {
-        $projects = Project::select();
+        $projects = Project::formSelect();
+        $user = Auth::user();
         return view('post.create',[
+            'user' => $user,
             'works' => [],
             'projects' => $projects,
         ]);
@@ -64,41 +105,6 @@ class PostController extends Controller
         return redirect() -> route('post.show', $post -> id);
     }
 
-    public function show(Post $post)
-    {
-        $prev = Post::prev($post)->first();
-        $next = Post::next($post)->first();
-        // $works = Work::where('post_id', $post->id)->get(); // opt 1
-        // $works = $post -> works() -> get();// opt 2
-        $works = $post -> works; // opt 3
-        // $comments = Comment::where('post_id',$post -> id)->get(); // opt 1
-        $comments = $post -> comments;  // opt 2
-
-        return view('post.show',[
-            'post' => $post,
-            'prev' => $prev,
-            'next' => $next,
-            'works' => $works,
-            'comments' => $comments,
-        ]);
-    }
-
-    public function edit(Post $post)
-    {
-        if(Auth::id() != $post -> user_id){
-            toastr() -> error('権限がありません');
-            return redirect() -> route('home');
-        }
-        
-        // $works = Work::where('post_id', $post->id)->get();
-        $works = $post -> works;
-        $projects = Project::select();
-        return view('post.edit',[
-            'post' => $post,
-            'works' => $works,
-            'projects' => $projects,
-        ]);
-    }
 
     public function createWork($post_id, $project_id)
     {
@@ -202,6 +208,6 @@ class PostController extends Controller
         $user_id = $post -> user_id;
         $post -> delete();
         toastr() -> error('削除しました');
-        return redirect() -> route('post.user',$user_id);
+        return redirect() -> route('post.index',$user_id);
     }
 }

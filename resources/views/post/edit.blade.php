@@ -3,7 +3,7 @@
 @section('title', $post -> user -> name . 'の日報')
 
 @section('content_header')
-    {{ Breadcrumbs::render('post.edit', $post) }}
+    {{ Breadcrumbs::render('post.edit', $user, $post) }}
 @stop
 
 @section('content')

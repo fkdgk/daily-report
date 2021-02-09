@@ -29,7 +29,7 @@ class HomeController extends Controller
         /* すべての投稿 */
         // $posts = Post::orderBy('id','desc')->paginate(15);
         $posts = Post::isActive() -> paginate(15);
-        $users = User::latest()->isActive()->get();
+        $users = User::isActive() -> get();
         
         return view('home',[
             'posts' => $posts,

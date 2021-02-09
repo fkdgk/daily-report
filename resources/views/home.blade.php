@@ -1,6 +1,6 @@
 @extends('adminlte::page')
 
-@section('title', '日報システム｜TOP')
+@section('title', '日報システム｜' . config('app.title_home'))
 
 @section('content_header')
     {{ Breadcrumbs::render('home') }}

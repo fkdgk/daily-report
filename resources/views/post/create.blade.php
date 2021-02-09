@@ -3,7 +3,7 @@
 @section('title', '新規作成')
 
 @section('content_header')
-    {{ Breadcrumbs::render('post.create') }}
+    {{ Breadcrumbs::render('post.create', $user) }}
 @stop
 
 @section('content')

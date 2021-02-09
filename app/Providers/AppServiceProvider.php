@@ -30,7 +30,7 @@ class AppServiceProvider extends ServiceProvider
 
             $event->menu->add([
                 'text' => config('app.title_post_index'),
-                'url' => route('post.user', Auth::id()),
+                'url' => route('post.index', Auth::id()),
                 'icon' => 'fa fa-fw fa-pen mr-2',
             ]);
 
