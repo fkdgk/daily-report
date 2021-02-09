@@ -13,7 +13,7 @@ class Project extends Model
         'name',
     ];
     
-    public function scopeSelect(){
+    public function scopeFormSelect(){
         return Project::all()->pluck('name','id');
     }
 }

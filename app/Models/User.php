@@ -23,17 +23,25 @@ class User extends Authenticatable
         return Post::where('user_id',$this -> id) ->get() -> count();
     }
     
+
+    /* 
+     * table  relations
+     */
+    public function division(){
+        return $this -> belongsTo(Division::class);
+    }
+
+    public function posts($paginate)
+    {
+        return $this -> hasMany(Post::class) -> paginate($paginate);
+    }
+
     /* 
      * adminlte settings
      */
     public function scopeIsActive($query)
     {
-        return $query->where('active', true);
-    }
-
-    public function scopeOrderIdDesc($query)
-    {
-        return $query->orderBy('id','desc');
+        return $query->where('active', true)->orderBy('id','desc');
     }
 
     /* 
@@ -55,12 +63,6 @@ class User extends Authenticatable
         return route('user.show', Auth::id());
     }
 
-    /* 
-     * table  relations
-     */
-    public function division(){
-        return $this -> belongsTo('App\Models\Division');
-    }
 
     /**
      * The attributes that are mass assignable.

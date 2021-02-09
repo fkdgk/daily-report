@@ -118,13 +118,13 @@ class DatabaseSeeder extends Seeder
             ]);
         }
 
-        for ($i=0; $i < 200; $i++) { 
+        for ($i=0; $i < 100; $i++) { 
             Post::create([
                 'work_date' => Carbon::parse(date('Y-m-d'))->addDay( - $faker->randomNumber(2)) -> format('Y-m-d'),
                 'start_time' => $faker -> numberBetween(9,10) . ':' . $faker ->  numberBetween(1,59) . ':' . '00',
                 'finish_time' => $faker -> numberBetween(16,19) . ':' . $faker -> numberBetween(1,59) . ':' . '00',
                 'body' => $faker -> realText,
-                'user_id' => $faker -> numberBetween(1, $user_count),
+                'user_id' => $faker -> numberBetween(1, $user_count+1),
             ]);
         }
 

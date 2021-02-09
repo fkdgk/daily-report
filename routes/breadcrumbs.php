@@ -29,34 +29,28 @@ Breadcrumbs::for('user.edit', function ($trail, $user) {
     $trail->push(config('app.title_user_edit'), route('user.edit', $user -> id));
 });
 
-// Home > About
-Breadcrumbs::for('post.user', function ($trail,$id) {
+// Home > post.index
+Breadcrumbs::for('post.index', function ($trail, $user) {
     $trail->parent('home');
-    $trail->push( getUser($id) -> name . 'の日報', route('post.user',$id));
+    $trail->push($user -> name .'の日報', route('post.index',$user -> id));
 });
 
-// Home > About
-Breadcrumbs::for('post.index', function ($trail) {
-    $trail->parent('home');
-    $trail->push(config('app.title_post_index'), route('post.index'));
+// Home > post.index > post.show
+Breadcrumbs::for('post.show', function ($trail, $user, $post) {
+    $trail->parent('post.index', $user);
+    $trail->push($post -> work_date, route('post.show',$post->id));
 });
 
-// Home > About
-Breadcrumbs::for('post.show', function ($trail,$post) {
-    $trail->parent('post.user',$post->user_id);
-    $trail->push($post -> work_date, route('post.show',$post -> id));
-});
-
-// Home > About
-Breadcrumbs::for('post.create', function ($trail) {
-    $trail->parent('post.index');
-    $trail->push(config('app.title_post_create'), route('post.create'));
-});
-
-// Home > About
-Breadcrumbs::for('post.edit', function ($trail,$post) {
-    $trail->parent('post.show',$post);
+// Home > post.index > post.show > post.edit
+Breadcrumbs::for('post.edit', function ($trail,$user, $post) {
+    $trail->parent('post.show', $user,$post);
     $trail->push('編集', route('post.edit',$post -> id));
+});
+
+// Home > About
+Breadcrumbs::for('post.create', function ($trail,$user) {
+    $trail->parent('post.index', $user);
+    $trail->push(config('app.title_post_create'), route('post.create'));
 });
 
 
