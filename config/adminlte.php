@@ -244,6 +244,21 @@ return [
     */
 
     'plugins' => [
+        'jqueryUi' => [
+            'active' => true,
+            'files' => [
+                [
+                    'type' => 'js',
+                    'asset' => true,
+                    'location' => 'vendor/jquery-ui/jquery-ui.min.js',
+                ],
+                [
+                    'type' => 'css',
+                    'asset' => true,
+                    'location' => 'vendor/jquery-ui/jquery-ui.min.css',
+                ],
+            ],
+        ],
         'ionRangslider' => [
             'active' => true,
             'files' => [
