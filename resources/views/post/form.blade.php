@@ -13,7 +13,7 @@
     </div>
     <div class="col-lg-2 form-group">
         <label for="start_time">出勤時刻</label>
-        {{ Form::text('start_time',(Route::is('post.create'))?config('app.start_time'):null,
+        {{ Form::text('start_time',(Route::is('post.create')) ? config('app.start_time') : null,
             [
                 'id'=>'start_time',
                 'class'=>'timepicker form-control' . ($errors->has('start_time') ? ' is-invalid' : null) ,
@@ -57,15 +57,13 @@
 <div id="append-to"></div>
 
 <div class="row">
-    <div class="col-lg-11">
-    </div>
-    <div class="col-lg-1 pl-0">
-        <button type="button" class="btn btn-outline-primary btn-sm small text-nowrap" id="append-btn"> <i class="fa fa-plus"></i> 追加 </button>
+    <div class="col-lg-12 text-center">
+        <button type="button" class="mt-2 btn btn-outline-primary btn-sm small text-nowrap" id="append-btn"> <i class="fa fa-plus"></i> プロジェクト追加 </button>
     </div>
 </div>
 
 <div class="row">
-    <div class="col-lg-11 pt-2">
+    <div class="col-lg-12 pt-2">
         <h6 class="text-bold mb-2">作業内容</h6>
         {{ Form::textarea('body',null,['class'=>'form-control form-control-sm small','rows'=>7]) }}
     </div>
