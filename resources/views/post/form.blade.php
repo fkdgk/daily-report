@@ -13,7 +13,7 @@
     </div>
     <div class="col-lg-2 form-group">
         <label for="start_time">出勤時刻</label>
-        {{ Form::text('start_time',(Route::is('post.create'))?config('app.start_time'):null,
+        {{ Form::text('start_time',(Route::is('post.create')) ? config('app.start_time') : null,
             [
                 'id'=>'start_time',
                 'class'=>'timepicker form-control' . ($errors->has('start_time') ? ' is-invalid' : null) ,
