@@ -31,21 +31,19 @@
                                 <th>部署名</th>
                                 <th>作成日時</th>
                                 <th>更新日時</th>
-                                <th></th>
                                 <th class="text-right">削除</th>
                             </tr>
                         </thead>
                         <tbody id="sortable">
                         @foreach ($projects as $project)
                             <tr>
-                                <td>{{ $project -> id }}</td>
+                                <td class="handle"><i class="fa fa-bars"></i></td>
                                 <td>
                                     {{ Form::text('name['.$project -> id.']', $project -> name, ['class'=>'form-control form-control-sm'. ($errors -> get('name.'.$project -> id) ? ' is-invalid' : null)]) }}
                                     <span class="invalid-feedback">{{ $errors -> first('name.'.$project -> id) }}</span>
                                 </td>
                                 <td>{{ $project -> created_at }}</td>
                                 <td>{{ $project -> updated_at }}</td>
-                                <td class="handle"><i class="fa fa-bars"></i></td>
                                 <td class="text-right pr-3">
                                     <button type="button" class="btn btn-xs btn-outline-danger" onclick="deleteProject({{$project->id}})">削除</button>
                                 </td>
