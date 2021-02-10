@@ -35,6 +35,7 @@ class UserController extends Controller
                 -> save(public_path($save_path) . $file_name, $quality);
             $user -> img = $file_name;
             $user -> save();
+            return toastr() -> success('画像を更新しました');
         }
     }
 
