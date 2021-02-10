@@ -50,6 +50,7 @@
                                 </div>
                             </div>
 
+                            @can('admin')
                             <div class="form-group row">
                                 <label class="col-sm-2 col-form-label">部署</label>
                                 <div class="col-sm-10">
@@ -61,7 +62,7 @@
                                 </div>
                             </div>
 
-                            @can('admin')
+                            
                             <div class="form-group row">
                                 <label class="col-sm-2 col-form-label">権限</label>
                                 <div class="col-sm-10">

@@ -32,7 +32,6 @@ class UpdateUser extends FormRequest
             'name' => 'required|max:50',
             'email' => 'email|unique:users,email,' . $id, // $user->id を 変更
             'password' => 'sometimes|nullable|min:6',
-            'division_id' => 'required',
         ];
     }
 }
