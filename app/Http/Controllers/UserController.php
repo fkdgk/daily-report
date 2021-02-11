@@ -140,8 +140,10 @@ class UserController extends Controller
         return redirect() -> back();
     }
 
-    public function destroy($id)
+    public function destroy(User $user)
     {
-        //
+        $user -> delete();
+        toastr() -> error('ユーザを削除しました');
+        return redirect()->route('user.index');
     }
 }
