@@ -57,6 +57,7 @@ class PostController extends Controller
         $works = $post -> works;
         $user = $post -> user;
         $projects = Project::formSelect();
+        
         return view('post.edit',[
             'post' => $post,
             'user' => $user,
