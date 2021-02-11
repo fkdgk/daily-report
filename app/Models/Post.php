@@ -62,7 +62,8 @@ class Post extends Model
         return Post::select('posts.*')
                -> join('users','users.id','=','posts.user_id')
                -> where('users.active', 1)
-               -> orderBy('posts.work_date','desc');
+               -> orderBy('posts.work_date','desc')
+               -> orderBy('posts.created_at','desc');
     }
 
 }
