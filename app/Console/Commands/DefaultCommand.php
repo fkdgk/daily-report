@@ -2,7 +2,7 @@
 
 namespace App\Console\Commands;
 
-use File;
+use Illuminate\Support\Facades\File;
 use Illuminate\Console\Command;
 
 class DefaultCommand extends Command
@@ -39,6 +39,8 @@ class DefaultCommand extends Command
     public function handle()
     {
         File::delete(File::glob(public_path('img/*_*_*.*')));
-        return 0;
+        echo 'public/img/* Image files Delete!!';
+        shell_exec('php artisan generate:erd public/er.svg --format=svg');
+        echo 'Entity Relationship Diagram Genarate!!';
     }
 }
