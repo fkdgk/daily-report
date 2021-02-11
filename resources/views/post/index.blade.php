@@ -3,7 +3,7 @@
 @section('title', '日報システム｜TOP')
 
 @section('content_header')
-    {{ Breadcrumbs::render('post.index', $id, $user) }}
+    {{ Breadcrumbs::render('post.index', $user -> id, $user) }}
 @stop
 
 @section('content')

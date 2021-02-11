@@ -11,7 +11,7 @@
         <div class="col-12">
             <div class="card">
                 <div class="card-body">
-                    <h5 class="float-left">{{ App\Models\User::find($id) -> name }}の日報一覧</h5>
+                    <h5 class="float-left">{{ $user -> name }}の日報一覧</h5>
                     {{-- <h5 class="float-left">{{ App\Models\User::find($id) -> name }}の日報一覧</h5> --}}
                     @include('post.posts')
                 </div>

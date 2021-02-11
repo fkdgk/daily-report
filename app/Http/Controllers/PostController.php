@@ -14,15 +14,10 @@ use Illuminate\Support\Facades\Auth;
 class PostController extends Controller
 {
 
-    public function index($id)
+    public function index(User $user)
     {
-        $user = User::find($id);
-        $posts = $user -> posts(15);
-        return view('post.user',[
-            'user'  => $user,
-            'posts'  => $posts,
-            'id'=> $id,
-        ]);
+        $posts = $user -> posts() -> paginate(15);
+        return view('post.user', compact('user', 'posts'));
     }
 
 
@@ -37,14 +32,16 @@ class PostController extends Controller
         $comments = $post -> comments;  // opt 2
         $user = $post -> user;
 
-        return view('post.show',[
-            'user' => $user,
-            'post' => $post,
-            'prev' => $prev,
-            'next' => $next,
-            'works' => $works,
-            'comments' => $comments,
-        ]);
+        /* compact を使った書き方 */
+        return view('post.show', compact('user' ,'post' ,'prev' ,'next' ,'works' ,'comments'));
+        // return view('post.show',[
+        //     'user' => $user,
+        //     'post' => $post,
+        //     'prev' => $prev,
+        //     'next' => $next,
+        //     'works' => $works,
+        //     'comments' => $comments,
+        // ]);
     }
 
 
