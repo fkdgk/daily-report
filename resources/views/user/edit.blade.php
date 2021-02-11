@@ -16,7 +16,7 @@
                             
                             <div class="form-group row align-items-center">
                                 <label class="col-sm-2 col-form-label" for="file">
-                                    <img src="{{ asset('img') . '/' . $user -> img }}" alt="Admin" class="rounded-circle" width="100">
+                                    <img src="{{ $user -> getImage() }}" alt="Admin" class="rounded-circle" width="100">
                                 </label>
                                 <div class="col-sm-10">
                                     <div class="custom-file">
@@ -127,9 +127,9 @@
                         {{ Form::close() }}
 
                         @if(!App::environment('demo'))
-                        {{ Form::open(['route'=>['user.destroy', $user ],'method'=>'delete','class'=>'delete']) }}
-                            {{ Form::submit('ユーザを削除',['class'=>'btn btn-xs btn-outline-danger float-right']) }}
-                        {{ Form::close() }}
+                            {{ Form::open(['route'=>['user.destroy', $user ],'method'=>'delete','class'=>'delete']) }}
+                                {{ Form::submit('ユーザを削除',['class'=>'btn btn-xs btn-outline-danger float-right']) }}
+                            {{ Form::close() }}
                         @endif
                         
                     </div>

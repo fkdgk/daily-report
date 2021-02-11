@@ -98,10 +98,7 @@ class UserController extends Controller
     public function edit(User $user)
     {
         $divisions = Division::all()->pluck('name','id');
-        return view('user.edit',[
-            'user' => $user,
-            'divisions' => $divisions,
-        ]);
+        return view('user.edit',compact('user','divisions'));
     }
 
     public function update(UpdateUser $request, User $user)
