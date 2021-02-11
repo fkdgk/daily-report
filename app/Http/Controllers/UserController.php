@@ -86,7 +86,7 @@ class UserController extends Controller
 
     public function show(User $user)
     {
-        $posts = Post::whereUserId($user -> id)->orderWorkDate()->paginate(5);
+        $posts = $user -> posts(5);
         $users = User::where('id','!=', $user->id)->isActive()->get();
         return view('user.show',[
             'user' => $user,
