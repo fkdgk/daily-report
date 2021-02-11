@@ -61,7 +61,7 @@ Route::group(['middleware' => ['auth','can:active']], function () {
     /*
     * posts ---------------------------------------
     */
-    Route::get('/posts/user/{id}', [PostController::class, 'index'])->name('post.index');
+    Route::get('/posts/user/{user}', [PostController::class, 'index'])->name('post.index');
     Route::get('/posts/create', [PostController::class, 'create'])->name('post.create');
     Route::get('/posts/{post}/edit', [PostController::class, 'edit'])->name('post.edit');
     Route::get('/posts/{post}', [PostController::class, 'show'])->name('post.show');

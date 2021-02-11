@@ -86,7 +86,7 @@ class UserController extends Controller
 
     public function show(User $user)
     {
-        $posts = $user -> posts(5);
+        $posts = $user -> posts() -> paginate(5);  // paginate を使うため posts ではなく posts() にする
         $users = User::where('id','!=', $user->id)->isActive()->get();
         return view('user.show',[
             'user' => $user,
