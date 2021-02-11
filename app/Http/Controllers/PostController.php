@@ -134,7 +134,7 @@ class PostController extends Controller
         ]);
     }
 
-    public function copy(Request $request, Post $post)
+    public function copy(Post $post)
     {
         DB::beginTransaction();
         try {
