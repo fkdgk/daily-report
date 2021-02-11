@@ -40,6 +40,7 @@ Route::group(['middleware' => ['auth','can:active']], function () {
     Route::get('/users/{user}/edit', [UserController::class, 'edit'])->name('user.edit');
     Route::post('/users', [UserController::class, 'store'])->name('user.store');
     Route::put('/users/{user}', [UserController::class, 'update'])->name('user.update');
+    Route::delete('/users/{user}', [UserController::class, 'destroy'])->name('user.destroy');
     
     /* 
      * divisions ---------------------------------------

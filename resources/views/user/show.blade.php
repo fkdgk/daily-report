@@ -4,7 +4,6 @@
 
 @section('content_header')
     {{ Breadcrumbs::render('user.show',$user) }}
-    <a href="{{ route('user.edit', $user -> id) }}" class="btn btn-sm btn-outline-success"><i class="fas fa-user-edit"></i> {{ config('app.title_user_edit') }}</a>
 @stop
 
 @section('content')
@@ -22,6 +21,9 @@
             </div>
             <div class="col-md-8">
                 <div class="row">
+                    <div class="col-12">
+                        <a href="{{ route('user.edit', $user -> id) }}" class=" float-right btn btn-sm btn-outline-success"><i class="fas fa-user-edit"></i> {{ config('app.title_user_edit') }}</a>
+                    </div>
                     <div class="col-sm-3">
                         <h6 class="mb-0">Email</h6>
                     </div>

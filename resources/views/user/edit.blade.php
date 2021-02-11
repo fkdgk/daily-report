@@ -125,6 +125,12 @@
                             </div>
 
                         {{ Form::close() }}
+
+                        
+                        {{ Form::open(['route'=>['user.destroy', $user ],'method'=>'delete','class'=>'delete']) }}
+                            {{ Form::submit('ユーザを削除',['class'=>'btn btn-xs btn-outline-danger float-right']) }}
+                        {{ Form::close() }}
+                        
                     </div>
                 </div>
             </div>
