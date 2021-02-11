@@ -31,9 +31,9 @@ class User extends Authenticatable
         return $this -> belongsTo(Division::class);
     }
 
-    public function posts($paginate)
+    public function posts()
     {
-        return $this -> hasMany(Post::class) -> paginate($paginate);
+        return $this -> hasMany(Post::class);
     }
 
     /* 

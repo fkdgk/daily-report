@@ -45,7 +45,8 @@
                                     </td>
                                     
                                     <td class="text-right">
-                                       <span class="small text-nowrap">{{ $user -> getPostCount() }} 投稿</span>
+                                       <span class="small text-nowrap">{{ $user -> posts_count }} 投稿</span> {{-- こっちを使う --}}
+                                       {{-- <span class="small text-nowrap">{{ $user -> posts -> count() }} 投稿</span> --}} {{-- model -> count() は使わない --}}
                                        {{-- <span class="small text-nowrap">{{ count(App\Models\Post::where('user_id',$user->id)->get()) }} 投稿</span> --}}
                                     </td>
                                 </tr>
