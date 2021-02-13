@@ -164,7 +164,7 @@ class PostController extends Controller
                 $new_work -> save();
             }
 
-            toastr() -> success('新規作成しました');
+            toastr() -> success('複製しました');
             DB::commit();
 
         } catch (\Exception $e) {
