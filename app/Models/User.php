@@ -15,7 +15,8 @@ class User extends Authenticatable
 
     public function getImage()
     {
-        return asset('img') . '/' . $this -> img;
+        return asset('img/' . $this -> img);
+        return url('img', $this -> img);
     }
 
     public function getPostCount()

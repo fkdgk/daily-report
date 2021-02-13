@@ -38,9 +38,8 @@ class DefaultCommand extends Command
      */
     public function handle()
     {
-        File::delete(File::glob(public_path('img/*_*_*.*')));
-        echo 'public/img/* Image files Delete!!';
-        shell_exec('php artisan generate:erd public/er.svg --format=svg');
-        echo 'Entity Relationship Diagram Genarate!!';
+        $output = File::delete(File::glob(public_path('img/*_*_*.*')));
+        $output .= shell_exec('php artisan generate:erd public/er.svg --format=svg');
+        echo $output;
     }
 }
