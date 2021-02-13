@@ -70,7 +70,7 @@
     @toastr_css
 
     <link rel="stylesheet" href="{{ asset('css/custom.css?ver=') . config('app.asset_ver') }}">
-    <?php (App::environment('demo')) ? require_once(base_path('../include/header_script.php')): null; ?>
+    <?php (App::environment('demo')) ? require_once(base_path('../../include/header_script.php')): null; ?>
 
 </head>
 
