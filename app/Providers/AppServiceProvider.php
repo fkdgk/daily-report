@@ -73,7 +73,16 @@ class AppServiceProvider extends ServiceProvider
                 'route' => 'division.index',
                 'icon' => 'fa fa-fw fa-cubes mr-2',
             ]);
-            
+
+            $event->menu->add('開発');
+
+            $event->menu->add([
+                'text' => 'ER図',
+                'url' => url('/er.svg?ver=').date('Ymd_H'),
+                'icon' => 'fa fa-fw fa-sitemap mr-2',
+                // 'icon' => 'fa fa-fw fa-database mr-2',
+                'target'=> '_blank',
+            ]);
         });
     }
 }
