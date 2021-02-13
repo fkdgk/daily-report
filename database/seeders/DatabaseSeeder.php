@@ -44,7 +44,7 @@ class DatabaseSeeder extends Seeder
             // "技術部",
             // "購買部",
             // "製造部",
-            // "開発部",
+            "開発部",
             // "経理部",
             // "資材部",
             // "法務部",
@@ -52,7 +52,7 @@ class DatabaseSeeder extends Seeder
             // "研究室",
             // "調査部",
             // "調達課",
-            // "総務部",
+            "総務部",
             // "社長室",
             // "営業部",
             // "秘書室",
@@ -118,7 +118,7 @@ class DatabaseSeeder extends Seeder
             ]);
         }
 
-        for ($i=0; $i < 100; $i++) { 
+        for ($i=0; $i < 200; $i++) { 
             Post::create([
                 'work_date' => Carbon::parse(date('Y-m-d'))->addDay( - $faker->randomNumber(2)) -> format('Y-m-d'),
                 'start_time' => $faker -> numberBetween(9,10) . ':' . $faker ->  numberBetween(1,59) . ':' . '00',
@@ -133,17 +133,18 @@ class DatabaseSeeder extends Seeder
          *   projects
          */
         $projects = [
-            'ギャラクシー 打合せ', // 10
-            'ハック プロジェクト', // 9
-            'シンクロニシティ 開発', // 8
-            'エンペラー 開発', // 7
-            'ペルソナ ミーティング', // 6
-            'アビス 開発', // 5
-            'クロニクル 運用', // 4
-            'スマートリアル 要件定義', // 3
-            'データチェック 作業', // 2
-            'プリロード 設定', // 1
+            'ギャラクシー 打合せ',
+            'ハック プロジェクト',
+            'シンクロニシティ 開発',
+            'エンペラー 開発',
+            'ペルソナ ミーティング',
+            'アビス 開発',
+            'クロニクル 運用',
+            'スマートリアル 要件定義',
+            'データチェック 作業',
+            'プリロード 設定',
         ];
+
         foreach ($projects as $project) {
             Project::create([
                 'name' => $project,
@@ -158,8 +159,9 @@ class DatabaseSeeder extends Seeder
         */
         $posts = Post::all()->pluck('id')->toArray();
         foreach ($posts as $post) {
+            $work_count = 0;
             for ($i=1; $i <= $projects_count; $i++) {
-                if($faker -> boolean){
+                if($faker -> boolean && $work_count < 3){
                     Work::create([
                         'project_id' => $i,
                         'post_id' => $post,
@@ -167,6 +169,7 @@ class DatabaseSeeder extends Seeder
                         'progress' => $faker -> numberBetween(0,100),
                         'limit' => Carbon::parse(date('Y-m-d'))->addDay($faker->randomNumber(2)) -> format('Y-m-d'),
                     ]);
+                    $work_count ++;
                 }
             }   
         }
@@ -185,7 +188,7 @@ class DatabaseSeeder extends Seeder
                     Comment::create([
                         'post_id' => $post,
                         'user_id' => $user,
-                        'body' => $faker -> realText(),
+                        'body' => $faker -> realText(100),
                         'created_at' => Carbon::parse(date('Y-m-d'))->addDay(-$index) -> format('Y-m-d ' . $time),
                     ]);
                     $count ++;
