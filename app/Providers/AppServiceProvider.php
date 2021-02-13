@@ -79,10 +79,17 @@ class AppServiceProvider extends ServiceProvider
             $event->menu->add([
                 'text' => 'ER図',
                 'url' => url('/er.svg?ver=').date('Ymd_H'),
-                'icon' => 'fa fa-fw fa-sitemap mr-2',
-                // 'icon' => 'fa fa-fw fa-database mr-2',
+                'icon' => 'fas fa-sitemap fa-fw mr-2',
+                'target'=> '_blank',
+                ]);
+                
+                $event->menu->add([
+                    'text' => 'GitHub',
+                    'url' => url('https://github.com/fkdgk/daily-report'),
+                    'icon' => 'fab fa-github fa-fw  mr-2',
                 'target'=> '_blank',
             ]);
+
         });
     }
 }
