@@ -108,7 +108,7 @@
     @toastr_render 
     @yield('adminlte_js')
     
-    <?php (App::environment('demo')) ? require_once(base_path('../include/body_script.php')): null; ?>
+    <?php (App::environment('demo')) ? require_once(base_path('../../include/body_script.php')): null; ?>
 
 </body>
 
