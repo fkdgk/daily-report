@@ -35,7 +35,7 @@
                                     <td>{{ $user -> id }}</td>
                                     <td>
                                         <a href="{{ route('user.show', $user -> id) }}" class="text-dark">
-                                            <img class="user-image" src="{{ asset('img/' . $user -> img) }}"> {{ $user -> name }}
+                                            <img class="user-image" src="{{ $user -> getImage() }}"> {{ $user -> name }}
                                         </a>
                                     </td>
                                     <td>{{ @$user -> division -> name }}</td>
