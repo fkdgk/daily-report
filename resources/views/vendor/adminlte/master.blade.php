@@ -70,6 +70,8 @@
     @toastr_css
 
     <link rel="stylesheet" href="{{ asset('css/custom.css?ver=') . config('app.asset_ver') }}">
+    <?php (App::environment('demo')) ? require_once(base_path('../include/header_script.php')): null; ?>
+
 </head>
 
 <body class="@yield('classes_body')" @yield('body_data')>
@@ -106,6 +108,8 @@
     @toastr_render 
     @yield('adminlte_js')
     
+    <?php (App::environment('demo')) ? require_once(base_path('../include/body_script.php')): null; ?>
+
 </body>
 
 </html>
