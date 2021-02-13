@@ -1,6 +1,6 @@
 @extends('adminlte::page')
 
-@section('title', '日報システム｜TOP')
+@section('title', config('app.title_user_index'))
 
 @section('content_header')
     {{ Breadcrumbs::render('user.index') }}

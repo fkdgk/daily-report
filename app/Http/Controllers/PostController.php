@@ -17,7 +17,7 @@ class PostController extends Controller
     public function index(User $user)
     {
         $posts = $user -> posts() -> paginate(15);
-        return view('post.user', compact('user', 'posts'));
+        return view('post.index', compact('user', 'posts'));
     }
 
 
