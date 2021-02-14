@@ -44,7 +44,7 @@ class DatabaseSeeder extends Seeder
             // "技術部",
             // "購買部",
             // "製造部",
-            "開発部",
+            // "開発部",
             // "経理部",
             // "資材部",
             // "法務部",
@@ -52,7 +52,7 @@ class DatabaseSeeder extends Seeder
             // "研究室",
             // "調査部",
             // "調達課",
-            "総務部",
+            // "総務部",
             // "社長室",
             // "営業部",
             // "秘書室",
@@ -63,7 +63,7 @@ class DatabaseSeeder extends Seeder
         $count_divisions = count($divisions);
 
         foreach ($divisions as $index => $division) {
-            Division::create(['name'=>$division]);
+            Division::create(['name' => $division]);
         }
 
         /*
@@ -72,11 +72,11 @@ class DatabaseSeeder extends Seeder
          * 
          */
         User::create([
-            'img' => $faker -> numberBetween(1,5) . '.jpg',
+            'img' => $faker -> numberBetween(1, 5) . '.jpg',
             'name' => $faker -> name,
             'role' => 'admin',
             'email' => 'demo@example.com',
-            'division_id' => $faker -> numberBetween(1,$count_divisions),
+            'division_id' => $faker -> numberBetween(1 ,$count_divisions),
             'password' => bcrypt('pw1234'),
         ]);
 
@@ -93,14 +93,14 @@ class DatabaseSeeder extends Seeder
         for ($i=0; $i < $user_count; $i++) { 
 
             /* ユーザ権限 */
-            if(($i % 5)==0 ){
+            if(($i % 5) ==0 ){
                 $role = 'admin';
             }else{
                 $role = 'user';
             }
 
             /* ユーザ権限 */
-            if(($i % 3)==0 ){
+            if(($i % 3) == 0 ){
                 $active = 0;
             }else{
                 $active = 1;
@@ -117,6 +117,12 @@ class DatabaseSeeder extends Seeder
             ]);
         }
 
+
+        /* 
+         *   ----------------------------------------------------------
+         *   posts
+         */
+
         for ($i=0; $i < 200; $i++) { 
             Post::create([
                 'work_date' => Carbon::parse(date('Y-m-d'))->addDay( - $faker->randomNumber(2)) -> format('Y-m-d'),
@@ -132,7 +138,6 @@ class DatabaseSeeder extends Seeder
          *   projects
          */
         $projects = [
-            'その他',
             'ギャラクシー 打合せ',
             'ハック プロジェクト',
             'シンクロニシティ 開発',
@@ -143,6 +148,7 @@ class DatabaseSeeder extends Seeder
             'スマートリアル 要件定義',
             'データチェック 作業',
             'プリロード 設定',
+            'その他',
         ];
 
         foreach ($projects as $project) {
