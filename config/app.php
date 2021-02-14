@@ -5,6 +5,12 @@ return [
     'finish_time'=>'18:00',
     'demo_msg' => 'DEMO環境のため変更できません',
     'asset_ver' => date('YmdH'),
+    
+    /* 
+     * ---------------------------------
+     * ページタイトル
+     */
+    
     'title_home' => 'TOP',    
     'title_division_index' => '部署 一覧',
     'title_user_index' => 'ユーザ 一覧',
@@ -15,6 +21,8 @@ return [
     'title_user_edit' => 'プロフィール 編集',
     'title_user_create' => 'ユーザ 新規作成',
     'title_user_profile' => 'プロフィール',
+
+    
     /*
     |--------------------------------------------------------------------------
     | Application Name

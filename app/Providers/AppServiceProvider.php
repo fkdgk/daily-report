@@ -87,7 +87,7 @@ class AppServiceProvider extends ServiceProvider
 
                 $event->menu->add([
                     'text' => 'ER図',
-                    'url' => url('/er.svg?ver=').date('Ymd_H'),
+                    'url' => url('/er.svg?ver=') . config('app.asset_ver'),
                     'icon' => 'fas fa-sitemap fa-fw mr-2',
                     'target'=> '_blank',
                     ]);

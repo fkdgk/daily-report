@@ -14,9 +14,11 @@ use Illuminate\Support\Facades\Auth;
 class PostController extends Controller
 {
 
+    public $post_count = 5;
+
     public function index(User $user)
     {
-        $posts = $user -> posts() -> paginate(15);
+        $posts = $user -> posts() -> paginate($this -> post_count);
         return view('post.index', compact('user', 'posts'));
     }
 
@@ -49,7 +51,7 @@ class PostController extends Controller
     {
 
         if(Auth::id() != $post -> user_id){
-            toastr() -> error('権限がありません');
+            toastr_not_allow();
             return redirect() -> route('home');
         }
         
@@ -91,11 +93,11 @@ class PostController extends Controller
             /* store works */
             $this -> createWork($post -> id, request('project_id'));
 
-            toastr() -> success('新規作成しました');
+            toastr_store();
             DB::commit();
 
         } catch (\Exception $e) {
-            toastr() -> error('エラーが発生しました');
+            toastr_error();
             DB::rollback();
             return redirect() -> back();
         }
@@ -164,11 +166,11 @@ class PostController extends Controller
                 $new_work -> save();
             }
 
-            toastr() -> success('複製しました');
+            toastr_copy();
             DB::commit();
 
         } catch (\Exception $e) {
-            toastr() -> error('エラーが発生しました');
+            toastr_error();
             DB::rollback();
             return redirect() -> back();
         }
@@ -190,10 +192,12 @@ class PostController extends Controller
             /* update works */
             $this -> createWork($post -> id, request('project_id'));
 
-            toastr() -> success('更新しました');
+            toastr_update();
+            // toastr() -> success('更新しました');
             DB::commit();
         } catch (\Exception $e) {
-            toastr() -> error('エラーが発生しました');
+            toastr_error();
+            // toastr() -> error('エラーが発生しました');
             DB::rollback();
         }
 
@@ -205,7 +209,7 @@ class PostController extends Controller
     {
         $user_id = $post -> user_id;
         $post -> delete();
-        toastr() -> error('削除しました');
+        toastr_error();
         return redirect() -> route('post.index',$user_id);
     }
 }
