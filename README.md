@@ -1,23 +1,29 @@
+|DEMO|[https://www.fukuda-gikou.co.jp/nb/demo/daily-report/](https://www.fukuda-gikou.co.jp/nb/demo/daily-report/)|
+|--|--|
+|ID|demo@example.com|
+|PW|pw1234|
+
 |内容|項目|
 |--|--|
+|Laravel Ver|8.27|
 |PHP Ver|7.4|
 |Mysql Ver|5.7|
-|Laravel Ver|8.25|
 
-## 機能
+## 日報機能
 * ログイン
 * ユーザ管理
-    * ユーザ一覧表示、作成、更新、削除
     * プロフィール表示
     * プロフィール画像設定
     * 所属部署
     * 権限（一般、管理者）
     * ステータス（有効、無効）
 * 日報
-    * 日報一覧表示、作成、更新、削除
-    * 
-* ログイン
-* ログイン
+    * 出社日、出勤時刻、退勤時刻
+    * プロジェクト毎の作業時間、進捗率、納期の入力
+    * 作業内容の入力
+* プロジェクト
+    * ソート機能
+* 部署
 
 
 [![Image from Gyazo](https://i.gyazo.com/4581e97a04378f926e5e53b886da9264.gif)](https://gyazo.com/4581e97a04378f926e5e53b886da9264)
