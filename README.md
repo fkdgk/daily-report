@@ -18,7 +18,7 @@ WEBブラウザで日報の作成・更新ができるシステムです。<br>
     * ソート機能
 * 部署
 
-|DEMO|[https://www.fukuda-gikou.co.jp/nb/demo/daily-report/](https://www.fukuda-gikou.co.jp/nb/demo/daily-report/){:target="_blank"}|
+|DEMO|[https://www.fukuda-gikou.co.jp/nb/demo/daily-report/](https://www.fukuda-gikou.co.jp/nb/demo/daily-report/)|
 |--|--|
 |ID|demo@example.com|
 |PW|pw1234|
@@ -32,10 +32,10 @@ WEBブラウザで日報の作成・更新ができるシステムです。<br>
 |Mysql Ver|5.7|
 
 
-[![Image from Gyazo](https://i.gyazo.com/4581e97a04378f926e5e53b886da9264.gif)](https://gyazo.com/4581e97a04378f926e5e53b886da9264){:target="_blank"}
+[![Image from Gyazo](https://i.gyazo.com/4581e97a04378f926e5e53b886da9264.gif)](https://gyazo.com/4581e97a04378f926e5e53b886da9264)
 
 #### ER図
-[![ER図](https://www.fukuda-gikou.co.jp/nb/demo/daily-report/er.svg)](https://www.fukuda-gikou.co.jp/nb/demo/daily-report/er.svg){:target="_blank"}
+[![ER図](https://www.fukuda-gikou.co.jp/nb/demo/daily-report/er.svg)](https://www.fukuda-gikou.co.jp/nb/demo/daily-report/er.svg)
 
 <p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
 
