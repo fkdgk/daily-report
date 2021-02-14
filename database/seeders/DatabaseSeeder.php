@@ -76,7 +76,7 @@ class DatabaseSeeder extends Seeder
             'name' => $faker -> name,
             'role' => 'admin',
             'email' => 'demo@example.com',
-            'division_id' => 1,
+            'division_id' => $faker -> numberBetween(1,$count_divisions),
             'password' => bcrypt('pw1234'),
         ]);
 
@@ -112,7 +112,6 @@ class DatabaseSeeder extends Seeder
                 'role' => $role,
                 'active' => $active,
                 'img' => $faker->unique() -> numberBetween(6, $photo_count) . '.jpg',
-                // 'img' => $i . '.png',
                 'division_id' => $faker -> numberBetween(1, $count_divisions),
                 'password' => bcrypt('pw1234'),
             ]);
@@ -133,6 +132,7 @@ class DatabaseSeeder extends Seeder
          *   projects
          */
         $projects = [
+            'その他',
             'ギャラクシー 打合せ',
             'ハック プロジェクト',
             'シンクロニシティ 開発',
@@ -158,6 +158,7 @@ class DatabaseSeeder extends Seeder
         * works
         */
         $posts = Post::all()->pluck('id')->toArray();
+
         foreach ($posts as $post) {
             $work_count = 0;
             for ($i=1; $i <= $projects_count; $i++) {
@@ -179,10 +180,11 @@ class DatabaseSeeder extends Seeder
         * comments
         */
         $users = User::all()->pluck('id')->toArray();
+        
         foreach ($posts as $post) {
-            $count = 0;
+            $comment_count = 0;
             foreach ($users as $index => $user) {
-                if($count == 3) break ;
+                if($comment_count == 3) break ;
                 if($faker -> boolean){
                     $time = $faker -> time();
                     Comment::create([
@@ -191,7 +193,7 @@ class DatabaseSeeder extends Seeder
                         'body' => $faker -> realText(100),
                         'created_at' => Carbon::parse(date('Y-m-d'))->addDay(-$index) -> format('Y-m-d ' . $time),
                     ]);
-                    $count ++;
+                    $comment_count ++;
                 }
             }
         }

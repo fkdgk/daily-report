@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\Auth;
 class PostController extends Controller
 {
 
-    public $post_count = 5;
+    public $post_count = 15;
 
     public function index(User $user)
     {
