@@ -74,25 +74,25 @@ class AppServiceProvider extends ServiceProvider
                 'icon' => 'fa fa-fw fa-cubes mr-2',
             ]);
 
-            $event->menu->add('開発');
-                
+            $event->menu->add('Laravel Ver ' . app()->version());
+            
             $event->menu->add([
                 'text' => 'GitHub',
                 'url' => url('https://github.com/fkdgk/daily-report'),
                 'icon' => 'fab fa-github fa-fw  mr-2',
                 'target'=> '_blank',
-            ]);
-
-            if(app()->environment('demo')){
-
-                $event->menu->add([
-                    'text' => 'ER図',
-                    'url' => url('/er.svg?ver=') . config('app.asset_ver'),
-                    'icon' => 'fas fa-sitemap fa-fw mr-2',
-                    'target'=> '_blank',
+                ]);
+                
+                if(app()->environment('demo')){
+                    
+                    $event->menu->add([
+                        'text' => 'ER図',
+                        'url' => url('/er.svg?ver=') . config('app.asset_ver'),
+                        'icon' => 'fas fa-sitemap fa-fw mr-2',
+                        'target'=> '_blank',
                     ]);
-
             }
+
 
         });
     }
