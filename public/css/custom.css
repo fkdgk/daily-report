@@ -1,3 +1,5 @@
+
+
 /* side bar header*/
 li.nav-header {
     background-color: #2b2b2b !important;
@@ -84,4 +86,16 @@ img.user-image {
 img.user-image-m {
     height: 45px;
     width: 45px;
+}
+
+/* sp */
+@media screen and (max-width:992px) {
+    ul.pagination li:not(:first-child):not(:last-child) {
+        display: none;  
+    }
+    
+    ul.pagination li{
+        width:100px;
+        text-align: center;
+    }
 }
