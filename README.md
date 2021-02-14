@@ -1,4 +1,41 @@
+# 日報システム
+WEBブラウザで日報の作成・更新ができるシステムです。<br>
+ユーザの管理からプロジェクトの作成も行えます。
+
+## 日報機能一覧
+* ログイン
+* ユーザ管理
+    * プロフィール表示
+    * プロフィール画像設定
+    * 所属部署
+    * 権限（一般、管理者）
+    * ステータス（有効、無効）
+* 日報
+    * 出社日、出勤時刻、退勤時刻
+    * プロジェクト毎の作業時間、進捗率、納期の入力
+    * 作業内容の入力
+* プロジェクト
+    * ソート機能
+* 部署
+
+|DEMO|[https://www.fukuda-gikou.co.jp/nb/demo/daily-report/](https://www.fukuda-gikou.co.jp/nb/demo/daily-report/)|
+|--|--|
+|ID|demo@example.com|
+|PW|pw1234|
+
+## 動作環境
+
+|内容|項目|
+|--|--|
+|Laravel Ver|8.27|
+|PHP Ver|7.4|
+|Mysql Ver|5.7|
+
+
 [![Image from Gyazo](https://i.gyazo.com/4581e97a04378f926e5e53b886da9264.gif)](https://gyazo.com/4581e97a04378f926e5e53b886da9264)
+
+#### ER図
+[![ER図](https://www.fukuda-gikou.co.jp/nb/demo/daily-report/er.svg)](https://www.fukuda-gikou.co.jp/nb/demo/daily-report/er.svg)
 
 <p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
 
