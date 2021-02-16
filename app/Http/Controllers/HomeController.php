@@ -29,7 +29,6 @@ class HomeController extends Controller
         /* すべての投稿 */
         // $posts = Post::orderBy('id','desc')->paginate(15);
         $posts = Post::isActive() -> paginate(15);
-        // $users = User::isActive() -> get();
         $users = User::withCount('posts')->isActive()->get(); // Count 効率よく取得 https://blog.nakamu.life/posts/laravel-withcount
         
         return view('home',[
