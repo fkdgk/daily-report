@@ -55,6 +55,27 @@
                     </table>
                 </div>
             </div>
+            <div class="card">
+                <div class="cart-body p-2 pt-0">
+                    <h6 class="p-1">最近のコメント</h6>
+                    <table class="table table-sm">
+                        <tbody>
+                            @foreach ($comments as $comment)
+                            <tr>
+                                <td>
+                                    <img src="{{ @$comment -> user -> getImage() }}" class="user-image">
+                                </td>
+                                <td class="small">
+                                    <a class="text-dark d-block" href="{{ route('post.show', $comment -> post_id) }}">{{ $comment -> created_at }}<br>
+                                    {{ truncate($comment -> body) }}</a>
+                                </td>
+                            </tr>    
+                            @endforeach
+                        </tbody>
+                    </table>
+                </div>
+            </div>
         </div>
+        
     </div>
 @stop

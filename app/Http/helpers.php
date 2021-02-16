@@ -3,6 +3,11 @@
 use Carbon\Carbon;
 use Intervention\Image\Facades\Image;
 
+
+function truncate($str) {
+    return (mb_strlen(strip_tags($str)) > 30) ? mb_substr(strip_tags($str), 0, 30) . '…' : strip_tags($str) ;
+}
+
 /* 
  * --------------------------
  * Toastr メッセージ
