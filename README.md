@@ -33,8 +33,6 @@ WEBブラウザで日報の作成・更新ができるシステムです。<br>
 |Mysql Ver|5.7|
 
 
-[![Image from Gyazo](https://i.gyazo.com/4581e97a04378f926e5e53b886da9264.gif)](https://gyazo.com/4581e97a04378f926e5e53b886da9264)
-
 #### ER図
 [![ER図](https://www.fukuda-gikou.co.jp/nb/demo/daily-report/er.svg)](https://www.fukuda-gikou.co.jp/nb/demo/daily-report/er.svg)
 
