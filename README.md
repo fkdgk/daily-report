@@ -18,12 +18,13 @@ WEBブラウザで日報の作成・更新ができるシステムです。<br>
     * ソート機能
 * 部署
 
+## DEMO環境
 |DEMO|[https://www.fukuda-gikou.co.jp/nb/demo/daily-report/](https://www.fukuda-gikou.co.jp/nb/demo/daily-report/)|
 |--|--|
 |ID|demo@example.com|
 |PW|pw1234|
 
-## 動作環境
+## 動作環境・バージョン
 
 |内容|項目|
 |--|--|
