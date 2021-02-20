@@ -106,7 +106,7 @@ class DatabaseSeeder extends Seeder
                 $active = 1;
             }
 
-            User::create([
+            $user_values[] = [
                 'name' => $faker -> name,
                 'email' => $faker -> safeEmail,
                 'role' => $role,
@@ -114,24 +114,27 @@ class DatabaseSeeder extends Seeder
                 'img' => $faker->unique() -> numberBetween(6, $photo_count) . '.jpg',
                 'division_id' => $faker -> numberBetween(1, $count_divisions),
                 'password' => bcrypt('pw1234'),
-            ]);
+            ];
         }
 
+        User::insert($user_values);
 
         /* 
          *   ----------------------------------------------------------
          *   posts
          */
 
-        for ($i=0; $i < 200; $i++) { 
-            Post::create([
+        for ($i=0; $i < 200; $i++) {
+            $post_values[] = [
                 'work_date' => Carbon::parse(date('Y-m-d'))->addDay( - $faker->randomNumber(2)) -> format('Y-m-d'),
                 'start_time' => $faker -> numberBetween(9,10) . ':' . $faker ->  numberBetween(1,59) . ':' . '00',
                 'finish_time' => $faker -> numberBetween(16,19) . ':' . $faker -> numberBetween(1,59) . ':' . '00',
                 'body' => $faker -> realText,
                 'user_id' => $faker -> numberBetween(1, $user_count+1),
-            ]);
+            ];
         }
+
+        Post::insert($post_values);
 
         /* 
          *   ----------------------------------------------------------
