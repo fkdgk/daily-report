@@ -20,6 +20,7 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
+        $now = date('Y-m-d H:i:s');
         $faker = \Faker\Factory::create('ja_JP');
 
         $divisions = [
@@ -114,6 +115,7 @@ class DatabaseSeeder extends Seeder
                 'img' => $faker->unique() -> numberBetween(6, $photo_count) . '.jpg',
                 'division_id' => $faker -> numberBetween(1, $count_divisions),
                 'password' => bcrypt('pw1234'),
+                'created_at' => $now,
             ];
         }
 
@@ -131,6 +133,7 @@ class DatabaseSeeder extends Seeder
                 'finish_time' => $faker -> numberBetween(16,19) . ':' . $faker -> numberBetween(1,59) . ':' . '00',
                 'body' => $faker -> realText,
                 'user_id' => $faker -> numberBetween(1, $user_count+1),
+                'created_at' => $now,
             ];
         }
 
