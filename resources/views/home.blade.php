@@ -33,21 +33,22 @@
                             @foreach ($users as $user)
                                 <tr>
                                     <td>
-                                        <a href="{{ route('user.show', $user -> id) }}" class="text-dark text-nowrap">
-                                        <img class="user-image" src="{{ asset('img') . '/' . $user -> img }}">
-                                        {{ $user -> name }}
+                                        <a href="{{ route('user.show', $user->id) }}" class="text-dark text-nowrap">
+                                            <img class="user-image" src="{{ asset('img') . '/' . $user->img }}">
+                                            {{ $user->name }}
                                         </a>
                                     </td>
                                     <td class="">
                                         <span class="small ml-2 text-nowrap">
-                                            {{ @$user -> division -> name }}
+                                            {{ @$user->division->name }}
                                         </span>
                                     </td>
-                                    
+
                                     <td class="text-right">
-                                       <span class="small text-nowrap">{{ $user -> posts_count }} 投稿</span> {{-- こっちを使う --}}
-                                       {{-- <span class="small text-nowrap">{{ $user -> posts -> count() }} 投稿</span> --}} {{-- model -> count() は使わない --}}
-                                       {{-- <span class="small text-nowrap">{{ count(App\Models\Post::where('user_id',$user->id)->get()) }} 投稿</span> --}}
+                                        <span class="small text-nowrap">{{ $user->posts_count }} 投稿</span>
+                                        {{-- こっちを使う --}}
+                                        {{-- <span class="small text-nowrap">{{ $user -> posts -> count() }} 投稿</span> --}} {{-- model -> count() は使わない --}}
+                                        {{-- <span class="small text-nowrap">{{ count(App\Models\Post::where('user_id',$user->id)->get()) }} 投稿</span> --}}
                                     </td>
                                 </tr>
                             @endforeach
@@ -61,21 +62,22 @@
                     <table class="table table-sm">
                         <tbody>
                             @foreach ($comments as $comment)
-                            <tr>
-                                <td>
-                                    <img src="{{ @$comment -> user -> getImage() }}" class="user-image">
-                                </td>
-                                <td class="small">
-                                    <a class="text-dark d-block" href="{{ route('post.show', $comment -> post_id) }}">{{ $comment -> created_at }}<br>
-                                    {{ truncate($comment -> body) }}</a>
-                                </td>
-                            </tr>    
+                                <tr>
+                                    <td>
+                                        <img src="{{ @$comment->user->getImage() }}" class="user-image">
+                                    </td>
+                                    <td class="small">
+                                        <a class="text-dark d-block"
+                                            href="{{ route('post.show', $comment->post_id) }}">{{ $comment->created_at }}<br>
+                                            {{ truncate($comment->body) }}</a>
+                                    </td>
+                                </tr>
                             @endforeach
                         </tbody>
                     </table>
                 </div>
             </div>
         </div>
-        
+
     </div>
 @stop
