@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Models;
+
 use App\Models\Post;
 
 use Illuminate\Contracts\Auth\MustVerifyEmail;
@@ -21,31 +22,32 @@ class User extends Authenticatable
 
     public function getPostCount()
     {
-        return Post::where('user_id',$this -> id) ->get() -> count();
+        return Post::where('user_id', $this -> id) ->get() -> count();
     }
     
 
-    /* 
+    /*
      * table  relations
      */
-    public function division(){
+    public function division()
+    {
         return $this -> belongsTo(Division::class);
     }
 
     public function posts()
     {
-        return $this -> hasMany(Post::class) -> orderBy('work_date','desc');
+        return $this -> hasMany(Post::class) -> orderBy('work_date', 'desc');
     }
 
-    /* 
+    /*
      * adminlte settings
      */
     public function scopeIsActive($query)
     {
-        return $query->where('active', true)->orderBy('id','desc');
+        return $query->where('active', true)->orderBy('id', 'desc');
     }
 
-    /* 
+    /*
      * adminlte settings
      */
     public function adminlte_image()

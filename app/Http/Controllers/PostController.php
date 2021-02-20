@@ -13,7 +13,6 @@ use Illuminate\Support\Facades\Auth;
 
 class PostController extends Controller
 {
-
     public $post_count = 15;
 
     public function index(User $user)
@@ -35,7 +34,7 @@ class PostController extends Controller
         $user = $post -> user;
 
         /* compact を使った書き方 */
-        return view('post.show', compact('user' ,'post' ,'prev' ,'next' ,'works' ,'comments'));
+        return view('post.show', compact('user', 'post', 'prev', 'next', 'works', 'comments'));
         // return view('post.show',[
         //     'user' => $user,
         //     'post' => $post,
@@ -49,8 +48,7 @@ class PostController extends Controller
 
     public function edit(Post $post)
     {
-
-        if(Auth::id() != $post -> user_id){
+        if (Auth::id() != $post -> user_id) {
             toastr_not_allow();
             return redirect() -> route('home');
         }
@@ -60,7 +58,7 @@ class PostController extends Controller
         $user = $post -> user;
         $projects = Project::formSelect();
         
-        return view('post.edit',[
+        return view('post.edit', [
             'post' => $post,
             'user' => $user,
             'works' => $works,
@@ -72,7 +70,7 @@ class PostController extends Controller
     {
         $projects = Project::formSelect();
         $user = Auth::user();
-        return view('post.create',[
+        return view('post.create', [
             'user' => $user,
             'works' => [],
             'projects' => $projects,
@@ -95,7 +93,6 @@ class PostController extends Controller
 
             toastr_store();
             DB::commit();
-
         } catch (\Exception $e) {
             toastr_error();
             DB::rollback();
@@ -112,10 +109,12 @@ class PostController extends Controller
         $count = ($check_count) ? count($check_count) : null;
 
         /* delete all works */
-        Work::where('post_id',$post_id)->delete();
+        Work::where('post_id', $post_id)->delete();
 
         for ($i=0; $i < $count; $i++) {
-            if(!request('project_id')[$i]) continue;
+            if (!request('project_id')[$i]) {
+                continue;
+            }
 
             Work::create([
                 'post_id' => $post_id,
@@ -155,7 +154,7 @@ class PostController extends Controller
             $new_id = $new_post -> id;
 
             /* copy work */
-            $old_works= Work::where('post_id',$old_id)->get();
+            $old_works= Work::where('post_id', $old_id)->get();
             foreach ($old_works as $old_work) {
                 $new_work = $old_work
                         -> replicate()
@@ -168,26 +167,24 @@ class PostController extends Controller
 
             toastr_copy();
             DB::commit();
-
         } catch (\Exception $e) {
             toastr_error();
             DB::rollback();
             return redirect() -> back();
         }
 
-        return redirect() -> route('post.edit',$new_id);
+        return redirect() -> route('post.edit', $new_id);
     }
 
     public function update(Request $request, Post $post)
     {
-        
         $this -> validateForm($request);
 
         DB::beginTransaction();
         try {
             
             /* post update */
-            $post -> fill($request->all())->save(); 
+            $post -> fill($request->all())->save();
 
             /* update works */
             $this -> createWork($post -> id, request('project_id'));
@@ -202,7 +199,6 @@ class PostController extends Controller
         }
 
         return redirect() -> back();
-        
     }
 
     public function destroy(Post $post)
@@ -210,6 +206,6 @@ class PostController extends Controller
         $user_id = $post -> user_id;
         $post -> delete();
         toastr_error();
-        return redirect() -> route('post.index',$user_id);
+        return redirect() -> route('post.index', $user_id);
     }
 }
