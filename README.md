@@ -19,7 +19,7 @@ WEBブラウザで日報の作成・更新ができるシステムです。<br>
 * 部署
 
 ## DEMO環境
-|DEMO|[https://www.fukuda-gikou.co.jp/nb/demo/daily-report/](https://www.fukuda-gikou.co.jp/nb/demo/daily-report/)|
+|DEMO|[https://www.fukuda-gikou.co.jp/nb/demo/daily-report/public/](https://www.fukuda-gikou.co.jp/nb/demo/daily-report/public/)|
 |--|--|
 |ID|demo@example.com|
 |PW|pw1234|
