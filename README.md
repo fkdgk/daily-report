@@ -35,10 +35,6 @@ https://www.fukuda-gikou.co.jp/performance/business/1655/
 |PHP Ver|7.4|
 |Mysql Ver|5.7|
 
-
-#### ER図
-[![ER図](https://www.fukuda-gikou.co.jp/nb/demo/daily-report/er.svg)](https://www.fukuda-gikou.co.jp/nb/demo/daily-report/er.svg)
-
 ## License
 
 The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
